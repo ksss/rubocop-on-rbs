@@ -1,0 +1,23 @@
+use ::RBS::AST::Declarations as Decl
+
+module RuboCop
+  module Cop
+    module RBS
+      module Lint
+        class TypeParamsArity < Base
+          module Types = ::RBS::Types
+
+          def check_each_mixin: (Decl::Class | Decl::Module | Decl::Interface decl) -> untyped
+
+          def check_type_params: (untyped decl) -> untyped
+
+          def check_type: (::RBS::Types::t type) -> untyped
+
+          def check: (name: ::RBS::TypeName, args: ::Array[::RBS::Types::t], location: ::RBS::Location[untyped, untyped]?) -> untyped
+
+          def expects: () -> ::Hash[::String, ::Integer]
+        end
+      end
+    end
+  end
+end

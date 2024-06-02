@@ -1,0 +1,50 @@
+module RuboCop
+  module Cop
+    module RBS
+      module Lint
+        # This cop checks the WillSyntaxError in RBS.
+        # RBS with this diagnostics will fail in `rbs validate` command.
+        #
+        # @example default
+        #   # bad
+        #   def foo: (void) -> void
+        #
+        #   # bad
+        #   CONST: self
+        class WillSyntaxError < Base
+          module Types = ::RBS::Types
+
+          module AST = ::RBS::AST
+
+          def on_rbs_class: (untyped decl) -> untyped
+
+          def on_rbs_module: (untyped decl) -> untyped
+
+          def check_module_or_class: (untyped decl) -> untyped
+
+          def on_rbs_interface: (untyped decl) -> untyped
+
+          def on_rbs_constant: (untyped decl) -> untyped
+
+          alias on_rbs_global on_rbs_constant
+
+          alias on_rbs_type_alias on_rbs_constant
+
+          private
+
+          # @rbs type: ::RBS::Types::t
+          def no_self_type_validator: (::RBS::Types::t type) -> untyped
+
+          # @rbs type: ::RBS::MethodType | ::RBS::Types::t
+          def no_classish_type_validator: (::RBS::MethodType | ::RBS::Types::t type) -> untyped
+
+          # @rbs type: ::RBS::MethodType | ::RBS::Types::Function | ::RBS::Types::t
+          # @rbs allowed_here: bool
+          def void_type_context_validator: (::RBS::MethodType | ::RBS::Types::Function | ::RBS::Types::t type, ?bool allowed_here) -> untyped
+
+          def offence: (untyped decl, untyped message) -> untyped
+        end
+      end
+    end
+  end
+end

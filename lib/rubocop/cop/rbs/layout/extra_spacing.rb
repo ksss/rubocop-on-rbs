@@ -1,0 +1,57 @@
+# frozen_string_literal: true
+
+module RuboCop
+  module Cop
+    module RBS
+      module Layout
+        # @example default
+        #   # bad
+        #   def   foo:   ()   ->   void
+        #
+        #   # good
+        #   def foo: () -> void
+        class ExtraSpacing < Base
+          extend AutoCorrector
+
+          MSG = 'Unnecessary spacing detected.'
+
+          def on_rbs_new_investigation
+            aligned_comments = aligned_locations
+            tokens = processed_rbs_source.tokens.reject { |t| t.type == :tTRIVIA }
+            tokens.each_cons(2) do |a, b|
+              if (b.type == :tCOMMENT || b.type == :tLINECOMMENT)
+                next if aligned_comments.include?(b.location.start_line)
+              end
+              next if a.location.end_line != b.location.start_line
+              next if a.location.end_pos + 1 >= b.location.start_pos
+
+              space = range_between(a.location.end_pos, b.location.start_pos - 1)
+              add_offense(space) do |corrector|
+                corrector.remove(space)
+              end
+            end
+          end
+
+          def aligned_locations
+            comments = processed_rbs_source.tokens.select(&:comment?)
+            Set.new.tap do |aligned|
+              comments.map(&:location).each_cons(2) do |loc1, loc2|
+                if loc1.start_column == loc2.start_column
+                  aligned << loc1.start_line << loc2.start_line
+                end
+              end
+            end
+          end
+
+          def aligned_tok?(token)
+            if token.comment?
+              @aligned_comments.include?(token.line)
+            else
+              aligned_with_something?(token.pos)
+            end
+          end
+        end
+      end
+    end
+  end
+end

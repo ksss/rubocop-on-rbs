@@ -1,0 +1,133 @@
+# RuboCop on RBS
+
+A [RuboCop](https://github.com/rubocop/rubocop) extension focused on enforcing [RBS](https://github.com/ruby/rbs) best practices and coding conventions.
+
+## Synopsis
+
+Now, We can support RBS files by rubocop.
+
+```console
+$ cat sig/foo.rbs
+module Foo
+def foo: (   void) -> untyped
+end
+
+$ bundle exec rubocop sig/foo.rbs
+Inspecting 1 file
+W
+
+Offenses:
+
+sig/foo.rbs:2:1: C: [Correctable] RBS/Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+def foo: (   void) -> untyped
+
+sig/foo.rbs:2:11: C: [Correctable] RBS/Layout/ExtraSpacing: Unnecessary spacing detected.
+def foo: (   void) -> untyped
+          ^^
+sig/foo.rbs:2:14: W: RBS/Lint/WillSyntaxError: void type is only allowed in return type or generics parameter
+def foo: (   void) -> untyped
+             ^^^^
+
+1 file inspected, 3 offenses detected, 2 offenses autocorrectable
+```
+
+## Support VSCode
+
+We are currently working on a response, but it is possible to modify part of [vscode-rubocop](https://github.com/rubocop/vscode-rubocop) as a temporary hack to use it in vscode as well.
+
+Open your installed vscode extension.
+
+```
+$ code ~/.vscode/extensions/rubocop.vscode-rubocop-X.Y.Z/
+```
+
+Search `documentSelector:[{`.
+
+Then, Edit to add following to `documentSelector[]`
+
+```js
+{scheme:"file",language:"rbs"}
+```
+
+Additionally, by configuring the `settings.json` below, you can enable auto-correction to run on file save.
+
+```json
+{
+    "[rbs]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "rubocop.vscode-rubocop"
+    },
+}
+```
+
+And restart VSCode.
+
+## Installation
+
+TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+
+Install the gem and add to the application's Gemfile by executing:
+
+    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+
+If bundler is not being used to manage dependencies, install the gem by executing:
+
+    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+
+## Usage
+
+You need to tell RuboCop to load the RBS extension. There are three
+ways to do this:
+
+### RuboCop configuration file
+
+Put this into your `.rubocop.yml`.
+
+```yaml
+require: rubocop-on-rbs
+```
+
+Alternatively, use the following array notation when specifying multiple extensions.
+
+```yaml
+require:
+  - rubocop-other-extension
+  - rubocop-on-rbs
+```
+
+Now you can run `rubocop` and it will automatically load the RuboCop on RBS
+cops together with the standard cops.
+
+### Command line
+
+```sh
+$ rubocop --require rubocop-on-rbs
+```
+
+### Rake task
+
+```ruby
+require 'rubocop/rake_task'
+
+RuboCop::RakeTask.new do |task|
+  task.requires << 'rubocop-on-rbs'
+end
+```
+
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/ksss/rubocop-on-rbs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/ksss/rubocop-on-rbs/blob/main/CODE_OF_CONDUCT.md).
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Code of Conduct
+
+Everyone interacting in the RuboCop on RBS project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/ksss/rubocop-on-rbs/blob/main/CODE_OF_CONDUCT.md).

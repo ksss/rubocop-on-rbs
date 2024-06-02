@@ -1,0 +1,22 @@
+require:
+  - './lib/rubocop-on-rbs'
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+
+Naming/FileName:
+  Exclude:
+    - lib/rubocop-on-rbs.rb
+    - CHANGELOG.md
+    - CODE_OF_CONDUCT.md
+    - README.md
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Style:
+  Enabled: false
+
+Metrics:
+  Enabled: false

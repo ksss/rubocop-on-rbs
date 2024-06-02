@@ -1,0 +1,29 @@
+module RuboCop
+  module Cop
+    module RBS
+      module Style
+        # @example default
+        #   # bad
+        #   def foo: () -> TrueClass
+        #
+        #   # bad
+        #   def bar: () -> NilClass
+        #
+        #   # good
+        #   def foo: () -> true
+        #
+        #   # good
+        #   def bar: () -> nil
+        class ClassicType < Base
+          module Types = ::RBS::Types
+
+          extend AutoCorrector
+
+          def check_type: (::RBS::Types::t type) -> untyped
+
+          def find_replacement: (::RBS::Types::t type) ? { ([::RBS::Types::t, String]) -> untyped } -> untyped
+        end
+      end
+    end
+  end
+end

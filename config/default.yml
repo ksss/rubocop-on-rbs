@@ -1,0 +1,177 @@
+inherit_mode:
+  merge:
+    - Exclude
+    - Include
+
+AllCops:
+  Include:
+    - '**/*.rbs'
+
+Lint/Syntax:
+  Exclude:
+    - '**/*.rbs'
+
+# RBS
+
+## RBS/Layout
+
+RBS/Layout/EmptyLineAroundOverload:
+  Description: 'No empty line between overload'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/EndAlignment:
+  Description: 'Align `end` keyword'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/ExtraSpacing:
+  Description: 'Remove extra spacing'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/IndentationWidth:
+  Description: 'Use 2 spaces for indentation'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/OverloadIndentation:
+  Description: 'Indent overload method'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/SpaceAroundArrow:
+  Description: 'Use space around `->`'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/SpaceAroundBraces:
+  Description: 'Use space around `{}`'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/SpaceBeforeColon:
+  Description: 'Use space before `:`'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/SpaceBeforeOverload:
+  Description: 'Use space before overload method'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Layout/TrailingWhitespace:
+  Description: 'Remove trailing whitespace'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+## RBS/Lint
+
+RBS/Lint/Syntax:
+  Description: 'Check RBS syntax'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Lint/TypeParamsArity:
+  Description: 'Check type params arity'
+  Enabled: true
+  Expects:
+    # Default expects.
+    # You can add expects in .rubocop.yml.
+
+    ## class/module
+    Array: 1
+    Enumerable: 1
+    Enumerator: 2
+    Enumerator::Chain: 1
+    Enumerator::Generator: 1
+    Enumerator::Lazy: 2
+    Enumerator::Product: 1
+    FrozenError: 1
+    Hash: 2
+    KeyError: 2
+    NameError: 1
+    NoMatchingPatternKeyError: 2
+    NoMethodError: 1
+    ObjectSpace::WeakKeyMap: 2
+    Range: 1
+    Set: 1
+    Struct: 1
+
+    ## interface
+    Array::_Pattern: 1
+    Enumerable::_NotFound: 1
+    Gem::_HashLike: 2
+    Kernel::_RationalDiv: 1
+    Marshal::_Proc: 1
+    String::_MatchAgainst: 2
+    _Each: 1
+    _EachEntry: 1
+    _Range: 1
+    _ToA: 1
+    _ToAry: 1
+    _ToH: 2
+    _ToHash: 2
+
+    ## type alias
+    array: 1
+    hash: 2
+    range: 1
+  Include:
+    - '**/*.rbs'
+
+RBS/Lint/WillSyntaxError:
+  Description: 'Check RBS will syntax error'
+  Enabled: true
+  Severity: warning
+  Include:
+    - '**/*.rbs'
+
+## RBS/Style
+
+RBS/Style/BasicType:
+  Description: 'Use simple type'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Style/BlockReturnBoolish:
+  Description: 'Use `bool` for block return type'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Style/CompactType:
+  Description: 'Use short hand type'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Style/DuplicatedType:
+  Description: 'Check duplicated type'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Style/InitializeReturnType:
+  Description: 'Use `void` for initialize method'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Style/MergeUntyped:
+  Description: 'Merge to `untyped`'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
