@@ -1,0 +1,16 @@
+module RuboCop
+  module RBS
+    # Fake for RuboCop::ProcessedSource
+    class ProcessedRBSSource
+      attr_reader raw_source: String
+      attr_reader buffer: ::RBS::Buffer
+      attr_reader directives: ::Array[::RBS::AST::Directives::t]
+      attr_reader decls: ::Array[::RBS::AST::Declarations::t]
+      attr_reader error: ::RBS::ParsingError?
+      @tokens: ::Array[::RBS::Parser::Token]?
+
+      def initialize: (::RBS::Buffer source) -> void
+      def tokens: () -> ::Array[::RBS::Parser::Token]
+    end
+  end
+end

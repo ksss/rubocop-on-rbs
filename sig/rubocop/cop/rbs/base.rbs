@@ -5,6 +5,7 @@ module RuboCop
     module RBS
       # Base class for cops that operate on RBS signatures.
       class Base < ::RuboCop::Cop::Base
+        def processed_rbs_source: () -> RuboCop::RBS::ProcessedRBSSource
         def investigation_rbs: () -> void
         def on_rbs_new_investigation: () -> void
         def on_rbs_parsing_error: () -> void
@@ -18,7 +19,7 @@ module RuboCop
         def on_rbs_def: (::RBS::AST::Members::MethodDefinition) -> void
         def on_rbs_attribute: (::RBS::AST::Members::Attribute) -> void
 
-        def walk: () -> void
+        def walk: (untyped) -> void
         def rbs_buffer: () -> ::RBS::Buffer
         def location_to_range: (::RBS::Location[untyped, untyped]) -> Parser::Source::Range
         def range_between: (Integer, Integer) -> Parser::Source::Range

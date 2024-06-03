@@ -15,7 +15,6 @@ module RuboCop
           MSG = 'Indent the `|` to the first `:`'
           extend AutoCorrector
 
-          # @sig decl: ::RBS::AST::Members::MethodDefinition
           def on_rbs_def(decl)
             # class Foo
             #   def foo: () -> void # Comment1

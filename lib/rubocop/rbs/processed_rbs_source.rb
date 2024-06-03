@@ -2,7 +2,6 @@
 
 module RuboCop
   module RBS
-    # Fake for RuboCop::ProcessedSource
     class ProcessedRBSSource
       attr_reader :raw_source
       attr_reader :source
@@ -12,7 +11,6 @@ module RuboCop
       attr_reader :error
 
       def initialize(source)
-        @source = source
         @raw_source = source.content
         @buffer, @directives, @decls = ::RBS::Parser.parse_signature(source)
         @error = nil

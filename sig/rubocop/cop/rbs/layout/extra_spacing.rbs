@@ -1,0 +1,21 @@
+module RuboCop
+  module Cop
+    module RBS
+      module Layout
+        # @example default
+        #   # bad
+        #   def   foo:   ()   ->   void
+        #
+        #   # good
+        #   def foo: () -> void
+        class ExtraSpacing < Base
+          extend AutoCorrector
+
+          MSG: String
+
+          def aligned_locations: () -> ::Set[Integer]
+        end
+      end
+    end
+  end
+end
