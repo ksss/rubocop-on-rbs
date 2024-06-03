@@ -4,9 +4,9 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'prism'
-gem 'rake', '~> 13.0'
-gem 'rbs', path: '../rbs'
-gem 'rspec'
-gem 'rubocop', '~> 1.21'
+gem 'prism', require: false
+gem 'rake', require: false
+gem 'rbs', github: 'ruby/rbs'
+gem 'rspec', require: false
+gem 'rubocop', require: false
 gem 'steep', require: false

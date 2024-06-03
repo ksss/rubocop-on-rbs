@@ -1,5 +1,6 @@
-PATH
-  remote: ../rbs
+GIT
+  remote: https://github.com/ruby/rbs.git
+  revision: abd62e72767361014dc6479b84a2cec7285a4d3a
   specs:
     rbs (3.5.0.pre.2)
       abbrev
@@ -9,7 +10,7 @@ PATH
   specs:
     rubocop-on-rbs (0.1.0)
       rbs
-      rubocop
+      rubocop (~> 1.41)
 
 GEM
   remote: https://rubygems.org/
@@ -116,10 +117,10 @@ PLATFORMS
 
 DEPENDENCIES
   prism
-  rake (~> 13.0)
+  rake
   rbs!
   rspec
-  rubocop (~> 1.21)
+  rubocop
   rubocop-on-rbs!
   steep
 
