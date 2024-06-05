@@ -62,6 +62,47 @@ Additionally, by configuring the `settings.json` below, you can enable auto-corr
 
 And restart VSCode.
 
+## Departments
+
+### RBS
+
+This gem handles many cops.
+All cops can be enabled by following setting by default.
+
+```yaml
+RBS:
+  Enabled: true
+```
+
+See `config/default.yml` for all Cop.
+
+### RBS/Layout
+
+This department is a collection of relatively minor fixes has been gathered.
+
+```yaml
+RBS/Layout:
+  Enabled: true
+```
+
+### RBS/Lint
+
+This department is gathering important points that need to be fixed.
+
+```yaml
+RBS/Lint:
+  Enabled: true
+```
+
+### RBS/Style
+
+This department unifies multiple styles.
+
+```yaml
+RBS/Style:
+  Enabled: true
+```
+
 ## Installation
 
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
