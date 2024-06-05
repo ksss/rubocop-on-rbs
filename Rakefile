@@ -10,4 +10,17 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task default: [:spec, :rubocop]
+namespace :steep do
+  task :check do
+    require 'steep'
+    require 'steep/cli'
+    Steep::CLI.new(
+      stdin: $stdin,
+      stdout: $stdout,
+      stderr: $stderr,
+      argv: %w(check)
+    ).run
+  end
+end
+
+task default: [:spec, :rubocop, 'steep:check']
