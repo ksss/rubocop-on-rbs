@@ -26,24 +26,15 @@ module RuboCop
             return unless word_before_colon_pos
 
             if word_before_colon_pos + 1 != colon_start_pos
-              colon = colon_range(colon_start_pos)
+              colon = range_between(colon_start_pos, colon_start_pos + 1)
               add_offense(colon) do |corrector|
-                range = Parser::Source::Range.new(
-                  processed_source.buffer,
+                range = range_between(
                   word_before_colon_pos + 1,
                   colon_start_pos,
                 )
                 corrector.remove(range)
               end
             end
-          end
-
-          def colon_range(base_pos)
-            Parser::Source::Range.new(
-              processed_source.buffer,
-              base_pos,
-              base_pos + 1,
-            )
           end
         end
       end
