@@ -14,12 +14,24 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EmptyLinesAroundOverloads, :config do
 
       ^{} Empty line detected around overloads.
                | () -> void
+
+        def bar: () -> void
+
+      ^{} Empty line detected around overloads.
+               # () -> void
+
+      ^{} Empty line detected around overloads.
+               | () -> void
       end
     RBS
 
     expect_correction(<<~RBS)
       class Foo
         def foo: () -> void
+               | () -> void
+
+        def bar: () -> void
+               # () -> void
                | () -> void
       end
     RBS

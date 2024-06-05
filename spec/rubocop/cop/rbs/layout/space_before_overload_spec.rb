@@ -15,6 +15,12 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceBeforeOverload, :config do
                ^ Use one space before overload.
                |  () -> ::Time
                ^ Use one space before overload.
+
+        def baz:[T] (T) -> T
+               ^ Use one space before overload.
+
+        def qux: () -> void
+               | [T] (T) -> T
       end
     RBS
 
@@ -25,6 +31,11 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceBeforeOverload, :config do
 
         def bar: () -> ::Time
                | () -> ::Time
+
+        def baz: [T] (T) -> T
+
+        def qux: () -> void
+               | [T] (T) -> T
       end
     RBS
   end

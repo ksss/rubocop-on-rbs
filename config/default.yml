@@ -7,7 +7,7 @@ AllCops:
   Include:
     - '**/*.rbs'
 
-Lint/Syntax:
+Lint:
   Exclude:
     - '**/*.rbs'
 
@@ -15,6 +15,8 @@ Lint/Syntax:
 
 RBS:
   Enabled: true
+  Include:
+    - '**/*.rbs'
 
 ## RBS/Layout
 
@@ -24,62 +26,42 @@ RBS/Layout:
 RBS/Layout/EmptyLineAroundOverloads:
   Description: 'No empty line between overload'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/EndAlignment:
   Description: 'Align `end` keyword'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/ExtraSpacing:
   Description: 'Remove extra spacing'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/IndentationWidth:
   Description: 'Use 2 spaces for indentation'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/OverloadIndentation:
   Description: 'Indent overload method'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/SpaceAroundArrow:
   Description: 'Use space around `->`'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/SpaceAroundBraces:
   Description: 'Use space around `{}`'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/SpaceBeforeColon:
   Description: 'Use space before `:`'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/SpaceBeforeOverload:
   Description: 'Use space before overload method'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Layout/TrailingWhitespace:
   Description: 'Remove trailing whitespace'
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 ## RBS/Lint
 

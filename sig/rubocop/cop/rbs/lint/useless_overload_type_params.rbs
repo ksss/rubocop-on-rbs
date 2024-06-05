@@ -1,0 +1,13 @@
+use ::RBS::AST::Declarations as Decl
+
+module RuboCop
+  module Cop
+    module RBS
+      module Lint
+        class UselessOverloadTypeParams < RuboCop::RBS::CopBase
+          def used_variable_in_type: (::RBS::Types::t type) { (::RBS::Types::Variable) -> void } -> void
+        end
+      end
+    end
+  end
+end

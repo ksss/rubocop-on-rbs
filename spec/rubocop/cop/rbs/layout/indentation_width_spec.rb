@@ -14,6 +14,12 @@ RSpec.describe RuboCop::Cop::RBS::Layout::IndentationWidth, :config do
       ^^^^^^ Use 2 (not 6) spaces for indentation.
               @attr: Integer
       ^^^^^^^^ Use 2 (not 8) spaces for indentation.
+                %a{a} def a: () -> void
+      ^^^^^^^^^^ Use 2 (not 10) spaces for indentation.
+                  # See Layout/CommentIndentation
+                  %a{see:layout:annotation_indentation}
+                  def b: () -> void
+      ^^^^^^^^^^^^ Use 2 (not 12) spaces for indentation.
       end
         CONST: 1
       ^^ Use 0 (not 2) spaces for indentation.
@@ -29,10 +35,26 @@ RSpec.describe RuboCop::Cop::RBS::Layout::IndentationWidth, :config do
         alias foo bar
         type t = Integer
         @attr: Integer
+        %a{a} def a: () -> void
+                  # See Layout/CommentIndentation
+                  %a{see:layout:annotation_indentation}
+        def b: () -> void
       end
       CONST: 1
       $global: Integer
       class Baz = Foo
+    RBS
+  end
+
+  it 'not registers an offense' do
+    expect_no_offenses(<<~RBS)
+      # Comment
+      class Foo
+        # Comment
+        %a{annotation} def anno: () -> void
+        %a{annotation}
+        def bar: () -> void
+      end
     RBS
   end
 

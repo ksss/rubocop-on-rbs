@@ -18,6 +18,9 @@ module RuboCop
           extend AutoCorrector
 
           def on_rbs_new_investigation
+            @first_char_columns = processed_source.raw_source.each_line.map do |line|
+              line.index(/[^[:space:]]/) || 0
+            end
             processed_rbs_source.decls.each do |decl|
               check_indentation(decl, expect: 0)
             end
@@ -36,9 +39,9 @@ module RuboCop
 
           def check(decl, expect:)
             line_start_pos = line_start_pos(decl)
-            actual = decl.location.start_pos - line_start_pos
+            actual = @first_char_columns[decl.location.start_line - 1]
             if actual != expect
-              range = range_between(line_start_pos, decl.location.start_pos)
+              range = range_between(line_start_pos, line_start_pos + actual)
               message = "Use #{expect} (not #{actual}) spaces for indentation."
               add_offense(range, message: message) do |corrector|
                 corrector.replace(range, ' ' * expect)
