@@ -18,7 +18,7 @@ namespace :steep do
       stdin: $stdin,
       stdout: $stdout,
       stderr: $stderr,
-      argv: %w(check)
+      argv: %w(check --jobs 2)
     ).run
   end
 end
