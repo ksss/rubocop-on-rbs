@@ -22,6 +22,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::CommentIndentation, :config do
         def initialize: () -> void
 
         interface _I
+          def end: () -> void
         end
 
           # comment
@@ -45,6 +46,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::CommentIndentation, :config do
         def initialize: () -> void
 
         interface _I
+          def end: () -> void
         end
 
         # comment

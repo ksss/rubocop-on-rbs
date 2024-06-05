@@ -19,9 +19,11 @@ module RuboCop
 
           def on_rbs_new_investigation
             indent_start_lines = Set.new
+            indent_end_lines = Set.new
             processed_rbs_source.decls.each do |decl|
               walk_decl(decl) do |d|
                 indent_start_lines << d.location.start_line
+                indent_end_lines << d.location.end_line
               end
             end
 
@@ -33,6 +35,8 @@ module RuboCop
 
                 expected_width += 2
               when :kEND
+                next unless indent_end_lines.include?(token.location.start_line)
+
                 expected_width -= 2
               when :tLINECOMMENT
                 if token.location.start_column != expected_width
