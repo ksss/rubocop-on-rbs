@@ -85,6 +85,10 @@ RBS/Layout:
   Enabled: true
 ```
 
+```console
+$ bundle exec rubocop --only RBS/Layout
+```
+
 ### RBS/Lint
 
 This department is gathering important points that need to be fixed.
@@ -94,6 +98,10 @@ RBS/Lint:
   Enabled: true
 ```
 
+```console
+$ bundle exec rubocop --only RBS/Lint
+```
+
 ### RBS/Style
 
 This department unifies multiple styles.
@@ -101,6 +109,10 @@ This department unifies multiple styles.
 ```yaml
 RBS/Style:
   Enabled: true
+```
+
+```console
+$ bundle exec rubocop --only RBS/Style
 ```
 
 ## Installation
