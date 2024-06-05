@@ -13,7 +13,7 @@ module RuboCop
         #
         #   # good
         #   def initialize: () -> void
-        class InitializeReturnType < Base
+        class InitializeReturnType < RuboCop::RBS::CopBase
           extend AutoCorrector
           MSG = '`#initialize` method should return `void`'
 

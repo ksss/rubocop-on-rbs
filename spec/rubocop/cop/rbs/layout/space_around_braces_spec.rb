@@ -14,6 +14,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundBraces, :config do
         def bar:{ -> void   } -> void
                 ^ Use one space before `{`.
                             ^ Use one space before `}`.
+        def foo?: () ?{ () -> void } -> void
       end
     RBS
 
@@ -21,6 +22,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundBraces, :config do
       class Foo
         def foo: ({a: top}) { ({b: top}) -> {c: top} } -> ^({d: top}) { ({e: top}) -> {f: top} } -> {g: top}
         def bar: { -> void } -> void
+        def foo?: () ?{ () -> void } -> void
       end
     RBS
   end

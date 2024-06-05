@@ -10,7 +10,7 @@ module RuboCop
         #
         #   # good
         #   def foo: () -> void
-        class SpaceBeforeColon < Base
+        class SpaceBeforeColon < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           MSG = 'Avoid using spaces before `:`.'

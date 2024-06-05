@@ -14,7 +14,7 @@ module RuboCop
         #   class Foo
         #     def foo: () -> void
         #   end
-        class EmptyLinesAroundOverloads < Base
+        class EmptyLinesAroundOverloads < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           MSG = 'Empty line detected around overloads.'

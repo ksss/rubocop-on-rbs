@@ -13,7 +13,7 @@ module RuboCop
         #
         #   # good
         #   def foo: (Integer) -> void
-        class DuplicatedType < Base
+        class DuplicatedType < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition

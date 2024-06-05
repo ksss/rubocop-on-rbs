@@ -16,7 +16,7 @@ module RuboCop
         #
         #   # good
         #   def foo: (untyped) -> untyped
-        class MergeUntyped < Base
+        class MergeUntyped < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition

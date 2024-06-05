@@ -14,7 +14,7 @@ module RuboCop
         #   class Foo
         #     def foo: () -> void
         #   end
-        class EndAlignment < Base
+        class EndAlignment < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           def on_rbs_new_investigation

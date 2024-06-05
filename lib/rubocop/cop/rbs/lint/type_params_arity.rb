@@ -20,7 +20,7 @@ module RuboCop
         #   class Foo
         #     include Enumerable
         #   end
-        class TypeParamsArity < Base
+        class TypeParamsArity < RuboCop::RBS::CopBase
           Types = ::RBS::Types
 
           def on_rbs_module(decl)

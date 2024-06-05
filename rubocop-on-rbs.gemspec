@@ -4,7 +4,7 @@ require_relative 'lib/rubocop/rbs/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'rubocop-on-rbs'
-  spec.version = Rubocop::RBS::VERSION
+  spec.version = RuboCop::RBS::VERSION
   spec.authors = ['ksss']
   spec.email = ['co000ri@gmail.com']
 

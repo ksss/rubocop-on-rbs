@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module RBS
       module Lint
-        class TypeParamsArity < Base
+        class TypeParamsArity < RuboCop::RBS::CopBase
           module Types = ::RBS::Types
 
           def check_each_mixin: (Decl::Class | Decl::Module | Decl::Interface decl) -> untyped

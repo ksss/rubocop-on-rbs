@@ -37,6 +37,8 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundArrow, :config do
         def baz: (^() { () ->void } ->void) -> void
                            ^^ Use one space after `->`.
                                     ^^ Use one space after `->`.
+        def arrow: ->void
+                   ^^ Use one space after `->`.
       end
     RBS
 
@@ -45,6 +47,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundArrow, :config do
         def foo: () -> void
         def bar: () { () -> void } -> void
         def baz: (^() { () -> void } -> void) -> void
+        def arrow: -> void
       end
     RBS
   end

@@ -13,9 +13,15 @@ Lint/Syntax:
 
 # RBS
 
+RBS:
+  Enabled: true
+
 ## RBS/Layout
 
-RBS/Layout/EmptyLineAroundOverload:
+RBS/Layout:
+  Enabled: true
+
+RBS/Layout/EmptyLineAroundOverloads:
   Description: 'No empty line between overload'
   Enabled: true
   Include:
@@ -76,6 +82,9 @@ RBS/Layout/TrailingWhitespace:
     - '**/*.rbs'
 
 ## RBS/Lint
+
+RBS/Lint:
+  Enabled: true
 
 RBS/Lint/Syntax:
   Description: 'Check RBS syntax'
@@ -140,11 +149,8 @@ RBS/Lint/WillSyntaxError:
 
 ## RBS/Style
 
-RBS/Style/BasicType:
-  Description: 'Use simple type'
+RBS/Style:
   Enabled: true
-  Include:
-    - '**/*.rbs'
 
 RBS/Style/BlockReturnBoolish:
   Description: 'Use `bool` for block return type'
@@ -152,8 +158,8 @@ RBS/Style/BlockReturnBoolish:
   Include:
     - '**/*.rbs'
 
-RBS/Style/CompactType:
-  Description: 'Use short hand type'
+RBS/Style/ClassicType:
+  Description: 'Use simple type'
   Enabled: true
   Include:
     - '**/*.rbs'
@@ -172,6 +178,18 @@ RBS/Style/InitializeReturnType:
 
 RBS/Style/MergeUntyped:
   Description: 'Merge to `untyped`'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Style/OptionalNil:
+  Description: 'Use nil instead of nil?'
+  Enabled: true
+  Include:
+    - '**/*.rbs'
+
+RBS/Style/TrueFalse:
+  Description: 'Use bool instead of true | false'
   Enabled: true
   Include:
     - '**/*.rbs'

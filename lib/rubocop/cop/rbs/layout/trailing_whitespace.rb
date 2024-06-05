@@ -14,7 +14,7 @@ module RuboCop
         #   class Foo
         #     def foo: () -> void
         #   end
-        class TrailingWhitespace < Base
+        class TrailingWhitespace < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           MSG = "Trailing whitespace detected."

@@ -13,7 +13,7 @@ module RuboCop
         #
         #   # bad
         #   CONST: self
-        class WillSyntaxError < Base
+        class WillSyntaxError < RuboCop::RBS::CopBase
           # @rbs!
           #    module Types = ::RBS::Types
           #    module AST = ::RBS::AST
@@ -168,7 +168,7 @@ module RuboCop
               void_type_context_validator(type.type)
               if type.block
                 void_type_context_validator(type.block.type)
-                void_type_context_validator(type.block.self_type)
+                void_type_context_validator(type.block.self_type) if type.block.self_type
               end
             when Types::ClassInstance
               type.args.each do |arg|

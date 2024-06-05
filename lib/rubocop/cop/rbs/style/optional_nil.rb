@@ -10,7 +10,7 @@ module RuboCop
         #
         #   # good
         #   def foo: (nil) -> void
-        class OptionalNil < Base
+        class OptionalNil < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition

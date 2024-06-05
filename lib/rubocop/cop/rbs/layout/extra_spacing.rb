@@ -10,7 +10,7 @@ module RuboCop
         #
         #   # good
         #   def foo: () -> void
-        class ExtraSpacing < Base
+        class ExtraSpacing < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           MSG = 'Unnecessary spacing detected.'

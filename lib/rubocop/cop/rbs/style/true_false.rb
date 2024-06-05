@@ -13,7 +13,7 @@ module RuboCop
         #
         #   # good
         #   def foo: (bool) -> bool
-        class TrueFalse < Base
+        class TrueFalse < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition

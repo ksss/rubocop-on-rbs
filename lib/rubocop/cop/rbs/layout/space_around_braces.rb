@@ -10,7 +10,7 @@ module RuboCop
         #
         #   # good
         #   def bar: () { () -> void } -> void
-        class SpaceAroundBraces < Base
+        class SpaceAroundBraces < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition
@@ -24,13 +24,16 @@ module RuboCop
               when :pRPAREN # ')'
                 paren_level -= 1
               when :pLBRACE # '{'
-                if (after.type == :pLPAREN || after.type == :pARROW) && paren_level == 0
-                  check_around_space(decl.location, before, token, after)
-                end
+                next unless before&.type != :pQUESTION # '?'
+                next unless (after.type == :pLPAREN || after.type == :pARROW)
+                next unless paren_level == 0
+
+                check_around_space(decl.location, before, token, after)
               when :pRBRACE # '}'
-                if after.type == :pARROW && paren_level == 0
-                  check_around_space(decl.location, before, token, after)
-                end
+                next unless after.type == :pARROW
+                next unless paren_level == 0
+
+                check_around_space(decl.location, before, token, after)
               end
             end
           end

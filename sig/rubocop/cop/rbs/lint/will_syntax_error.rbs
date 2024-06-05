@@ -11,7 +11,7 @@ module RuboCop
         #
         #   # bad
         #   CONST: self
-        class WillSyntaxError < Base
+        class WillSyntaxError < RuboCop::RBS::CopBase
           module Types = ::RBS::Types
 
           module AST = ::RBS::AST

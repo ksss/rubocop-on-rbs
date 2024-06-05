@@ -8,48 +8,59 @@ module RuboCop
         #   # bad
         #   def foo: () -> String | () -> (Integer)
         #
+        #   # bad
+        #   def foo: () -> String
+        #       | () -> (Integer)
+        #
+        #   # bad
+        #   def foo: () -> String |
+        #            () -> (Integer)
+        #
         #   # good
         #   def foo: () -> String
         #          | () -> Integer
-        class OverloadIndentation < Base
-          MSG = 'Indent the `|` to the first `:`'
+        class OverloadIndentation < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           def on_rbs_def(decl)
-            # class Foo
-            #   def foo: () -> void # Comment1
-            # ^ line_start_pos
-            # ^^ indent_length
-            #          ^ colon_index
-            #        | () -> void   # Comment2
-            #        ^ Indent
-            # end
-            return unless 1 < decl.overloads.size
+            base_pos = decl.location.start_pos
+            base_col = decl.location.start_column
+            overload_starts = decl.overloads.map { |overload| overload.method_type.location.start_pos }
+            tokens = ::RBS::Parser.lex(decl.location.source).value.reject { |t| t.type == :tTRIVIA }
+            first_colon_column = base_col + tokens.find { |t| t.type == :pCOLON }&.location&.start_column
+            ([nil] + tokens).each_cons(3) do |before, bar, after|
+              next unless before
+              next unless bar
+              next unless after
+              next unless bar&.type == :pBAR
 
-            line_start_pos = processed_source.raw_source.rindex(/\R/, decl.location.start_pos) + 1
-            indent_length = decl.location.start_pos - line_start_pos
-            colon_index = indent_length + decl.location.source.index(':')
-            enum = decl.overloads.each
-            enum.next # first overload
-            while (overload = enum.next)
-              overload_start_pos = overload.method_type.location.start_pos
-              overload_line_start_pos = processed_source.raw_source.rindex(/\R/, overload_start_pos) + 1
-              # ignore if same line
-              next if overload_line_start_pos == line_start_pos
+              loc = bar&.location
+              next unless loc
+              next unless overload_starts.include?(base_pos + after.location.start_pos)
 
-              pipeline_pos = processed_source.raw_source.rindex('|', overload_start_pos)
-              next unless pipeline_pos
+              if before.location.end_line == bar.location.start_line
+                range = range_between(base_pos + bar.location.start_pos, base_pos + bar.location.end_pos)
+                add_offense(range, message: "Insert newline before `|`") do |corrector|
+                  space = range_between(base_pos + before.location.end_pos, base_pos + bar.location.start_pos)
+                  corrector.replace(space, "\n#{' ' * first_colon_column}")
+                end
+              end
 
-              overload_indent_length = pipeline_pos - overload_line_start_pos
-              if overload_indent_length != colon_index
-                range = range_between(overload_line_start_pos, pipeline_pos)
-                add_offense(range) do |corrector|
-                  corrector.replace(range, ' ' * colon_index)
+              if bar.location.end_line != after.location.start_line
+                range = range_between(base_pos + bar.location.start_pos, base_pos + bar.location.end_pos)
+                add_offense(range, message: "Remove newline after `|`") do |corrector|
+                  space = range_between(base_pos + bar.location.end_pos, base_pos + after.location.start_pos)
+                  corrector.replace(space, ' ')
+                end
+              elsif bar.location.start_column != first_colon_column
+                range = range_between(base_pos + bar.location.start_pos, base_pos + bar.location.end_pos)
+                add_offense(range, message: 'Indent the `|` to the first `:`') do |corrector|
+                  space = range_between(base_pos + bar.location.start_pos - bar.location.start_column,
+                                        base_pos + bar.location.start_pos)
+                  corrector.replace(space, ' ' * first_colon_column)
                 end
               end
             end
-          rescue StopIteration
-            # end of enum
           end
         end
       end

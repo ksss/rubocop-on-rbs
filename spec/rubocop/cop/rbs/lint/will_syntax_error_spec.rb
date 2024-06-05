@@ -177,13 +177,15 @@ RSpec.describe RuboCop::Cop::RBS::Lint::WillSyntaxError, :config do
                         ^^^^ `self` type is not allowed in this context
                               ^^^^^ `class` type is not allowed in this context
                                      ^^^^^^^^ `instance` type is not allowed in this context
-          PROC: ^(self, class, instance) -> [self, class, instance]
+          PROC: ^(self, class, instance) { (self) -> class } -> [self, class, instance]
                   ^^^^ `self` type is not allowed in this context
                         ^^^^^ `class` type is not allowed in this context
                                ^^^^^^^^ `instance` type is not allowed in this context
-                                             ^^^^ `self` type is not allowed in this context
-                                                   ^^^^^ `class` type is not allowed in this context
-                                                          ^^^^^^^^ `instance` type is not allowed in this context
+                                            ^^^^ `self` type is not allowed in this context
+                                                     ^^^^^ `class` type is not allowed in this context
+                                                                 ^^^^ `self` type is not allowed in this context
+                                                                       ^^^^^ `class` type is not allowed in this context
+                                                                              ^^^^^^^^ `instance` type is not allowed in this context
         end
       RBS
     end

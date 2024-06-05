@@ -14,7 +14,7 @@ module RuboCop
         #
         #   # good
         #   def bar: () -> nil
-        class ClassicType < Base
+        class ClassicType < RuboCop::RBS::CopBase
           module Types = ::RBS::Types
 
           extend AutoCorrector

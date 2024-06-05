@@ -10,7 +10,7 @@ module RuboCop
         #
         #   # good
         #   def foo: () { () -> boolish } -> void
-        class BlockReturnBoolish < Base
+        class BlockReturnBoolish < RuboCop::RBS::CopBase
           extend AutoCorrector
           MSG = 'Use `boolish` instead of `bool` in block return type.'
 

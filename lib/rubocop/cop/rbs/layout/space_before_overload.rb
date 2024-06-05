@@ -12,7 +12,7 @@ module RuboCop
         #   # good
         #   def foo: () -> void
         #          | () -> void
-        class SpaceBeforeOverload < Base
+        class SpaceBeforeOverload < RuboCop::RBS::CopBase
           extend AutoCorrector
 
           MSG = 'Use one space before overload.'
