@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-on-rbs (0.1.0)
+    rubocop-on-rbs (0.2.0)
       rbs (~> 3.5)
       rubocop (~> 1.41)
 
