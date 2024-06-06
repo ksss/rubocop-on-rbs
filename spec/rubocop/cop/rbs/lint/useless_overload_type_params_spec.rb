@@ -10,6 +10,8 @@ RSpec.describe RuboCop::Cop::RBS::Lint::UselessOverloadTypeParams, :config do
                   ^ Useless overload type variable - `T`.
         def bar: [A, B] (A) -> void
                      ^ Useless overload type variable - `B`.
+        def baz: [T < Integer] () -> void
+                  ^ Useless overload type variable - `T`.
       end
     RBS
   end

@@ -34,7 +34,7 @@ module RuboCop
               type_params.each do |type_param|
                 next unless type_param.location
 
-                t = location_to_range(type_param.location)
+                t = location_to_range(type_param.location[:name])
                 add_offense(t, message: format(MSG, variable: type_param.name), severity: :warning)
               end
             end
