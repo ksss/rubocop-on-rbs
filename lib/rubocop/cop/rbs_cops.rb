@@ -14,9 +14,9 @@ require_relative 'rbs/layout/space_before_colon'
 require_relative 'rbs/layout/space_before_overload'
 require_relative 'rbs/layout/trailing_whitespace'
 
+require_relative 'rbs/lint/redundant_overload_type_params'
 require_relative 'rbs/lint/syntax'
 require_relative 'rbs/lint/type_params_arity'
-require_relative 'rbs/lint/useless_overload_type_params'
 require_relative 'rbs/lint/will_syntax_error'
 
 require_relative 'rbs/style/block_return_boolish'
