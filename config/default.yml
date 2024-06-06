@@ -70,18 +70,25 @@ RBS/Layout/TrailingWhitespace:
 ## RBS/Lint
 
 RBS/Lint:
+  Enabled: true
+
+RBS/Lint/DuplicateOverload:
   Severity: warning
+  Description: 'Checks that there are no repeated overload bodies'
   Enabled: true
 
 RBS/Lint/RedundantOverloadTypeParams:
+  Severity: warning
   Description: 'Check redundant overload type params'
   Enabled: true
 
 RBS/Lint/Syntax:
+  Severity: fatal
   Description: 'Check RBS syntax'
   Enabled: true
 
 RBS/Lint/TypeParamsArity:
+  Severity: warning
   Description: 'Check type params arity'
   Enabled: true
   Expects:
@@ -128,6 +135,7 @@ RBS/Lint/TypeParamsArity:
     range: 1
 
 RBS/Lint/WillSyntaxError:
+  Severity: warning
   Description: 'Check RBS will syntax error'
   Enabled: true
 
