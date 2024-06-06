@@ -73,6 +73,10 @@ RBS/Lint:
   Severity: warning
   Enabled: true
 
+RBS/Lint/RedundantOverloadTypeParams:
+  Description: 'Check redundant overload type params'
+  Enabled: true
+
 RBS/Lint/Syntax:
   Description: 'Check RBS syntax'
   Enabled: true
@@ -122,10 +126,6 @@ RBS/Lint/TypeParamsArity:
     array: 1
     hash: 2
     range: 1
-
-RBS/Lint/UselessOverloadTypeParams:
-  Description: 'Check useless overload type params'
-  Enabled: true
 
 RBS/Lint/WillSyntaxError:
   Description: 'Check RBS will syntax error'
