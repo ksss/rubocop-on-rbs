@@ -72,6 +72,11 @@ RBS/Layout/TrailingWhitespace:
 RBS/Lint:
   Enabled: true
 
+RBS/Lint/DuplicateOverload:
+  Severity: warning
+  Description: 'Checks that there are no repeated overload bodies'
+  Enabled: true
+
 RBS/Lint/RedundantOverloadTypeParams:
   Severity: warning
   Description: 'Check redundant overload type params'
