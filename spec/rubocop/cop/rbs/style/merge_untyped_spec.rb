@@ -35,7 +35,7 @@ RSpec.describe RuboCop::Cop::RBS::Style::MergeUntyped, :config do
     RBS
   end
 
-  it 'shoud check untyped, void, top, bottom' do
+  it 'should check untyped, void, top, bottom' do
     expect_offense(<<~RBS)
       class Foo
         def foo: (untyped?) -> void?
