@@ -1,0 +1,30 @@
+=== Department xref:cops_rbs_layout.adoc[RBS/Layout]
+
+* xref:cops_rbs_layout.adoc#rbslayout/commentindentation[RBS/Layout/CommentIndentation]
+* xref:cops_rbs_layout.adoc#rbslayout/emptylinesaroundoverloads[RBS/Layout/EmptyLinesAroundOverloads]
+* xref:cops_rbs_layout.adoc#rbslayout/endalignment[RBS/Layout/EndAlignment]
+* xref:cops_rbs_layout.adoc#rbslayout/extraspacing[RBS/Layout/ExtraSpacing]
+* xref:cops_rbs_layout.adoc#rbslayout/indentationwidth[RBS/Layout/IndentationWidth]
+* xref:cops_rbs_layout.adoc#rbslayout/overloadindentation[RBS/Layout/OverloadIndentation]
+* xref:cops_rbs_layout.adoc#rbslayout/spacearoundarrow[RBS/Layout/SpaceAroundArrow]
+* xref:cops_rbs_layout.adoc#rbslayout/spacearoundbraces[RBS/Layout/SpaceAroundBraces]
+* xref:cops_rbs_layout.adoc#rbslayout/spacebeforecolon[RBS/Layout/SpaceBeforeColon]
+* xref:cops_rbs_layout.adoc#rbslayout/spacebeforeoverload[RBS/Layout/SpaceBeforeOverload]
+* xref:cops_rbs_layout.adoc#rbslayout/trailingwhitespace[RBS/Layout/TrailingWhitespace]
+
+=== Department xref:cops_rbs_lint.adoc[RBS/Lint]
+
+* xref:cops_rbs_lint.adoc#rbslint/redundantoverloadtypeparams[RBS/Lint/RedundantOverloadTypeParams]
+* xref:cops_rbs_lint.adoc#rbslint/syntax[RBS/Lint/Syntax]
+* xref:cops_rbs_lint.adoc#rbslint/typeparamsarity[RBS/Lint/TypeParamsArity]
+* xref:cops_rbs_lint.adoc#rbslint/willsyntaxerror[RBS/Lint/WillSyntaxError]
+
+=== Department xref:cops_rbs_style.adoc[RBS/Style]
+
+* xref:cops_rbs_style.adoc#rbsstyle/blockreturnboolish[RBS/Style/BlockReturnBoolish]
+* xref:cops_rbs_style.adoc#rbsstyle/classictype[RBS/Style/ClassicType]
+* xref:cops_rbs_style.adoc#rbsstyle/duplicatedtype[RBS/Style/DuplicatedType]
+* xref:cops_rbs_style.adoc#rbsstyle/initializereturntype[RBS/Style/InitializeReturnType]
+* xref:cops_rbs_style.adoc#rbsstyle/mergeuntyped[RBS/Style/MergeUntyped]
+* xref:cops_rbs_style.adoc#rbsstyle/optionalnil[RBS/Style/OptionalNil]
+* xref:cops_rbs_style.adoc#rbsstyle/truefalse[RBS/Style/TrueFalse]
