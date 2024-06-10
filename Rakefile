@@ -25,8 +25,20 @@ end
 
 task default: [:spec, :rubocop, 'steep:check']
 
-
 require 'yard'
+require 'rubocop-on-rbs'
+require 'rubocop/cops_documentation_generator'
+
+class CopsDocumentationGeneratorOnRBS < CopsDocumentationGenerator
+  private
+
+  def code_example(rbs_code)
+    content = +"[source,rbs]\n----\n"
+    content << rbs_code.text.gsub('@good', '# good').gsub('@bad', '# bad').strip
+    content << "\n----\n"
+    content
+  end
+end
 
 YARD::Rake::YardocTask.new(:yard_for_generate_documentation) do |task|
   task.files = ['lib/rubocop/cop/**/*.rb']
@@ -34,8 +46,6 @@ YARD::Rake::YardocTask.new(:yard_for_generate_documentation) do |task|
 end
 
 task update_cops_documentation: :yard_for_generate_documentation do
-  require 'rubocop-on-rbs'
-  require 'rubocop/cops_documentation_generator'
   RuboCop::RBS::Inject.defaults!
 
   departments = [
@@ -44,5 +54,5 @@ task update_cops_documentation: :yard_for_generate_documentation do
     'RBS/Style'
   ]
 
-  CopsDocumentationGenerator.new(departments: departments).call
+  CopsDocumentationGeneratorOnRBS.new(departments: departments).call
 end

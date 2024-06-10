@@ -24,7 +24,7 @@
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: () { () -> bool } -> void
@@ -51,7 +51,7 @@ def foo: () { () -> boolish } -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: () -> TrueClass
@@ -84,7 +84,7 @@ def bar: () -> nil
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: (Integer | Integer) -> void
@@ -114,7 +114,7 @@ def foo: (Integer) -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def initialize: () -> untyped
@@ -144,7 +144,7 @@ def initialize: () -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: (untyped?) -> untyped?
@@ -177,7 +177,7 @@ def foo: (untyped) -> untyped
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: (nil?) -> void
@@ -204,7 +204,7 @@ def foo: (nil) -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: (true | false) -> (true | false)

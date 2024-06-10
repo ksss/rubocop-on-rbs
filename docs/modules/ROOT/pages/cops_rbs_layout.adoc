@@ -24,7 +24,7 @@
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
   # comment here
@@ -53,7 +53,7 @@ def foo: () -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 class Foo
@@ -84,7 +84,7 @@ end
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 class Foo
@@ -115,7 +115,7 @@ end
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def   foo:   ()   ->   void
@@ -142,7 +142,7 @@ def foo: () -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 class Foo
@@ -173,7 +173,7 @@ end
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: () -> String | () -> (Integer)
@@ -209,7 +209,7 @@ def foo: () -> String
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: ()->void
@@ -242,7 +242,7 @@ def bar: () { () -> void } -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def bar: (){() -> void}-> void
@@ -269,7 +269,7 @@ def bar: () { () -> void } -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo : () -> void
@@ -296,7 +296,7 @@ def foo: () -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo:() -> void
@@ -325,7 +325,7 @@ def foo: () -> void
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 class Foo[:space:]

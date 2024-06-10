@@ -24,7 +24,7 @@ Checks that there are no repeated overload bodies
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: () -> void
@@ -59,7 +59,7 @@ Notice useless overload type parameters.
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: [T] () -> void
@@ -127,7 +127,7 @@ You can add expect settings in your .rubocop.yml.
 
 ==== Expects settings
 
-[source,ruby]
+[source,rbs]
 ----
 RBS/Lint/TypeParamsArity:
   Expects:
@@ -136,7 +136,7 @@ RBS/Lint/TypeParamsArity:
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 type a = Array[Integer, String, Symbol]
@@ -180,7 +180,7 @@ RBS with this diagnostics will fail in `rbs validate` command.
 
 ==== default
 
-[source,ruby]
+[source,rbs]
 ----
 # bad
 def foo: (void) -> void
