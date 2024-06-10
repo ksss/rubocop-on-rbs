@@ -10,3 +10,4 @@ gem 'repl_type_completor', require: false
 gem 'rspec', require: false
 gem 'rubocop', require: false
 gem 'steep', require: false
+gem 'yard', require: false
