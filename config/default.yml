@@ -11,6 +11,10 @@ Lint:
   Exclude:
     - '**/*.rbs'
 
+Style:
+  Exclude:
+    - '**/*.rbs'
+
 # RBS
 
 RBS:
