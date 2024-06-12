@@ -10,16 +10,10 @@ module RuboCop
         #   # bad
         #   def foo: [T] () -> void
         #
-        #   # bad
-        #   def bar: [T] () -> T
-        #
-        #   # bad
-        #   def baz: [T] () { () -> T } -> void
-        #
         #   # good
-        #   def foo: [T] (Array[T]) -> T
-        class RedundantOverloadTypeParams < RuboCop::RBS::CopBase
-          MSG = 'Redundant overload type variable - `%<variable>s`.'
+        #   def foo: [T] (T) -> T
+        class UselessOverloadTypeParams < RuboCop::RBS::CopBase
+          MSG = 'Useless overload type variable - `%<variable>s`.'
 
           def on_rbs_def(decl)
             decl.overloads.each do |overload|
@@ -27,16 +21,7 @@ module RuboCop
 
               type_params = overload.method_type.type_params
 
-              types = []
-              overload.method_type.type.each_param do |param|
-                types << param.type
-              end
-              overload.method_type.block&.then do |block|
-                block.type.each_type do |t|
-                  types << t
-                end
-              end
-              types.each do |type|
+              overload.method_type.each_type do |type|
                 used_variable_in_type(type) do |var|
                   type_params.delete_if { |type_param| type_param.name == var.name }
                 end

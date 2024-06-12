@@ -2,17 +2,16 @@
 
 require 'spec_helper'
 
-RSpec.describe RuboCop::Cop::RBS::Lint::RedundantOverloadTypeParams, :config do
+RSpec.describe RuboCop::Cop::RBS::Lint::UselessOverloadTypeParams, :config do
   it 'registers an offense' do
     expect_offense(<<~RBS)
       class Foo
         def foo: [T] () -> void
-                  ^ Redundant overload type variable - `T`.
+                  ^ Useless overload type variable - `T`.
         def bar: [A, B] (A) -> void
-                     ^ Redundant overload type variable - `B`.
+                     ^ Useless overload type variable - `B`.
         def baz: [T < Integer, U < String] () -> T
-                  ^ Redundant overload type variable - `T`.
-                               ^ Redundant overload type variable - `U`.
+                               ^ Useless overload type variable - `U`.
       end
     RBS
   end
@@ -20,7 +19,7 @@ RSpec.describe RuboCop::Cop::RBS::Lint::RedundantOverloadTypeParams, :config do
   it 'does not register an offense' do
     expect_no_offenses(<<~RBS)
       class Foo
-        def foo: () -> void
+        def foo: [T] () -> T
         def bar: [T] (Array[T | Integer]) -> void
         def baz: [T] ({a: array[[T]]}) -> void
       end

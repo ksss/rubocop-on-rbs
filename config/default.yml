@@ -81,7 +81,7 @@ RBS/Lint/DuplicateOverload:
   Description: 'Checks that there are no repeated overload bodies'
   Enabled: true
 
-RBS/Lint/RedundantOverloadTypeParams:
+RBS/Lint/UselessOverloadTypeParams:
   Severity: warning
   Description: 'Check redundant overload type params'
   Enabled: true
