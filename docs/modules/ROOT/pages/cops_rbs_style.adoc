@@ -118,9 +118,31 @@ def foo: (Integer) -> void
 ----
 # bad
 def initialize: () -> untyped
+== RBS/Style/InitializeReturnType
 
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
 # bad
 def initialize: () -> nil
+
+# good
+def initialize: () -> untyped
 
 # good
 def initialize: () -> void

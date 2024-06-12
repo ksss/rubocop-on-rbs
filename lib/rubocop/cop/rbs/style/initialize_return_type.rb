@@ -6,10 +6,10 @@ module RuboCop
       module Style
         # @example default
         #   # bad
-        #   def initialize: () -> untyped
-        #
-        #   # bad
         #   def initialize: () -> nil
+        #
+        #   # good
+        #   def initialize: () -> untyped
         #
         #   # good
         #   def initialize: () -> void
@@ -17,7 +17,6 @@ module RuboCop
           extend AutoCorrector
           MSG = '`#initialize` method should return `void`'
 
-          # @sig decl: ::RBS::AST::Members::MethodDefinition
           def on_rbs_def(decl)
             return unless decl.name == :initialize
             return unless decl.kind == :instance
@@ -25,6 +24,7 @@ module RuboCop
 
             decl.overloads.each do |overload|
               return_type = overload.method_type.type.return_type
+              next if return_type.is_a?(::RBS::Types::Bases::Any)
               next if return_type.is_a?(::RBS::Types::Bases::Void)
 
               range = location_to_range(return_type.location)
