@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RuboCop::Cop::RBS::Lint::RedundantOverloadTypeParams, :config do
+RSpec.describe RuboCop::Cop::RBS::Lint::UselessOverloadTypeParams, :config do
   it 'registers an offense' do
     expect_offense(<<~RBS)
       class Foo

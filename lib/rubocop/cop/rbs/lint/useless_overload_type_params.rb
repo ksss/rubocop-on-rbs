@@ -18,7 +18,7 @@ module RuboCop
         #
         #   # good
         #   def foo: [T] (Array[T]) -> T
-        class RedundantOverloadTypeParams < RuboCop::RBS::CopBase
+        class UselessOverloadTypeParams < RuboCop::RBS::CopBase
           MSG = 'Redundant overload type variable - `%<variable>s`.'
 
           def on_rbs_def(decl)
