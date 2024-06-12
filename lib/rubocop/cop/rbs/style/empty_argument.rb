@@ -31,7 +31,7 @@ module RuboCop
               end
               if overload.method_type.block
                 tokens = tokenize(overload.method_type.location.source)
-                block_arrow_index = tokens.find_index { |t| t.type == :pARROW } or binding.irb
+                block_arrow_index = tokens.find_index { |t| t.type == :pARROW } or raise
                 if tokens[block_arrow_index - 1].type != :pRPAREN
                   range = range_between(
                     overload.method_type.location.start_pos + tokens[block_arrow_index].location.start_pos,
