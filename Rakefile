@@ -23,7 +23,7 @@ namespace :steep do
   end
 end
 
-task default: [:spec, :rubocop, 'steep:check']
+task default: [:spec, 'steep:check']
 
 require 'yard'
 require 'rubocop-on-rbs'
