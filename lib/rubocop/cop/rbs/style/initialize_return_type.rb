@@ -6,10 +6,10 @@ module RuboCop
       module Style
         # @example default
         #   # bad
-        #   def initialize: () -> untyped
-        #
-        #   # bad
         #   def initialize: () -> nil
+        #
+        #   # good
+        #   def initialize: () -> untyped
         #
         #   # good
         #   def initialize: () -> void
