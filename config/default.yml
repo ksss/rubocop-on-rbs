@@ -164,10 +164,6 @@ RBS/Style/InitializeReturnType:
   Description: 'Use `void` for initialize method'
   Enabled: true
 
-RBS/Style/MergeUntyped:
-  Description: 'Merge to `untyped`'
-  Enabled: true
-
 RBS/Style/OptionalNil:
   Description: 'Use nil instead of nil?'
   Enabled: true
