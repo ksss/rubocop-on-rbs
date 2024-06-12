@@ -34,13 +34,12 @@ end
 
 desc 'Update Cops Documentation'
 task update_cops_documentation: :yard_for_generate_documentation do
-  RuboCop::RBS::Inject.defaults!
+  rm_rf('docs/')
 
   departments = [
     'RBS/Layout',
     'RBS/Lint',
     'RBS/Style'
   ]
-
   CopsDocumentationGeneratorOnRBS.new(departments: departments).call
 end
