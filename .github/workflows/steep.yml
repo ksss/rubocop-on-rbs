@@ -20,4 +20,5 @@ jobs:
         bundler-cache: true
     - name: Run the RuboCop
       run: |
+        bundle exec rbs collection install
         bundle exec steep check --jobs 2
