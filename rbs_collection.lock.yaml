@@ -1,30 +1,14 @@
 ---
 path: ".gem_rbs_collection"
 gems:
-- name: abbrev
-  version: '0'
-  source:
-    type: stdlib
 - name: ast
   version: '2.4'
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
+    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
-- name: diff-lcs
-  version: '1.5'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
-- name: fileutils
-  version: '0'
-  source:
-    type: stdlib
 - name: json
   version: '0'
   source:
@@ -46,7 +30,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
+    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: parser
@@ -54,35 +38,23 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
+    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: pathname
   version: '0'
   source:
     type: stdlib
-- name: prism
-  version: 0.29.0
-  source:
-    type: rubygems
 - name: rainbow
   version: '3.0'
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
-- name: rake
-  version: '13.0'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
+    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rbs
-  version: 3.5.0.pre.2
+  version: 3.5.0
   source:
     type: rubygems
 - name: rdoc
@@ -94,7 +66,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
+    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop
@@ -102,7 +74,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
+    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop-ast
@@ -110,7 +82,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 1cbe291950e00d97d5a9a1929388523eb2d5b939
+    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: strscan

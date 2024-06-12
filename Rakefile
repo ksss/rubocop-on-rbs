@@ -10,20 +10,7 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-namespace :steep do
-  task :check do
-    require 'steep'
-    require 'steep/cli'
-    Steep::CLI.new(
-      stdin: $stdin,
-      stdout: $stdout,
-      stderr: $stderr,
-      argv: %w(check --jobs 2)
-    ).run
-  end
-end
-
-task default: [:spec, 'steep:check']
+task default: [:spec]
 
 require 'yard'
 require 'rubocop-on-rbs'
@@ -45,6 +32,7 @@ YARD::Rake::YardocTask.new(:yard_for_generate_documentation) do |task|
   task.options = ['--no-output']
 end
 
+desc 'Update Cops Documentation'
 task update_cops_documentation: :yard_for_generate_documentation do
   RuboCop::RBS::Inject.defaults!
 
