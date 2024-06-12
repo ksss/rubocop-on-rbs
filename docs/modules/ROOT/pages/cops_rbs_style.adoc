@@ -96,7 +96,7 @@ def foo: (Integer & Integer) -> void
 def foo: (Integer) -> void
 ----
 
-== RBS/Style/InitializeReturnType
+== RBS/Style/EmptyArgument
 
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
@@ -117,7 +117,18 @@ def foo: (Integer) -> void
 [source,rbs]
 ----
 # bad
-def initialize: () -> untyped
+def foo: -> void
+
+# bad
+def foo: () { -> void } -> void
+
+# bad
+def foo: () -> ^ -> void
+
+# good
+def foo: () { () -> void } -> ^() -> void
+----
+
 == RBS/Style/InitializeReturnType
 
 |===
