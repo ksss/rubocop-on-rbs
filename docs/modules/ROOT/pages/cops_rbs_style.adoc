@@ -159,39 +159,6 @@ def initialize: () -> untyped
 def initialize: () -> void
 ----
 
-== RBS/Style/MergeUntyped
-
-|===
-| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
-
-| Enabled
-| Yes
-| Always
-| -
-| -
-|===
-
-
-
-=== Examples
-
-==== default
-
-[source,rbs]
-----
-# bad
-def foo: (untyped?) -> untyped?
-
-# bad
-def foo: (Integer | untyped) -> (Integer | untyped)
-
-# bad
-def foo: (Integer & untyped) -> (Integer & untyped)
-
-# good
-def foo: (untyped) -> untyped
-----
-
 == RBS/Style/OptionalNil
 
 |===
