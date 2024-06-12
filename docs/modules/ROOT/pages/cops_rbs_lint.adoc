@@ -65,59 +65,6 @@ Just only for syntax error
 | String
 |===
 
-== RBS/Lint/TypeParamsArity
-
-|===
-| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
-
-| Enabled
-| Yes
-| No
-| -
-| -
-|===
-
-This cop checks the arity of type parameters arity.
-You can add expect settings in your .rubocop.yml.
-
-=== Examples
-
-==== Expects settings
-
-[source,rbs]
-----
-RBS/Lint/TypeParamsArity:
-  Expects:
-    Your::Class: 1
-----
-
-==== default
-
-[source,rbs]
-----
-# bad
-type a = Array[Integer, String, Symbol]
-
-# bad
-class Foo
-  include Enumerable
-end
-----
-
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-
-| Expects
-| `{"Array"=>1, "Enumerable"=>1, "Enumerator"=>2, "Enumerator::Chain"=>1, "Enumerator::Generator"=>1, "Enumerator::Lazy"=>2, "Enumerator::Product"=>1, "FrozenError"=>1, "Hash"=>2, "KeyError"=>2, "NameError"=>1, "NoMatchingPatternKeyError"=>2, "NoMethodError"=>1, "ObjectSpace::WeakKeyMap"=>2, "Range"=>1, "Set"=>1, "Struct"=>1, "Array::_Pattern"=>1, "Enumerable::_NotFound"=>1, "Gem::_HashLike"=>2, "Kernel::_RationalDiv"=>1, "Marshal::_Proc"=>1, "String::_MatchAgainst"=>2, "_Each"=>1, "_EachEntry"=>1, "_Range"=>1, "_ToA"=>1, "_ToAry"=>1, "_ToH"=>2, "_ToHash"=>2, "array"=>1, "hash"=>2, "range"=>1}`
-| 
-|===
-
 == RBS/Lint/UselessOverloadTypeParams
 
 |===
