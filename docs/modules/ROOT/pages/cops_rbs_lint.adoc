@@ -41,49 +41,6 @@ def foo: () -> void
 | String
 |===
 
-== RBS/Lint/RedundantOverloadTypeParams
-
-|===
-| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
-
-| Enabled
-| Yes
-| No
-| -
-| -
-|===
-
-Notice useless overload type parameters.
-
-=== Examples
-
-==== default
-
-[source,rbs]
-----
-# bad
-def foo: [T] () -> void
-
-# bad
-def bar: [T] () -> T
-
-# bad
-def baz: [T] () { () -> T } -> void
-
-# good
-def foo: [T] (Array[T]) -> T
-----
-
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-|===
-
 == RBS/Lint/Syntax
 
 |===
@@ -159,6 +116,43 @@ end
 | Expects
 | `{"Array"=>1, "Enumerable"=>1, "Enumerator"=>2, "Enumerator::Chain"=>1, "Enumerator::Generator"=>1, "Enumerator::Lazy"=>2, "Enumerator::Product"=>1, "FrozenError"=>1, "Hash"=>2, "KeyError"=>2, "NameError"=>1, "NoMatchingPatternKeyError"=>2, "NoMethodError"=>1, "ObjectSpace::WeakKeyMap"=>2, "Range"=>1, "Set"=>1, "Struct"=>1, "Array::_Pattern"=>1, "Enumerable::_NotFound"=>1, "Gem::_HashLike"=>2, "Kernel::_RationalDiv"=>1, "Marshal::_Proc"=>1, "String::_MatchAgainst"=>2, "_Each"=>1, "_EachEntry"=>1, "_Range"=>1, "_ToA"=>1, "_ToAry"=>1, "_ToH"=>2, "_ToHash"=>2, "array"=>1, "hash"=>2, "range"=>1}`
 | 
+|===
+
+== RBS/Lint/UselessOverloadTypeParams
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Notice useless overload type parameters.
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# bad
+def foo: [T] () -> void
+
+# good
+def foo: [T] (T) -> T
+----
+
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| Severity
+| `warning`
+| String
 |===
 
 == RBS/Lint/WillSyntaxError
