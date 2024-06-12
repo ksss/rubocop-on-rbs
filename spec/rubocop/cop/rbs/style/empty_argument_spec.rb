@@ -19,7 +19,15 @@ RSpec.describe RuboCop::Cop::RBS::Style::EmptyArgument, :config do
                    ^{} Insert `()` when empty argument
                        ^{} Insert `()` when empty argument
                          ^{} Insert `()` when empty argument
+        attr_reader attr: ^ -> void
+                           ^{} Insert `()` when empty argument
       end
+      CONST: ^ -> void
+              ^{} Insert `()` when empty argument
+      $global: ^ -> void
+                ^{} Insert `()` when empty argument
+      type typealias = ^ -> void
+                        ^{} Insert `()` when empty argument
     RBS
 
     expect_correction(<<~RBS)
@@ -29,7 +37,11 @@ RSpec.describe RuboCop::Cop::RBS::Style::EmptyArgument, :config do
         def proc_arg: (^() -> void) -> void
         def proc_block: (^() { ()-> void } -> void) -> void
         def all: (){ ()-> ^(){ ()-> void }-> void } -> void
+        attr_reader attr: ^() -> void
       end
+      CONST: ^() -> void
+      $global: ^() -> void
+      type typealias = ^() -> void
     RBS
   end
 end

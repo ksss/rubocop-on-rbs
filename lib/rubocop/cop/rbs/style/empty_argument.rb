@@ -49,6 +49,13 @@ module RuboCop
             end
           end
 
+          def on_rbs_constant(const)
+            check_type(const.type)
+          end
+          alias on_rbs_global on_rbs_constant
+          alias on_rbs_type_alias on_rbs_constant
+          alias on_rbs_attribute on_rbs_constant
+
           def check_type(type)
             case type
             when ::RBS::Types::Proc
