@@ -129,6 +129,10 @@ RBS/Style/OptionalNil:
   Description: 'Use nil instead of nil?'
   Enabled: true
 
+RBS/Style/RedundantParentheses:
+  Description: 'Remove redundant parentheses'
+  Enabled: true
+
 RBS/Style/TrueFalse:
   Description: 'Use bool instead of true | false'
   Enabled: true

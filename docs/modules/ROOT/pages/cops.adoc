@@ -28,4 +28,5 @@
 * xref:cops_rbs_style.adoc#rbsstyle/emptyargument[RBS/Style/EmptyArgument]
 * xref:cops_rbs_style.adoc#rbsstyle/initializereturntype[RBS/Style/InitializeReturnType]
 * xref:cops_rbs_style.adoc#rbsstyle/optionalnil[RBS/Style/OptionalNil]
+* xref:cops_rbs_style.adoc#rbsstyle/redundantparentheses[RBS/Style/RedundantParentheses]
 * xref:cops_rbs_style.adoc#rbsstyle/truefalse[RBS/Style/TrueFalse]
