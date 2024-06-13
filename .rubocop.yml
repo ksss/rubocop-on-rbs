@@ -13,7 +13,9 @@ Lint/AssignmentInCondition:
   Enabled: false
 
 Style:
-  Enabled: false
+  Enabled: true
+  AutoCorrect: false
+  Severity: info
 
 Metrics:
   Enabled: false
