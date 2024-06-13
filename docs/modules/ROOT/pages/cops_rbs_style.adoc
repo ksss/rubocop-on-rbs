@@ -186,6 +186,39 @@ def foo: (nil?) -> void
 def foo: (nil) -> void
 ----
 
+== RBS/Style/RedundantParentheses
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# bad
+def foo: () -> (bool)
+
+# bad
+def foo: (((true | false))) -> void
+
+# good
+def foo: () -> bool
+
+# good
+def foo: ((true | false)) -> bool
+----
+
 == RBS/Style/TrueFalse
 
 |===
