@@ -16,7 +16,18 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
                                          ^^^^^^ Don't use parentheses around simple type.
         def optional: () -> ((1 | 2)?)
                             ^^^^^^^^^^ Don't use parentheses around simple type.
+        attr_reader a: (bool)
+                       ^^^^^^ Don't use parentheses around simple type.
       end
+      CONST: ^((bool)) { ((top)) -> (top) } -> (top)
+               ^^^^^^ Don't use parentheses around simple type.
+                          ^^^^^ Don't use parentheses around simple type.
+                                    ^^^^^ Don't use parentheses around simple type.
+                                               ^^^^^ Don't use parentheses around simple type.
+      $global: (bool)
+               ^^^^^^ Don't use parentheses around simple type.
+      type a = (bool)
+               ^^^^^^ Don't use parentheses around simple type.
     RBS
 
     expect_correction(<<~RBS)
@@ -25,7 +36,11 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
         def bar: () -> Integer
         def proc: (^(bool) -> void) -> void
         def optional: () -> (1 | 2)?
+        attr_reader a: bool
       end
+      CONST: ^(bool) { (top) -> top } -> top
+      $global: bool
+      type a = bool
     RBS
   end
 

@@ -17,7 +17,34 @@ module RuboCop
         #   # good
         #   def foo: ((true | false)) -> bool
         class RedundantParentheses < RuboCop::RBS::CopBase
+          module BeforeTokenIfLparen
+            def before_token_if_lparen(tokens, base, fun)
+              first_param = fun.each_param.first
+              return unless first_param
+
+              b, _ = token_before_after(tokens, first_param.location.start_pos - base)
+              return unless b&.type == :pLPAREN
+
+              yield b
+            end
+
+            private
+
+            def token_before_after(tokens, pos)
+              token_index = tokens.bsearch_index do |t|
+                t.location.start_pos >= pos
+              end
+              return unless token_index
+
+              [
+                tokens[token_index - 1],
+                tokens[token_index + 1]
+              ]
+            end
+          end
+
           class ParenChecker
+            include BeforeTokenIfLparen
             include RangeHelp
             attr_reader :processed_source
 
@@ -31,6 +58,17 @@ module RuboCop
             end
 
             def check
+              @cop.on_type([::RBS::Types::Proc], @type) do |proc_type|
+                before_token_if_lparen(@tokens, @base, proc_type.type) do |b|
+                  @skip << (b.location.start_pos + @base)
+                end
+                if proc_type.block
+                  before_token_if_lparen(@tokens, @base, proc_type.block.type) do |b|
+                    @skip << (b.location.start_pos + @base)
+                  end
+                end
+              end
+
               excludes = [
                 ::RBS::Types::Union,
                 ::RBS::Types::Intersection,
@@ -65,6 +103,7 @@ module RuboCop
             end
           end
 
+          include BeforeTokenIfLparen
           extend AutoCorrector
 
           def on_rbs_def(decl)
@@ -81,49 +120,31 @@ module RuboCop
                 end
               end
               overload.method_type.each_type do |type|
-                on_type([::RBS::Types::Proc], type) do |proc_type|
-                  before_token_if_lparen(tokens, base, proc_type.type) do |b|
-                    skip << (b.location.start_pos + base)
-                  end
-                  if proc_type.block
-                    before_token_if_lparen(tokens, base, proc_type.block.type) do |b|
-                      skip << (b.location.start_pos + base)
-                    end
-                  end
-                end
-                ParenChecker.new(
-                  processed_source:,
-                  base:,
-                  tokens:,
-                  type:,
-                  skip:,
-                  cop: self
-                ).check
+                check_type(tokens:, type:, base:, skip:)
               end
             end
           end
 
-          def before_token_if_lparen(tokens, base, fun)
-            first_param = fun.each_param.first
-            return unless first_param
-
-            b, _ = token_before_after(tokens, first_param.location.start_pos - base)
-            return unless b&.type == :pLPAREN
-
-            yield b
+          def check_type(tokens:, type:, base:, skip: Set.new)
+            ParenChecker.new(
+              processed_source:,
+              base:,
+              tokens:,
+              type:,
+              skip:,
+              cop: self
+            ).check
           end
 
-          def token_before_after(tokens, pos)
-            token_index = tokens.bsearch_index do |t|
-              t.location.start_pos >= pos
-            end
-            return unless token_index
-
-            [
-              tokens[token_index - 1],
-              tokens[token_index + 1]
-            ]
+          def on_rbs_constant(const)
+            tokens = tokenize(const.location.source)
+            type = const.type
+            base = const.location.start_pos
+            check_type(tokens:, type:, base:)
           end
+          alias on_rbs_global on_rbs_constant
+          alias on_rbs_type_alias on_rbs_constant
+          alias on_rbs_attribute on_rbs_constant
         end
       end
     end
