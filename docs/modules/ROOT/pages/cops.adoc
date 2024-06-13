@@ -8,6 +8,7 @@
 * xref:cops_rbs_layout.adoc#rbslayout/overloadindentation[RBS/Layout/OverloadIndentation]
 * xref:cops_rbs_layout.adoc#rbslayout/spacearoundarrow[RBS/Layout/SpaceAroundArrow]
 * xref:cops_rbs_layout.adoc#rbslayout/spacearoundbraces[RBS/Layout/SpaceAroundBraces]
+* xref:cops_rbs_layout.adoc#rbslayout/spacearoundoperators[RBS/Layout/SpaceAroundOperators]
 * xref:cops_rbs_layout.adoc#rbslayout/spacebeforecolon[RBS/Layout/SpaceBeforeColon]
 * xref:cops_rbs_layout.adoc#rbslayout/spacebeforeoverload[RBS/Layout/SpaceBeforeOverload]
 * xref:cops_rbs_layout.adoc#rbslayout/trailingwhitespace[RBS/Layout/TrailingWhitespace]

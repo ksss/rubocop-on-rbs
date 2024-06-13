@@ -251,6 +251,33 @@ def bar: (){() -> void}-> void
 def bar: () { () -> void } -> void
 ----
 
+== RBS/Layout/SpaceAroundOperators
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# bad
+Integer|String
+
+# good
+Integer | String
+----
+
 == RBS/Layout/SpaceBeforeColon
 
 |===
