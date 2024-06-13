@@ -59,6 +59,10 @@ RBS/Layout/SpaceAroundBraces:
   Description: 'Use space around `{}`'
   Enabled: true
 
+RBS/Layout/SpaceAroundOperators:
+  Description: 'Use space around `|` or `&`'
+  Enabled: true
+
 RBS/Layout/SpaceBeforeColon:
   Description: 'Use space before `:`'
   Enabled: true
@@ -111,6 +115,10 @@ RBS/Style/ClassicType:
 
 RBS/Style/DuplicatedType:
   Description: 'Check duplicated type'
+  Enabled: true
+
+RBS/Style/EmptyArgument:
+  Description: 'Use `()` for empty argument'
   Enabled: true
 
 RBS/Style/InitializeReturnType:
