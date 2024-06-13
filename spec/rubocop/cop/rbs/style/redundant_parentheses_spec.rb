@@ -26,8 +26,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
                                                ^^^^^ Don't use parentheses around simple type.
       $global: (bool)
                ^^^^^^ Don't use parentheses around simple type.
-      type a = (bool)
-               ^^^^^^ Don't use parentheses around simple type.
+      type a = ((bool))
+                ^^^^^^ Don't use parentheses around simple type.
     RBS
 
     expect_correction(<<~RBS)
