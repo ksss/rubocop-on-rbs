@@ -65,6 +65,7 @@ And restart VSCode.
 ## Departments
 
 You can see documentation for all cops.
+
 https://github.com/ksss/rubocop-on-rbs/blob/main/docs/modules/ROOT/pages/cops.adoc
 
 ### RBS
