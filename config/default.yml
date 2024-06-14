@@ -90,14 +90,14 @@ RBS/Lint/LiteralIntersection:
   Description: 'Check literal intersection'
   Enabled: true
 
-RBS/Lint/UselessOverloadTypeParams:
-  Severity: warning
-  Description: 'Check redundant overload type params'
-  Enabled: true
-
 RBS/Lint/Syntax:
   Severity: fatal
   Description: 'Check RBS syntax'
+  Enabled: true
+
+RBS/Lint/UselessOverloadTypeParams:
+  Severity: warning
+  Description: 'Check redundant overload type params'
   Enabled: true
 
 RBS/Lint/WillSyntaxError:
