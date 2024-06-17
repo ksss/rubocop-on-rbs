@@ -19,11 +19,11 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
         attr_reader a: (bool)
                        ^^^^^^ Don't use parentheses around simple type.
       end
-      CONST: ^((bool)) { ((top)) -> (top) } -> (top)
+      CONST: ^((bool)) { ((top)) [self: instance] -> (top) } -> (top)
                ^^^^^^ Don't use parentheses around simple type.
                           ^^^^^ Don't use parentheses around simple type.
-                                    ^^^^^ Don't use parentheses around simple type.
-                                               ^^^^^ Don't use parentheses around simple type.
+                                                     ^^^^^ Don't use parentheses around simple type.
+                                                                ^^^^^ Don't use parentheses around simple type.
       $global: (bool)
                ^^^^^^ Don't use parentheses around simple type.
       type a = ((bool))
@@ -38,7 +38,7 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
         def optional: () -> (1 | 2)?
         attr_reader a: bool
       end
-      CONST: ^(bool) { (top) -> top } -> top
+      CONST: ^(bool) { (top) [self: instance] -> top } -> top
       $global: bool
       type a = bool
     RBS
