@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rbs', '~> 3.5'
   spec.add_dependency 'rubocop', '~> 1.41'
+  spec.add_dependency 'zlib'
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
