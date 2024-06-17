@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [0.5.0] - 2024-06-17
+
+* Fix destructive change by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/17
+* Introduce cache by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/18
+* Fix bug for EmptyArgument by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/19
+
 ## [0.4.0] - 2024-06-14
 
 * Split RuboCop task by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/6
