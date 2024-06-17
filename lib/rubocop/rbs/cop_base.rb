@@ -7,6 +7,7 @@ module RuboCop
     # Base class for cops that operate on RBS signatures.
     class CopBase < RuboCop::Cop::Base
       include RuboCop::Cop::RangeHelp
+      include RuboCop::RBS::OnTypeHelper
 
       attr_reader :processed_rbs_source
 
@@ -111,28 +112,6 @@ module RuboCop
 
       def tokenize(source)
         ::RBS::Parser.lex(source).value.reject { |t| t.type == :tTRIVIA }
-      end
-
-      def on_type(types, type, &block)
-        case type
-        when *types
-          yield type
-        end
-        type.each_type do |t|
-          on_type(types, t, &block)
-        end
-      end
-
-      def on_not_type(types, type, &block)
-        case type
-        when *types
-          # not
-        else
-          yield type
-        end
-        type.each_type do |t|
-          on_not_type(types, t, &block)
-        end
       end
     end
   end

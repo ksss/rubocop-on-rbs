@@ -8,7 +8,6 @@ module RuboCop
       def investigation_rbs: () -> void
       def on_rbs_new_investigation: () -> void
       def on_rbs_parsing_error: () -> void
-
       def on_rbs_class: (Decl::Class) -> void
       def on_rbs_module: (Decl::Module) -> void
       def on_rbs_interface: (Decl::Interface) -> void
