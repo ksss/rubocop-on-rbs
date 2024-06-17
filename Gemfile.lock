@@ -4,6 +4,7 @@ PATH
     rubocop-on-rbs (0.4.0)
       rbs (~> 3.5)
       rubocop (~> 1.41)
+      zlib
 
 GEM
   remote: https://rubygems.org/
@@ -107,6 +108,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
     yard (0.9.36)
+    zlib (3.1.1)
 
 PLATFORMS
   arm64-darwin-22

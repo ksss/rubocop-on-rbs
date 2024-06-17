@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'zlib'
+
 module RuboCop
   module RBS
     # Base class for cops that operate on RBS signatures.
@@ -19,11 +21,31 @@ module RuboCop
         investigation_rbs()
       end
 
+      @@cache = {}
+      def parse_rbs
+        buffer = rbs_buffer()
+        @processed_rbs_source = RuboCop::RBS::ProcessedRBSSource.new(buffer)
+      end
+
       def investigation_rbs
         return unless processed_source.buffer.name.then { |n| n.end_with?(".rbs") || n == "(string)" }
 
-        buffer = rbs_buffer()
-        @processed_rbs_source = RuboCop::RBS::ProcessedRBSSource.new(buffer)
+        if processed_source.buffer.name == "(string)"
+          parse_rbs
+        else
+          crc32 = Zlib.crc32(processed_source.raw_source)
+          hit_path = @@cache[processed_source.buffer.name]
+          if hit_path
+            if hit_crc32 = hit_path[crc32]
+              @processed_rbs_source = hit_crc32
+            else
+              hit_path.clear # Other key expect clear by GC
+              hit_path[crc32] = parse_rbs
+            end
+          else
+            (@@cache[processed_source.buffer.name] ||= {})[crc32] = parse_rbs
+          end
+        end
 
         if processed_rbs_source.error
           on_rbs_parsing_error()
