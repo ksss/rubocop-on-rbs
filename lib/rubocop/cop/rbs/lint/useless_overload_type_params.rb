@@ -19,7 +19,7 @@ module RuboCop
             decl.overloads.each do |overload|
               next if overload.method_type.type_params.empty?
 
-              type_params = overload.method_type.type_params
+              type_params = overload.method_type.type_params.dup
 
               overload.method_type.each_type do |type|
                 used_variable_in_type(type) do |var|
