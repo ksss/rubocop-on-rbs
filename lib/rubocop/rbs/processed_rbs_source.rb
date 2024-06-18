@@ -19,6 +19,10 @@ module RuboCop
         @error = e
       end
 
+      def valid_syntax?
+        @error.nil?
+      end
+
       def tokens
         @tokens ||= begin
           ::RBS::Parser.lex(buffer).value
