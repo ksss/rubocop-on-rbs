@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.6.0] - 2024-06-18
+
+* Fixed problems interfering with other Cop by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/20
+
 ## [0.5.0] - 2024-06-17
 
 * Fix destructive change by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/17
