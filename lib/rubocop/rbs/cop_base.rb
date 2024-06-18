@@ -51,9 +51,6 @@ module RuboCop
         if processed_rbs_source.error
           on_rbs_parsing_error()
         else
-          # HACK: Autocorrector needs to clear diagnostics
-          processed_source.diagnostics.clear
-
           on_rbs_new_investigation()
 
           processed_rbs_source.decls.each do |decl|
@@ -112,6 +109,13 @@ module RuboCop
 
       def tokenize(source)
         ::RBS::Parser.lex(source).value.reject { |t| t.type == :tTRIVIA }
+      end
+
+      private
+
+      # HACK: Required to autocorrect
+      def current_corrector
+        @current_corrector ||= RuboCop::Cop::Corrector.new(@processed_source) if @processed_rbs_source.valid_syntax?
       end
     end
   end
