@@ -21,3 +21,4 @@ jobs:
     - name: Run the RuboCop
       run: |
         bundle exec rubocop --format github
+        echo "::error file=sig/rubocop/cop/rbs/layout/extra_spacing.rbs,line=12,col=17,endColumn=19::RBS/Layout/ExtraSpacing: Unnecessary spacing detected."

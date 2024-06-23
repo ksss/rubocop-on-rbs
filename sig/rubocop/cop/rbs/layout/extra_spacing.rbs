@@ -9,7 +9,7 @@ module RuboCop
         #   # good
         #   def foo: () -> void
         class ExtraSpacing < RuboCop::RBS::CopBase
-          extend AutoCorrector
+          extend   AutoCorrector
 
           MSG: String
 
