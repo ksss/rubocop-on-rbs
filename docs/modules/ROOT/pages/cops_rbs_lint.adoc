@@ -139,6 +139,66 @@ Just only for syntax error
 | String
 |===
 
+== RBS/Lint/UselessAccessModifier
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Command-line only
+| -
+| -
+|===
+
+
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# bad
+class Foo
+  public # this is redundant (default access is public)
+
+  def method: () -> void
+end
+
+# bad
+class Foo
+  # The following is redundant (methods defined on the class'
+  # singleton class are not affected by the private modifier)
+  private
+
+  def self.method3: () -> void
+end
+
+# bad
+class Foo
+  private # this is redundant (no following methods are defined)
+end
+
+# good
+class Foo
+  private # this is not redundant (a method is defined)
+
+  def method2
+  end
+end
+----
+
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| Severity
+| `warning`
+| String
+|===
+
 == RBS/Lint/UselessOverloadTypeParams
 
 |===

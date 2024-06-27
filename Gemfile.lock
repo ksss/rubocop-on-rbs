@@ -3,7 +3,7 @@ PATH
   specs:
     rubocop-on-rbs (0.6.0)
       rbs (~> 3.5)
-      rubocop (~> 1.41)
+      rubocop (~> 1.61)
       zlib
 
 GEM
