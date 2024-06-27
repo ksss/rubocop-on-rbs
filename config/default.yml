@@ -100,6 +100,12 @@ RBS/Lint/Syntax:
   Description: 'Check RBS syntax'
   Enabled: true
 
+RBS/Lint/UselessAccessModifier:
+  Severity: warning
+  AutoCorrect: contextual
+  Description: 'Check useless access modifier'
+  Enabled: true
+
 RBS/Lint/UselessOverloadTypeParams:
   Severity: warning
   Description: 'Check redundant overload type params'
