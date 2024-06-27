@@ -1,0 +1,8 @@
+module RuboCop
+  module RBS
+    module OnTypeHelper
+      def on_type: (Array[Class] types, ::RBS::Types::t type) { (::RBS::Types::t t) -> void } -> void
+      def on_not_type: (Array[Class] types, ::RBS::Types::t type) { (::RBS::Types::t t) -> void } -> void
+    end
+  end
+end

@@ -4,6 +4,9 @@ module RuboCop
   module RBS
     # Base class for cops that operate on RBS signatures.
     class CopBase < ::RuboCop::Cop::Base
+      include RuboCop::Cop::RangeHelp
+      include OnTypeHelper
+
       def processed_rbs_source: () -> RuboCop::RBS::ProcessedRBSSource
       def investigation_rbs: () -> void
       def on_rbs_new_investigation: () -> void
