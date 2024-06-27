@@ -15,6 +15,7 @@
 
 === Department xref:cops_rbs_lint.adoc[RBS/Lint]
 
+* xref:cops_rbs_lint.adoc#rbslintambiguousoperatorprecedence[RBS/Lint/AmbiguousOperatorPrecedence]
 * xref:cops_rbs_lint.adoc#rbslintduplicateoverload[RBS/Lint/DuplicateOverload]
 * xref:cops_rbs_lint.adoc#rbslintliteralintersection[RBS/Lint/LiteralIntersection]
 * xref:cops_rbs_lint.adoc#rbslintsyntax[RBS/Lint/Syntax]

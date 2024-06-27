@@ -6,6 +6,43 @@
 
 = RBS/Lint
 
+== RBS/Lint/AmbiguousOperatorPrecedence
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks that there are no repeated overload bodies
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# bad
+def foo: (A | B & C) -> void
+
+# good
+def foo: (A | (B & C)) -> void
+----
+
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| Severity
+| `warning`
+| String
+|===
+
 == RBS/Lint/DuplicateOverload
 
 |===
