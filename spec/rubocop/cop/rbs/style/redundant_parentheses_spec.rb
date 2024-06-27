@@ -18,6 +18,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
                             ^^^^^^^^^^ Don't use parentheses around simple type.
         attr_reader a: (bool)
                        ^^^^^^ Don't use parentheses around simple type.
+        def symbol_optional: () -> ((:sym))?
+                                    ^^^^^^ Don't use parentheses around simple type.
       end
       CONST: ^((bool)) { ((top)) [self: instance] -> (top) } -> (top)
                ^^^^^^ Don't use parentheses around simple type.
@@ -37,6 +39,7 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
         def proc: (^(bool) -> void) -> void
         def optional: () -> (1 | 2)?
         attr_reader a: bool
+        def symbol_optional: () -> (:sym)?
       end
       CONST: ^(bool) { (top) [self: instance] -> top } -> top
       $global: bool

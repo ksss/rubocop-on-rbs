@@ -72,9 +72,20 @@ module RuboCop
               excludes = [
                 ::RBS::Types::Union,
                 ::RBS::Types::Intersection,
-                ::RBS::Types::Proc
+                ::RBS::Types::Proc,
               ]
               @cop.on_not_type(excludes, @type) do |type|
+                case type
+                when ::RBS::Types::Optional
+                  case type.type
+                  when ::RBS::Types::Literal
+                    case type.type.literal
+                    when Symbol
+                      # Skip optional with symbol literal (e.g. `(:sym)?`)
+                      @skip << type.location.start_pos
+                    end
+                  end
+                end
                 check_parentheses(type)
               end
             end
