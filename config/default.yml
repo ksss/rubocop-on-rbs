@@ -80,6 +80,11 @@ RBS/Layout/TrailingWhitespace:
 RBS/Lint:
   Enabled: true
 
+RBS/Lint/AmbiguousOperatorPrecedence:
+  Severity: warning
+  Description: 'Check ambiguous operator precedence'
+  Enabled: true
+
 RBS/Lint/DuplicateOverload:
   Severity: warning
   Description: 'Checks that there are no repeated overload bodies'

@@ -23,9 +23,11 @@ module RuboCop
         @error.nil?
       end
 
-      def tokens
+      def tokens(with_trivia: false)
         @tokens ||= begin
-          ::RBS::Parser.lex(buffer).value
+          tokens = ::RBS::Parser.lex(buffer).value
+          tokens.reject! { |token| token.type == :tTRIVIA } unless with_trivia
+          tokens
         end
       end
     end
