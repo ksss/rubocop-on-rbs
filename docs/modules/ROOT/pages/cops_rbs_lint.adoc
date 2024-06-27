@@ -33,16 +33,6 @@ def foo: (A | B & C) -> void
 def foo: (A | (B & C)) -> void
 ----
 
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-|===
-
 == RBS/Lint/DuplicateOverload
 
 |===
@@ -67,16 +57,6 @@ Checks that there are no repeated overload bodies
 def foo: () -> void
        | () -> void
 ----
-
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-|===
 
 == RBS/Lint/LiteralIntersection
 
@@ -104,16 +84,6 @@ Checks that there are no repeated overload bodies
 # bad
 1 & _Foo
 ----
-
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-|===
 
 == RBS/Lint/Syntax
 
@@ -189,16 +159,6 @@ class Foo
 end
 ----
 
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-|===
-
 == RBS/Lint/UselessOverloadTypeParams
 
 |===
@@ -225,16 +185,6 @@ def foo: [T] () -> void
 # good
 def foo: [T] (T) -> T
 ----
-
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-|===
 
 == RBS/Lint/WillSyntaxError
 
@@ -263,13 +213,3 @@ def foo: (void) -> void
 # bad
 CONST: self
 ----
-
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `warning`
-| String
-|===
