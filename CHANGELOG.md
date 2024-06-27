@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [0.7.0] - 2024-06-27
+
+* Add RBS/Lint/AmbiguousOperatorPrecedence by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/22
+* Add RBS/Lint/UselessAccessModifier by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/23
+
 ## [0.6.0] - 2024-06-18
 
 * Fixed problems interfering with other Cop by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/20
