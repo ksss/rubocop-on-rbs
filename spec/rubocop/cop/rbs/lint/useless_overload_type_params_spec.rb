@@ -13,6 +13,11 @@ RSpec.describe RuboCop::Cop::RBS::Lint::UselessOverloadTypeParams, :config do
         def baz: [T < Integer, U < String] () -> T
                                ^ Useless overload type variable - `U`.
       end
+
+      class Bar[A]
+        def m: [B] () -> A
+                ^ Useless overload type variable - `B`.
+      end
     RBS
   end
 
@@ -22,6 +27,7 @@ RSpec.describe RuboCop::Cop::RBS::Lint::UselessOverloadTypeParams, :config do
         def foo: [T] () -> T
         def bar: [T] (Array[T | Integer]) -> void
         def baz: [T] ({a: array[[T]]}) -> void
+        def nest: [A < Array[B], B < Integer] (A) -> void
       end
     RBS
   end
