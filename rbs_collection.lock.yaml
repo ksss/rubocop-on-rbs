@@ -6,7 +6,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
+    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: json
@@ -30,7 +30,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
+    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: parser
@@ -38,7 +38,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
+    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: pathname
@@ -50,11 +50,11 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
+    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rbs
-  version: 3.5.0
+  version: 3.5.2
   source:
     type: rubygems
 - name: rdoc
@@ -66,7 +66,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
+    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop
@@ -74,7 +74,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
+    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop-ast
@@ -82,7 +82,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 5e14794a1b0bd110ea9f0f9dd96e4bef995217e3
+    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: strscan
@@ -90,6 +90,10 @@ gems:
   source:
     type: stdlib
 - name: tsort
+  version: '0'
+  source:
+    type: stdlib
+- name: zlib
   version: '0'
   source:
     type: stdlib
