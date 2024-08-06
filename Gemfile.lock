@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-on-rbs (0.7.0)
+    rubocop-on-rbs (0.8.0)
       rbs (~> 3.5)
       rubocop (~> 1.61)
       zlib
