@@ -6,7 +6,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
+    revision: c34ed02f870fb02571f664062eb13ef507702029
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: json
@@ -30,7 +30,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
+    revision: c34ed02f870fb02571f664062eb13ef507702029
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: parser
@@ -38,7 +38,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
+    revision: c34ed02f870fb02571f664062eb13ef507702029
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: pathname
@@ -50,7 +50,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
+    revision: c34ed02f870fb02571f664062eb13ef507702029
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rbs
@@ -66,7 +66,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
+    revision: c34ed02f870fb02571f664062eb13ef507702029
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop
@@ -74,7 +74,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
+    revision: c34ed02f870fb02571f664062eb13ef507702029
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: rubocop-ast
@@ -82,7 +82,7 @@ gems:
   source:
     type: git
     name: ruby/gem_rbs_collection
-    revision: 97c2a835c0a21a5e54204eca5f1c9caba2dbd89c
+    revision: c34ed02f870fb02571f664062eb13ef507702029
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
 - name: strscan
