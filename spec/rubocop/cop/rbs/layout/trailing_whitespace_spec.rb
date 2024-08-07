@@ -25,4 +25,24 @@ RSpec.describe RuboCop::Cop::RBS::Layout::TrailingWhitespace, :config do
       end
     RBS
   end
+
+  it 'registers an offense with multi byte characters' do
+    expect_offense(<<~RBS)
+      class Foo
+        HOGE: {
+          '1' => 'あいう'
+        }
+                              #{''}
+      ^^^^^^^^^^^^^^^^^^^^^^^^ Trailing whitespace detected.
+      end
+    RBS
+    expect_correction(<<~RBS)
+      class Foo
+        HOGE: {
+          '1' => 'あいう'
+        }
+
+      end
+    RBS
+  end
 end
