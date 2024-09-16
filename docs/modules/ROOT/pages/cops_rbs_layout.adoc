@@ -86,14 +86,13 @@ def bar: () -> void
 [source,rbs]
 ----
 # bad
-class Foo
-  def foo: () -> void
-  end
+def foo: () -> void
+
+       | (Integer) -> Integer
 
 # good
-class Foo
-  def foo: () -> void
-end
+def foo: () -> void
+       | (Integer) -> Integer
 ----
 
 == RBS/Layout/EndAlignment
