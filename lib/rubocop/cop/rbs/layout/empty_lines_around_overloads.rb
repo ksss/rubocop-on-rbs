@@ -6,14 +6,13 @@ module RuboCop
       module Layout
         # @example default
         #   # bad
-        #   class Foo
-        #     def foo: () -> void
-        #     end
+        #   def foo: () -> void
+        #
+        #          | (Integer) -> Integer
         #
         #   # good
-        #   class Foo
-        #     def foo: () -> void
-        #   end
+        #   def foo: () -> void
+        #          | (Integer) -> Integer
         class EmptyLinesAroundOverloads < RuboCop::RBS::CopBase
           extend AutoCorrector
 
