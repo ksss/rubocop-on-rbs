@@ -35,6 +35,10 @@ RBS/Layout/EmptyLineAroundOverloads:
   Description: 'No empty line between overload'
   Enabled: true
 
+RBS/Layout/EmptyLines:
+  Description: "Don't use several empty lines in a row."
+  Enabled: true
+
 RBS/Layout/EndAlignment:
   Description: 'Align `end` keyword'
   Enabled: true

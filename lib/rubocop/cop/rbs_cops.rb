@@ -4,6 +4,7 @@ require 'rbs'
 
 require_relative 'rbs/layout/comment_indentation'
 require_relative 'rbs/layout/empty_lines_around_overloads'
+require_relative 'rbs/layout/empty_lines'
 require_relative 'rbs/layout/end_alignment'
 require_relative 'rbs/layout/extra_spacing'
 require_relative 'rbs/layout/indentation_width'
