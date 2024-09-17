@@ -4,22 +4,22 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # Checks if empty lines around the bodies of modules match
+        # Checks if empty lines around the bodies of interfaces match
         # the configuration.
         #
         # @example default
         #   # good
         #
-        #   module Foo
+        #   interface _Foo
         #     def bar: () -> void
         #   end
-        class EmptyLinesAroundModuleBody < RuboCop::RBS::CopBase
+        class EmptyLinesAroundInterfaceBody < RuboCop::RBS::CopBase
           include EmptyLinesAroundBody
           extend AutoCorrector
 
-          KIND = 'module'
+          KIND = 'interface'
 
-          def on_rbs_module(decl)
+          def on_rbs_interface(decl)
             check(decl)
           end
         end

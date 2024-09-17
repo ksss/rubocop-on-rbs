@@ -3,6 +3,7 @@
 * xref:cops_rbs_layout.adoc#rbslayoutcommentindentation[RBS/Layout/CommentIndentation]
 * xref:cops_rbs_layout.adoc#rbslayoutemptylines[RBS/Layout/EmptyLines]
 * xref:cops_rbs_layout.adoc#rbslayoutemptylinesaroundclassbody[RBS/Layout/EmptyLinesAroundClassBody]
+* xref:cops_rbs_layout.adoc#rbslayoutemptylinesaroundinterfacebody[RBS/Layout/EmptyLinesAroundInterfaceBody]
 * xref:cops_rbs_layout.adoc#rbslayoutemptylinesaroundmodulebody[RBS/Layout/EmptyLinesAroundModuleBody]
 * xref:cops_rbs_layout.adoc#rbslayoutemptylinesaroundoverloads[RBS/Layout/EmptyLinesAroundOverloads]
 * xref:cops_rbs_layout.adoc#rbslayoutendalignment[RBS/Layout/EndAlignment]
