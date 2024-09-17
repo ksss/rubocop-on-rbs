@@ -3,6 +3,9 @@
 require 'rbs'
 
 require_relative 'rbs/layout/comment_indentation'
+require_relative 'rbs/layout/empty_lines_around_body'
+require_relative 'rbs/layout/empty_lines_around_class_body'
+require_relative 'rbs/layout/empty_lines_around_module_body'
 require_relative 'rbs/layout/empty_lines_around_overloads'
 require_relative 'rbs/layout/empty_lines'
 require_relative 'rbs/layout/end_alignment'

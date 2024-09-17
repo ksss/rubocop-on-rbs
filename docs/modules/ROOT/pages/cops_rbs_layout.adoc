@@ -65,6 +65,66 @@ def foo: () -> void
 def bar: () -> void
 ----
 
+== RBS/Layout/EmptyLinesAroundClassBody
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks if empty lines around the bodies of classes match
+the configuration.
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# good
+
+class Foo
+  def bar
+    # ...
+  end
+end
+----
+
+== RBS/Layout/EmptyLinesAroundModuleBody
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks if empty lines around the bodies of modules match
+the configuration.
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# good
+
+module Foo
+  def bar
+    # ...
+  end
+end
+----
+
 == RBS/Layout/EmptyLinesAroundOverloads
 
 |===

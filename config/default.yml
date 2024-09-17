@@ -31,7 +31,15 @@ RBS/Layout/CommentIndentation:
   Description: 'Use 2 spaces for comment indentation'
   Enabled: true
 
-RBS/Layout/EmptyLineAroundOverloads:
+RBS/Layout/EmptyLinesAroundClassBody:
+  Description: "Keeps track of empty lines around class bodies."
+  Enabled: true
+
+RBS/Layout/EmptyLinesAroundModuleBody:
+  Description: "Keeps track of empty lines around module bodies."
+  Enabled: true
+
+RBS/Layout/EmptyLinesAroundOverloads:
   Description: 'No empty line between overload'
   Enabled: true
 
