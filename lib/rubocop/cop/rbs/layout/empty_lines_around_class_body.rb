@@ -11,9 +11,7 @@ module RuboCop
         #   # good
         #
         #   class Foo
-        #     def bar
-        #       # ...
-        #     end
+        #     def bar: () -> void
         #   end
         class EmptyLinesAroundClassBody < RuboCop::RBS::CopBase
           include EmptyLinesAroundBody
