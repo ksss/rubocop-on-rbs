@@ -89,9 +89,35 @@ the configuration.
 # good
 
 class Foo
-  def bar
-    # ...
-  end
+  def bar: () -> void
+end
+----
+
+== RBS/Layout/EmptyLinesAroundInterfaceBody
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks if empty lines around the bodies of interfaces match
+the configuration.
+
+=== Examples
+
+==== default
+
+[source,rbs]
+----
+# good
+
+interface _Foo
+  def bar: () -> void
 end
 ----
 
@@ -119,9 +145,7 @@ the configuration.
 # good
 
 module Foo
-  def bar
-    # ...
-  end
+  def bar: () -> void
 end
 ----
 

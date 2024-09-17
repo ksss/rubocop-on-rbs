@@ -35,6 +35,10 @@ RBS/Layout/EmptyLinesAroundClassBody:
   Description: "Keeps track of empty lines around class bodies."
   Enabled: true
 
+RBS/Layout/EmptyLinesAroundInterfaceBody:
+  Description: "Keeps track of empty lines around interface bodies."
+  Enabled: true
+
 RBS/Layout/EmptyLinesAroundModuleBody:
   Description: "Keeps track of empty lines around module bodies."
   Enabled: true
