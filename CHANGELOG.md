@@ -1,5 +1,21 @@
 ## [Unreleased]
 
+## [1.0.0] - 2024-09-17
+
+* Add RBS/Layout/EmptyLines by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/35
+* Fix doc for EmptyLinesAroundOverloads by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/36
+* Add Layout/EmptyLinesAround{Class,Module}Body by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/37
+* Add RBS/Layout/EmptyLinesAroundInterfaceBody by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/38
+
+## [0.9.0] - 2024-08-07
+
+* Fix error if includes multibyte characters by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/31
+
+## [0.8.0] - 2024-08-06
+
+* Fix use of argument in upper_bound by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/24
+* Security update by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/29
+
 ## [0.7.0] - 2024-06-27
 
 * Add RBS/Lint/AmbiguousOperatorPrecedence by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/22
