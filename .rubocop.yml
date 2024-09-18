@@ -13,7 +13,6 @@ Lint/AssignmentInCondition:
   Enabled: false
 
 Style:
-  Enabled: true
   AutoCorrect: false
   Severity: info
 
