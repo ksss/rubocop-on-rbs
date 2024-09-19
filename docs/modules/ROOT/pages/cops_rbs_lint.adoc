@@ -18,7 +18,7 @@
 | -
 |===
 
-Checks that there are no repeated overload bodies
+Checks for ambiguity of Union and Intersection operators.
 
 === Examples
 

@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module RBS
       module Lint
-        # Checks that there are no repeated overload bodies
+        # Checks for ambiguity of Union and Intersection operators.
         #
         # @example default
         #   # bad
