@@ -31,6 +31,10 @@ RBS/Layout/CommentIndentation:
   Description: 'Use 2 spaces for comment indentation'
   Enabled: true
 
+RBS/Layout/EmptyLinesAroundAccessModifier:
+  Description: "Keeps track of empty lines around access modifiers."
+  Enabled: true
+
 RBS/Layout/EmptyLinesAroundClassBody:
   Description: "Keeps track of empty lines around class bodies."
   Enabled: true

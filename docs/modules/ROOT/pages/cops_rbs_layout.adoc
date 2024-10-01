@@ -65,6 +65,36 @@ def foo: () -> void
 def bar: () -> void
 ----
 
+== RBS/Layout/EmptyLinesAroundAccessModifier
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Access modifiers should be surrounded by blank lines.
+
+  # bad
+  class Foo
+    def bar: () -> void
+    private
+    def baz: () -> void
+  end
+
+  # good
+  class Foo
+    def bar: () -> void
+
+    private
+
+    def baz: () -> void
+  end
+
 == RBS/Layout/EmptyLinesAroundClassBody
 
 |===
