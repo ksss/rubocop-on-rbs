@@ -71,6 +71,8 @@ module RuboCop
       def on_rbs_type_alias(decl); end
       def on_rbs_def(member); end
       def on_rbs_attribute(member); end
+      def on_rbs_public(member); end
+      def on_rbs_private(member); end
 
       def walk(decl)
         case decl
@@ -93,6 +95,10 @@ module RuboCop
           on_rbs_def(decl)
         when ::RBS::AST::Members::Attribute
           on_rbs_attribute(decl)
+        when ::RBS::AST::Members::Public
+          on_rbs_public(decl)
+        when ::RBS::AST::Members::Private
+          on_rbs_private(decl)
         end
       end
 
