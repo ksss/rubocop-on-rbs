@@ -43,18 +43,19 @@ module RuboCop
 
           def check(member, kind)
             line = member.location.start_line
+
             before = processed_source.lines[line - 2]
             if before.empty? || before.match?(/[^\s]/)
-              add_offense_with(member, line, kind)
+              add_offense_with(member, kind)
             end
 
             after = processed_source.lines[line]
             if after&.empty? || after&.match?(/[^\s]/)
-              add_offense_with(member, line, kind)
+              add_offense_with(member, kind)
             end
           end
 
-          def add_offense_with(member, line, kind)
+          def add_offense_with(member, kind)
             return if expected_empty_lines?(member)
 
             range = location_to_range(member.location)
