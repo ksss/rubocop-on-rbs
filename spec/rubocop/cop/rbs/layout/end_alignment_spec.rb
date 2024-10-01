@@ -37,4 +37,10 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EndAlignment, :config do
       end
     RBS
   end
+
+  it 'does not register an offense when one line source' do
+    expect_no_offenses(<<~RBS)
+      class Foo end
+    RBS
+  end
 end

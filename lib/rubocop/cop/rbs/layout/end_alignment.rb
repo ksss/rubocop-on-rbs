@@ -34,6 +34,8 @@ module RuboCop
           end
 
           def check(decl, expect:)
+            return if decl.location.start_line == decl.location.end_line
+
             end_loc = decl.location[:end]
             actual = end_loc.start_column
             if actual != expect
