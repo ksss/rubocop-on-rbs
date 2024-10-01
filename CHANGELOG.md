@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [1.1.0] - 2024-10-01
+
+* Add RBS/Layout/EmptyLinesAroundAccessModifier by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/39
+* Fix error when same line with `RBS/Layout/EndAlignment` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/40
+
 ## [1.0.0] - 2024-09-17
 
 * Add RBS/Layout/EmptyLines by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/35
