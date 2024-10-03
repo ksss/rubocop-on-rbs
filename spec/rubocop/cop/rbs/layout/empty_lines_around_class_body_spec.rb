@@ -54,4 +54,13 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EmptyLinesAroundClassBody, :config do
       end
     RBS
   end
+
+  it 'does not register an offense with one line class' do
+    expect_no_offenses(<<~RBS)
+      class Foo
+      end
+
+      class Bar end
+    RBS
+  end
 end
