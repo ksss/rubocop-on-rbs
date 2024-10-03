@@ -1,0 +1,20 @@
+module RuboCop
+  module Cop
+    module RBS
+      module Layout
+        module EmptyLinesAroundBody : RuboCop::RBS::CopBase
+          # Main endpoint
+          def check: (untyped decl) -> void
+
+          # Check line after `class/module/interface`
+          def check_beginning: (Integer first_line) -> void
+
+          # Check line before `end`
+          def check_ending: (Integer last_line) -> void
+
+          def check_source: (Integer line_no, untyped desc) -> void
+        end
+      end
+    end
+  end
+end
