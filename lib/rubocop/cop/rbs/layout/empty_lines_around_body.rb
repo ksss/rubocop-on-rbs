@@ -12,6 +12,7 @@ module RuboCop
           def check(decl)
             first_line = decl.location.start_line
             last_line = decl.location.end_line
+            return if last_line == first_line
 
             check_beginning(first_line)
             check_ending(last_line)
@@ -29,7 +30,6 @@ module RuboCop
             return unless line_no.positive?
             return unless processed_source.lines[line_no]
             return unless processed_source.lines[line_no].empty?
-            return unless processed_source.lines[line_no + 1]
 
             range = source_range(processed_source.buffer, line_no + 1, 0)
             message = message(MSG_EXTRA, desc)
