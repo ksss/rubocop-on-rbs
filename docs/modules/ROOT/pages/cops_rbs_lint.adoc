@@ -109,6 +109,33 @@ Just only for syntax error
 | String
 |===
 
+== RBS/Lint/TopLevelTypeAlias
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Pending
+| Yes
+| No
+| 1.2.0
+| -
+|===
+
+Top-level namespaces are likely to conflict and should be avoided.
+
+=== Examples
+
+[source,rbs]
+----
+# bad
+type foo = String
+
+# good
+class Foo
+  type bar = Integer
+end
+----
+
 == RBS/Lint/UselessAccessModifier
 
 |===
