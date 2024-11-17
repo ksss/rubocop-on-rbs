@@ -118,6 +118,11 @@ RBS/Lint/Syntax:
   Description: 'Check RBS syntax'
   Enabled: true
 
+RBS/Lint/TopLevelInterface:
+  Description: 'Check top level interface'
+  Enabled: pending
+  VersionAdded: '1.2.0'
+
 RBS/Lint/TopLevelTypeAlias:
   Description: 'Check top level type alias'
   Enabled: pending
