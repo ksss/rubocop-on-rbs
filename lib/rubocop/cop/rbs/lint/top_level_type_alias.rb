@@ -23,6 +23,8 @@ module RuboCop
           end
 
           def on_rbs_class(decl)
+            return unless @last_end_pos.nil? || (@last_end_pos < decl.location.end_pos)
+
             @last_end_pos = decl.location.end_pos
           end
           alias on_rbs_module on_rbs_class
