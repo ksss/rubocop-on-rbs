@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'activesupport', '~> 7.0' # 8.0 need Ruby 3.2 or later
 gem 'prism', require: false
 gem 'rake', require: false
 gem 'rbs'
