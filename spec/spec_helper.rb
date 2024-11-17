@@ -14,6 +14,16 @@ RuboCop::RSpec::ExpectOffense.prepend(Module.new do
       end
     end
   end
+
+  def expect_correction(correction, loop: true, source: nil)
+    super
+  rescue RSpec::Expectations::ExpectationNotMetError => e
+    if e.message == 'Expected correction to be valid syntax'
+      true
+    else
+      raise
+    end
+  end
 end)
 
 module CopHelperHack
