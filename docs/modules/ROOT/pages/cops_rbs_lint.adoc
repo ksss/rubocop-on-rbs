@@ -109,6 +109,37 @@ Just only for syntax error
 | String
 |===
 
+== RBS/Lint/TopLevelInterface
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Pending
+| Yes
+| No
+| 1.2.0
+| -
+|===
+
+Top-level namespaces are likely to conflict and should be avoided.
+
+=== Examples
+
+[source,rbs]
+----
+# bad
+interface _Option
+  def option: () -> untyped
+end
+
+# good
+class Foo
+  interface _Option
+    def option: () -> untyped
+  end
+end
+----
+
 == RBS/Lint/TopLevelTypeAlias
 
 |===
