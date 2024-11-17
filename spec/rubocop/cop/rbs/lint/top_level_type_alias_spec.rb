@@ -9,6 +9,12 @@ RSpec.describe RuboCop::Cop::RBS::Lint::TopLevelTypeAlias, :config do
       ^^^^^^^^^^^^^^^^^ Top level type alias detected.
 
       class Foo
+      end
+
+      class Foo
+        module Bar
+        end
+
         type bar = Integer
       end
 
