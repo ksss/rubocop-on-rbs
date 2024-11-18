@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+## [1.2.0] - 2024-11-18
+
+* Fix false positive when oneline class by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/41
+* Add RBS/Lint/TopLevelTypeAlias by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/46
+* Add RBS/Lint/TopLevelInterface by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/47
+* [RBS/Lint/TopLevelTypeAlias] Fix false positive by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/48
+* Bundle update by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/49
+
 ## [1.1.0] - 2024-10-01
 
 * Add RBS/Layout/EmptyLinesAroundAccessModifier by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/39
