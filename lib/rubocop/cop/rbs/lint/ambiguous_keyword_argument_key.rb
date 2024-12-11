@@ -36,14 +36,16 @@ module RuboCop
                     actual = buf.map { |t| t.location.source }.join
                     did_you_mean = buf.reject { |t| t.location.source == '?' }.map { |t| t.location.source }.join
                     message = +"`#{actual}` is not local variable name."
-                    message << " Did you mean `?#{did_you_mean}` for optional keyword argument?" if did_you_mean.length > 0
-                    add_offense(range_between(buf.first.location.start_pos + base_pos, buf.last.location.end_pos + base_pos),
-                                message: message)
+                    if did_you_mean.length > 0
+                      message << " Did you mean `?#{did_you_mean}` for optional keyword argument?"
+                    end
+                    range = range_between(buf.first.location.start_pos + base_pos, buf.last.location.end_pos + base_pos)
+                    add_offense(range, message: message)
                   when :tBANGIDENT, :tUIDENT
                     buf.shift if buf.first.type == :pQUESTION
                     actual = buf.map { |t| t.location.source }.join
-                    add_offense(range_between(buf.first.location.start_pos + base_pos, buf.last.location.end_pos + base_pos),
-                                message: "`#{actual}` is not local variable name.")
+                    range = range_between(buf.first.location.start_pos + base_pos, buf.last.location.end_pos + base_pos)
+                    add_offense(range, message: "`#{actual}` is not local variable name.")
                   end
                 when :pCOMMA
                   buf.clear
