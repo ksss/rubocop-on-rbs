@@ -6,6 +6,34 @@
 
 = RBS/Lint
 
+[#rbslintambiguouskeywordargumentkey]
+== RBS/Lint/AmbiguousKeywordArgumentKey
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks keyword argument keys that are not local variable names.
+
+[#examples-rbslintambiguouskeywordargumentkey]
+=== Examples
+
+[#default-rbslintambiguouskeywordargumentkey]
+==== default
+
+[source,rbs]
+----
+# bad
+def foo: (option?: bool, option!: bool, Option: bool) -> void
+----
+
+[#rbslintambiguousoperatorprecedence]
 == RBS/Lint/AmbiguousOperatorPrecedence
 
 |===
@@ -20,8 +48,10 @@
 
 Checks for ambiguity of Union and Intersection operators.
 
+[#examples-rbslintambiguousoperatorprecedence]
 === Examples
 
+[#default-rbslintambiguousoperatorprecedence]
 ==== default
 
 [source,rbs]
@@ -33,6 +63,7 @@ def foo: (A | B & C) -> void
 def foo: (A | (B & C)) -> void
 ----
 
+[#rbslintduplicateoverload]
 == RBS/Lint/DuplicateOverload
 
 |===
@@ -47,8 +78,10 @@ def foo: (A | (B & C)) -> void
 
 Checks that there are no repeated overload bodies
 
+[#examples-rbslintduplicateoverload]
 === Examples
 
+[#default-rbslintduplicateoverload]
 ==== default
 
 [source,rbs]
@@ -58,6 +91,7 @@ def foo: () -> void
        | () -> void
 ----
 
+[#rbslintliteralintersection]
 == RBS/Lint/LiteralIntersection
 
 |===
@@ -72,8 +106,10 @@ def foo: () -> void
 
 Checks that there are no repeated overload bodies
 
+[#examples-rbslintliteralintersection]
 === Examples
 
+[#default-rbslintliteralintersection]
 ==== default
 
 [source,rbs]
@@ -85,6 +121,7 @@ Checks that there are no repeated overload bodies
 1 & _Foo
 ----
 
+[#rbslintsyntax]
 == RBS/Lint/Syntax
 
 |===
@@ -99,6 +136,7 @@ Checks that there are no repeated overload bodies
 
 Just only for syntax error
 
+[#configurable-attributes-rbslintsyntax]
 === Configurable attributes
 
 |===
@@ -109,6 +147,7 @@ Just only for syntax error
 | String
 |===
 
+[#rbslinttoplevelinterface]
 == RBS/Lint/TopLevelInterface
 
 |===
@@ -123,6 +162,7 @@ Just only for syntax error
 
 Top-level namespaces are likely to conflict and should be avoided.
 
+[#examples-rbslinttoplevelinterface]
 === Examples
 
 [source,rbs]
@@ -140,6 +180,7 @@ class Foo
 end
 ----
 
+[#rbslinttopleveltypealias]
 == RBS/Lint/TopLevelTypeAlias
 
 |===
@@ -154,6 +195,7 @@ end
 
 Top-level namespaces are likely to conflict and should be avoided.
 
+[#examples-rbslinttopleveltypealias]
 === Examples
 
 [source,rbs]
@@ -167,6 +209,7 @@ class Foo
 end
 ----
 
+[#rbslintuselessaccessmodifier]
 == RBS/Lint/UselessAccessModifier
 
 |===
@@ -181,8 +224,10 @@ end
 
 
 
+[#examples-rbslintuselessaccessmodifier]
 === Examples
 
+[#default-rbslintuselessaccessmodifier]
 ==== default
 
 [source,rbs]
@@ -217,6 +262,7 @@ class Foo
 end
 ----
 
+[#rbslintuselessoverloadtypeparams]
 == RBS/Lint/UselessOverloadTypeParams
 
 |===
@@ -231,8 +277,10 @@ end
 
 Notice useless overload type parameters.
 
+[#examples-rbslintuselessoverloadtypeparams]
 === Examples
 
+[#default-rbslintuselessoverloadtypeparams]
 ==== default
 
 [source,rbs]
@@ -244,6 +292,7 @@ def foo: [T] () -> void
 def foo: [T] (T) -> T
 ----
 
+[#rbslintwillsyntaxerror]
 == RBS/Lint/WillSyntaxError
 
 |===
@@ -259,8 +308,10 @@ def foo: [T] (T) -> T
 This cop checks the WillSyntaxError in RBS.
 RBS with this diagnostics will fail in `rbs validate` command.
 
+[#examples-rbslintwillsyntaxerror]
 === Examples
 
+[#default-rbslintwillsyntaxerror]
 ==== default
 
 [source,rbs]

@@ -6,6 +6,7 @@
 
 = RBS/Layout
 
+[#rbslayoutcommentindentation]
 == RBS/Layout/CommentIndentation
 
 |===
@@ -20,8 +21,10 @@
 
 
 
+[#examples-rbslayoutcommentindentation]
 === Examples
 
+[#default-rbslayoutcommentindentation]
 ==== default
 
 [source,rbs]
@@ -35,6 +38,7 @@ def foo: () -> void
 def foo: () -> void
 ----
 
+[#rbslayoutemptylines]
 == RBS/Layout/EmptyLines
 
 |===
@@ -49,6 +53,7 @@ def foo: () -> void
 
 Checks for two or more consecutive blank lines.
 
+[#examples-rbslayoutemptylines]
 === Examples
 
 [source,rbs]
@@ -65,6 +70,7 @@ def foo: () -> void
 def bar: () -> void
 ----
 
+[#rbslayoutemptylinesaroundaccessmodifier]
 == RBS/Layout/EmptyLinesAroundAccessModifier
 
 |===
@@ -95,6 +101,7 @@ Access modifiers should be surrounded by blank lines.
     def baz: () -> void
   end
 
+[#rbslayoutemptylinesaroundclassbody]
 == RBS/Layout/EmptyLinesAroundClassBody
 
 |===
@@ -110,8 +117,10 @@ Access modifiers should be surrounded by blank lines.
 Checks if empty lines around the bodies of classes match
 the configuration.
 
+[#examples-rbslayoutemptylinesaroundclassbody]
 === Examples
 
+[#default-rbslayoutemptylinesaroundclassbody]
 ==== default
 
 [source,rbs]
@@ -123,6 +132,7 @@ class Foo
 end
 ----
 
+[#rbslayoutemptylinesaroundinterfacebody]
 == RBS/Layout/EmptyLinesAroundInterfaceBody
 
 |===
@@ -138,8 +148,10 @@ end
 Checks if empty lines around the bodies of interfaces match
 the configuration.
 
+[#examples-rbslayoutemptylinesaroundinterfacebody]
 === Examples
 
+[#default-rbslayoutemptylinesaroundinterfacebody]
 ==== default
 
 [source,rbs]
@@ -151,6 +163,7 @@ interface _Foo
 end
 ----
 
+[#rbslayoutemptylinesaroundmodulebody]
 == RBS/Layout/EmptyLinesAroundModuleBody
 
 |===
@@ -166,8 +179,10 @@ end
 Checks if empty lines around the bodies of modules match
 the configuration.
 
+[#examples-rbslayoutemptylinesaroundmodulebody]
 === Examples
 
+[#default-rbslayoutemptylinesaroundmodulebody]
 ==== default
 
 [source,rbs]
@@ -179,6 +194,7 @@ module Foo
 end
 ----
 
+[#rbslayoutemptylinesaroundoverloads]
 == RBS/Layout/EmptyLinesAroundOverloads
 
 |===
@@ -193,8 +209,10 @@ end
 
 
 
+[#examples-rbslayoutemptylinesaroundoverloads]
 === Examples
 
+[#default-rbslayoutemptylinesaroundoverloads]
 ==== default
 
 [source,rbs]
@@ -209,6 +227,7 @@ def foo: () -> void
        | (Integer) -> Integer
 ----
 
+[#rbslayoutendalignment]
 == RBS/Layout/EndAlignment
 
 |===
@@ -223,8 +242,10 @@ def foo: () -> void
 
 
 
+[#examples-rbslayoutendalignment]
 === Examples
 
+[#default-rbslayoutendalignment]
 ==== default
 
 [source,rbs]
@@ -240,6 +261,7 @@ class Foo
 end
 ----
 
+[#rbslayoutextraspacing]
 == RBS/Layout/ExtraSpacing
 
 |===
@@ -254,8 +276,10 @@ end
 
 
 
+[#examples-rbslayoutextraspacing]
 === Examples
 
+[#default-rbslayoutextraspacing]
 ==== default
 
 [source,rbs]
@@ -267,6 +291,7 @@ def   foo:   ()   ->   void
 def foo: () -> void
 ----
 
+[#rbslayoutindentationwidth]
 == RBS/Layout/IndentationWidth
 
 |===
@@ -281,8 +306,10 @@ def foo: () -> void
 
 
 
+[#examples-rbslayoutindentationwidth]
 === Examples
 
+[#default-rbslayoutindentationwidth]
 ==== default
 
 [source,rbs]
@@ -298,6 +325,7 @@ class Foo
 end
 ----
 
+[#rbslayoutoverloadindentation]
 == RBS/Layout/OverloadIndentation
 
 |===
@@ -312,8 +340,10 @@ end
 
 
 
+[#examples-rbslayoutoverloadindentation]
 === Examples
 
+[#default-rbslayoutoverloadindentation]
 ==== default
 
 [source,rbs]
@@ -334,6 +364,7 @@ def foo: () -> String
        | () -> Integer
 ----
 
+[#rbslayoutspacearoundarrow]
 == RBS/Layout/SpaceAroundArrow
 
 |===
@@ -348,8 +379,10 @@ def foo: () -> String
 
 
 
+[#examples-rbslayoutspacearoundarrow]
 === Examples
 
+[#default-rbslayoutspacearoundarrow]
 ==== default
 
 [source,rbs]
@@ -367,6 +400,7 @@ def foo: () -> void
 def bar: () { () -> void } -> void
 ----
 
+[#rbslayoutspacearoundbraces]
 == RBS/Layout/SpaceAroundBraces
 
 |===
@@ -381,8 +415,10 @@ def bar: () { () -> void } -> void
 
 
 
+[#examples-rbslayoutspacearoundbraces]
 === Examples
 
+[#default-rbslayoutspacearoundbraces]
 ==== default
 
 [source,rbs]
@@ -394,6 +430,7 @@ def bar: (){() -> void}-> void
 def bar: () { () -> void } -> void
 ----
 
+[#rbslayoutspacearoundoperators]
 == RBS/Layout/SpaceAroundOperators
 
 |===
@@ -408,8 +445,10 @@ def bar: () { () -> void } -> void
 
 
 
+[#examples-rbslayoutspacearoundoperators]
 === Examples
 
+[#default-rbslayoutspacearoundoperators]
 ==== default
 
 [source,rbs]
@@ -421,6 +460,7 @@ Integer|String
 Integer | String
 ----
 
+[#rbslayoutspacebeforecolon]
 == RBS/Layout/SpaceBeforeColon
 
 |===
@@ -435,8 +475,10 @@ Integer | String
 
 
 
+[#examples-rbslayoutspacebeforecolon]
 === Examples
 
+[#default-rbslayoutspacebeforecolon]
 ==== default
 
 [source,rbs]
@@ -448,6 +490,7 @@ def foo : () -> void
 def foo: () -> void
 ----
 
+[#rbslayoutspacebeforeoverload]
 == RBS/Layout/SpaceBeforeOverload
 
 |===
@@ -462,8 +505,10 @@ def foo: () -> void
 
 
 
+[#examples-rbslayoutspacebeforeoverload]
 === Examples
 
+[#default-rbslayoutspacebeforeoverload]
 ==== default
 
 [source,rbs]
@@ -477,6 +522,7 @@ def foo: () -> void
        | () -> void
 ----
 
+[#rbslayouttrailingwhitespace]
 == RBS/Layout/TrailingWhitespace
 
 |===
@@ -491,8 +537,10 @@ def foo: () -> void
 
 
 
+[#examples-rbslayouttrailingwhitespace]
 === Examples
 
+[#default-rbslayouttrailingwhitespace]
 ==== default
 
 [source,rbs]

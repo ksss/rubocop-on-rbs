@@ -101,6 +101,10 @@ RBS/Lint:
   Severity: warning
   Enabled: true
 
+RBS/Lint/AmbiguousKeywordArgumentKey:
+  Description: 'Check ambiguous keyword argument key'
+  Enabled: true
+
 RBS/Lint/AmbiguousOperatorPrecedence:
   Description: 'Check ambiguous operator precedence'
   Enabled: true
