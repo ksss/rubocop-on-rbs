@@ -6,6 +6,7 @@
 
 = RBS/Style
 
+[#rbsstyleblockreturnboolish]
 == RBS/Style/BlockReturnBoolish
 
 |===
@@ -20,8 +21,10 @@
 
 
 
+[#examples-rbsstyleblockreturnboolish]
 === Examples
 
+[#default-rbsstyleblockreturnboolish]
 ==== default
 
 [source,rbs]
@@ -33,6 +36,7 @@ def foo: () { () -> bool } -> void
 def foo: () { () -> boolish } -> void
 ----
 
+[#rbsstyleclassictype]
 == RBS/Style/ClassicType
 
 |===
@@ -47,8 +51,10 @@ def foo: () { () -> boolish } -> void
 
 
 
+[#examples-rbsstyleclassictype]
 === Examples
 
+[#default-rbsstyleclassictype]
 ==== default
 
 [source,rbs]
@@ -66,6 +72,7 @@ def foo: () -> true
 def bar: () -> nil
 ----
 
+[#rbsstyleduplicatedtype]
 == RBS/Style/DuplicatedType
 
 |===
@@ -80,8 +87,10 @@ def bar: () -> nil
 
 
 
+[#examples-rbsstyleduplicatedtype]
 === Examples
 
+[#default-rbsstyleduplicatedtype]
 ==== default
 
 [source,rbs]
@@ -96,6 +105,7 @@ def foo: (Integer & Integer) -> void
 def foo: (Integer) -> void
 ----
 
+[#rbsstyleemptyargument]
 == RBS/Style/EmptyArgument
 
 |===
@@ -110,8 +120,10 @@ def foo: (Integer) -> void
 
 
 
+[#examples-rbsstyleemptyargument]
 === Examples
 
+[#default-rbsstyleemptyargument]
 ==== default
 
 [source,rbs]
@@ -129,6 +141,7 @@ def foo: () -> ^ -> void
 def foo: () { () -> void } -> ^() -> void
 ----
 
+[#rbsstyleinitializereturntype]
 == RBS/Style/InitializeReturnType
 
 |===
@@ -143,8 +156,10 @@ def foo: () { () -> void } -> ^() -> void
 
 
 
+[#examples-rbsstyleinitializereturntype]
 === Examples
 
+[#default-rbsstyleinitializereturntype]
 ==== default
 
 [source,rbs]
@@ -159,6 +174,7 @@ def initialize: () -> untyped
 def initialize: () -> void
 ----
 
+[#rbsstyleoptionalnil]
 == RBS/Style/OptionalNil
 
 |===
@@ -173,8 +189,10 @@ def initialize: () -> void
 
 
 
+[#examples-rbsstyleoptionalnil]
 === Examples
 
+[#default-rbsstyleoptionalnil]
 ==== default
 
 [source,rbs]
@@ -186,6 +204,7 @@ def foo: (nil?) -> void
 def foo: (nil) -> void
 ----
 
+[#rbsstyleredundantparentheses]
 == RBS/Style/RedundantParentheses
 
 |===
@@ -200,8 +219,10 @@ def foo: (nil) -> void
 
 
 
+[#examples-rbsstyleredundantparentheses]
 === Examples
 
+[#default-rbsstyleredundantparentheses]
 ==== default
 
 [source,rbs]
@@ -219,6 +240,7 @@ def foo: () -> bool
 def foo: ((true | false)) -> bool
 ----
 
+[#rbsstyletruefalse]
 == RBS/Style/TrueFalse
 
 |===
@@ -233,8 +255,10 @@ def foo: ((true | false)) -> bool
 
 
 
+[#examples-rbsstyletruefalse]
 === Examples
 
+[#default-rbsstyletruefalse]
 ==== default
 
 [source,rbs]

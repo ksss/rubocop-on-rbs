@@ -21,6 +21,7 @@ require_relative 'rbs/layout/space_before_colon'
 require_relative 'rbs/layout/space_before_overload'
 require_relative 'rbs/layout/trailing_whitespace'
 
+require_relative 'rbs/lint/ambiguous_keyword_argument_key'
 require_relative 'rbs/lint/ambiguous_operator_precedence'
 require_relative 'rbs/lint/duplicate_overload'
 require_relative 'rbs/lint/literal_intersection'
