@@ -20,6 +20,8 @@ RSpec.describe RuboCop::Cop::RBS::Lint::TopLevelTypeAlias, :config do
 
       type baz = Integer
       ^^^^^^^^^^^^^^^^^^ Top level type alias detected.
+
+      type Foo::baz = Integer
     RBS
   end
 end

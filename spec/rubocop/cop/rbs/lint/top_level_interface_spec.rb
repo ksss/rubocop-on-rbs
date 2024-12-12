@@ -26,6 +26,9 @@ RSpec.describe RuboCop::Cop::RBS::Lint::TopLevelInterface, :config do
       ^^^^^^^^^^^^^^ Top level interface detected.
         def bar: () -> untyped
       end
+
+      interface NoTopLevel::_Baz
+      end
     RBS
   end
 end
