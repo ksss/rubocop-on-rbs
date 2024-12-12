@@ -32,6 +32,7 @@ module RuboCop
 
           def on_rbs_type_alias(decl)
             return unless @last_end_pos.nil? || (@last_end_pos < decl.location.start_pos)
+            return unless decl.name.namespace.path.empty?
 
             range = location_to_range(decl.location)
             add_offense(range)
