@@ -141,6 +141,10 @@ RBS/Lint/UselessOverloadTypeParams:
   Description: 'Check redundant overload type params'
   Enabled: true
 
+RBS/Lint/UselessTypeAliasTypeParams:
+  Description: 'Check redundant type alias type params'
+  Enabled: true
+
 RBS/Lint/WillSyntaxError:
   Description: 'Check RBS will syntax error'
   Enabled: true

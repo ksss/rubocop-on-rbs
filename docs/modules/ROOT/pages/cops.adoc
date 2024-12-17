@@ -29,6 +29,7 @@
 * xref:cops_rbs_lint.adoc#rbslinttopleveltypealias[RBS/Lint/TopLevelTypeAlias]
 * xref:cops_rbs_lint.adoc#rbslintuselessaccessmodifier[RBS/Lint/UselessAccessModifier]
 * xref:cops_rbs_lint.adoc#rbslintuselessoverloadtypeparams[RBS/Lint/UselessOverloadTypeParams]
+* xref:cops_rbs_lint.adoc#rbslintuselesstypealiastypeparams[RBS/Lint/UselessTypeAliasTypeParams]
 * xref:cops_rbs_lint.adoc#rbslintwillsyntaxerror[RBS/Lint/WillSyntaxError]
 
 === Department xref:cops_rbs_style.adoc[RBS/Style]
