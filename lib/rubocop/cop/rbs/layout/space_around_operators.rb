@@ -16,12 +16,20 @@ module RuboCop
           def on_rbs_def(decl)
             decl.overloads.each do |overload|
               overload.method_type.each_type do |type|
-                on_type(type)
+                check_type(type)
               end
             end
           end
 
-          def on_type(type)
+          def on_rbs_constant(decl)
+            check_type(decl.type)
+          end
+          alias on_rbs_global on_rbs_constant
+          alias on_rbs_type_alias on_rbs_constant
+          alias on_rbs_attribute on_rbs_constant
+          alias on_rbs_var on_rbs_constant
+
+          def check_type(type)
             case type
             when ::RBS::Types::Union
               check_operator(type, '|')
@@ -29,7 +37,7 @@ module RuboCop
               check_operator(type, '&')
             end
             type.each_type do |t|
-              on_type(t)
+              check_type(t)
             end
           end
 

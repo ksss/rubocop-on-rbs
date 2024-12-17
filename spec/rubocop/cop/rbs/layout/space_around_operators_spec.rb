@@ -5,6 +5,8 @@ require 'spec_helper'
 RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundOperators, :config do
   it 'registers an offense' do
     expect_offense(<<~RBS)
+      $global: Integer|String
+                      ^ Use one space before `|`.
       class Foo
         def union_before: (Integer| String) -> void
                                   ^ Use one space before `|`.
@@ -22,10 +24,19 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundOperators, :config do
                         ^ Use one space before `|`.
                              ^ Use one space before `&`.
                                   ^ Use one space before `|`.
+        CONST: Integer|String
+                      ^ Use one space before `|`.
+        type t = Integer|String
+                        ^ Use one space before `|`.
+        attr_reader a: Integer|String
+                              ^ Use one space before `|`.
+        @ivar: Integer|String
+                      ^ Use one space before `|`.
       end
     RBS
 
     expect_correction(<<~RBS)
+      $global: Integer | String
       class Foo
         def union_before: (Integer | String) -> void
         def union_after: (Integer | String) -> void
@@ -34,6 +45,10 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundOperators, :config do
         def intersecion_after: (Integer & String) -> void
         def intersecion_both: (Integer & String) -> void
         def paren: (((1) | (2)) & ((3) | (4))) -> void
+        CONST: Integer | String
+        type t = Integer | String
+        attr_reader a: Integer | String
+        @ivar: Integer | String
       end
     RBS
   end
@@ -42,6 +57,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundOperators, :config do
     expect_no_offenses(<<~RBS)
       class Foo
         def paren: (( 1 | 2 ) & ( 3 | 4 )) -> void
+        CONST: Integer
       end
     RBS
   end
