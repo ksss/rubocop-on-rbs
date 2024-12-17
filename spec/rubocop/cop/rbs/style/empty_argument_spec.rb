@@ -27,6 +27,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::EmptyArgument, :config do
                          ^ Insert `()` when empty argument
         attr_reader attr: ^ -> void
                             ^ Insert `()` when empty argument
+        @ivar: ^ -> void
+                 ^ Insert `()` when empty argument
       end
       CONST: ^ -> void
                ^ Insert `()` when empty argument
@@ -47,6 +49,7 @@ RSpec.describe RuboCop::Cop::RBS::Style::EmptyArgument, :config do
         def proc_block_with_self_type: (^() { () [self: instance] -> void } -> void) -> void
         def all: () { () -> ^() { () -> void }-> void } -> void
         attr_reader attr: ^ () -> void
+        @ivar: ^ () -> void
       end
       CONST: ^ () -> void
       $global: ^ () -> void

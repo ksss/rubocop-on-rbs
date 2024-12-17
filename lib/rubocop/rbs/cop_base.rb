@@ -73,6 +73,7 @@ module RuboCop
       def on_rbs_attribute(member); end
       def on_rbs_public(member); end
       def on_rbs_private(member); end
+      def on_rbs_var(member); end
 
       def walk(decl)
         case decl
@@ -99,6 +100,8 @@ module RuboCop
           on_rbs_public(decl)
         when ::RBS::AST::Members::Private
           on_rbs_private(decl)
+        when ::RBS::AST::Members::Var
+          on_rbs_var(decl)
         end
       end
 

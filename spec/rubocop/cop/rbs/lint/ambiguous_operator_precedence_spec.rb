@@ -10,6 +10,8 @@ RSpec.describe RuboCop::Cop::RBS::Lint::AmbiguousOperatorPrecedence, :config do
                       ^^^^^ Wrap expressions with varying precedence with parentheses to avoid ambiguity.
         def bar: (A & B | C) -> void
                   ^^^^^ Wrap expressions with varying precedence with parentheses to avoid ambiguity.
+        @a: (A | B & C)
+                 ^^^^^ Wrap expressions with varying precedence with parentheses to avoid ambiguity.
       end
       CONST: (A | B & C?)
                   ^^^^^^ Wrap expressions with varying precedence with parentheses to avoid ambiguity.
@@ -24,6 +26,7 @@ RSpec.describe RuboCop::Cop::RBS::Lint::AmbiguousOperatorPrecedence, :config do
       class Foo
         def foo: (A | (B & C)) -> void
         def bar: ((A & B) | C) -> void
+        @a: (A | (B & C))
       end
       CONST: (A | (B & C?))
       $global: (A & B) | (C & D)

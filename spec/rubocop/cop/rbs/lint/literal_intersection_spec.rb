@@ -11,6 +11,8 @@ RSpec.describe RuboCop::Cop::RBS::Lint::LiteralIntersection, :config do
                                ^ Don't use literals with `&`.
         attr_reader a: ^() -> (1 & Bar)
                                ^ Don't use literals with `&`.
+        @a: 1 & Bar
+            ^ Don't use literals with `&`.
       end
       CONST: "a" & top
              ^^^ Don't use literals with `&`.
