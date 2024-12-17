@@ -36,6 +36,7 @@ module RuboCop
           alias on_rbs_global on_rbs_constant
           alias on_rbs_type_alias on_rbs_constant
           alias on_rbs_attribute on_rbs_constant
+          alias on_rbs_var on_rbs_constant
 
           def check_intersection(intersection)
             intersection.types.each do |type|
