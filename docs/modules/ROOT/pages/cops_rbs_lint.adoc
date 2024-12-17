@@ -292,6 +292,36 @@ def foo: [T] () -> void
 def foo: [T] (T) -> T
 ----
 
+[#rbslintuselesstypealiastypeparams]
+== RBS/Lint/UselessTypeAliasTypeParams
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Notice useless type parameters.
+
+[#examples-rbslintuselesstypealiastypeparams]
+=== Examples
+
+[#default-rbslintuselesstypealiastypeparams]
+==== default
+
+[source,rbs]
+----
+# bad
+type ary[T] = Array[Integer]
+
+# good
+type ary[T] = Array[T]
+----
+
 [#rbslintwillsyntaxerror]
 == RBS/Lint/WillSyntaxError
 
