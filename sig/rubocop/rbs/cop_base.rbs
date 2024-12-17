@@ -21,6 +21,7 @@ module RuboCop
       def on_rbs_attribute: (::RBS::AST::Members::Attribute) -> void
       def on_rbs_public: (::RBS::AST::Members::Public) -> void
       def on_rbs_private: (::RBS::AST::Members::Private) -> void
+      def on_rbs_var: (::RBS::AST::Members::Var) -> void
 
       def walk: (untyped) -> void
       def rbs_buffer: () -> ::RBS::Buffer
