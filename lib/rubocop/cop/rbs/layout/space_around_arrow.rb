@@ -33,6 +33,8 @@ module RuboCop
               next unless loc
 
               if before && (before.location.end_pos + 1 != loc.start_pos)
+                next unless before.location.end_line == loc.start_line
+
                 arrow = location_to_range(loc).adjust(begin_pos: base, end_pos: base)
                 add_offense(arrow, message: MSG_BEFORE) do |corrector|
                   range = range_between(before.location.end_pos, loc.start_pos)
@@ -41,6 +43,8 @@ module RuboCop
               end
 
               if loc.end_pos + 1 != after.location.start_pos
+                next unless loc.end_line == after.location.start_line
+
                 arrow = location_to_range(loc).adjust(begin_pos: base, end_pos: base)
                 add_offense(arrow, message: MSG_AFTER) do |corrector|
                   range = range_between(loc.end_pos, after.location.start_pos)
@@ -49,6 +53,11 @@ module RuboCop
               end
             end
           end
+          alias on_rbs_constant on_rbs_def
+          alias on_rbs_global on_rbs_def
+          alias on_rbs_type_alias on_rbs_def
+          alias on_rbs_attribute on_rbs_def
+          alias on_rbs_var on_rbs_def
         end
       end
     end
