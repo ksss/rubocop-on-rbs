@@ -25,7 +25,19 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassicType, :config do
 
         self.@civar: FalseClass
                      ^^^^^^^^^^ Use `false` instead of `FalseClass`
+
+        CONST: NilClass
+               ^^^^^^^^ Use `nil` instead of `NilClass`
+
+        type a = TrueClass
+                 ^^^^^^^^^ Use `true` instead of `TrueClass`
+
+        attr_reader foo: FalseClass
+                         ^^^^^^^^^^ Use `false` instead of `FalseClass`
       end
+
+      $gvar: FalseClass
+             ^^^^^^^^^^ Use `false` instead of `FalseClass`
     RBS
 
     expect_correction(<<~RBS)
@@ -41,7 +53,15 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassicType, :config do
         @@cvar: true
 
         self.@civar: false
+
+        CONST: nil
+
+        type a = true
+
+        attr_reader foo: false
       end
+
+      $gvar: false
     RBS
   end
 

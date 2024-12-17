@@ -29,9 +29,13 @@ module RuboCop
             end
           end
 
-          def on_rbs_var(decl)
+          def on_rbs_constant(decl)
             check_type(decl.type)
           end
+          alias on_rbs_global on_rbs_constant
+          alias on_rbs_type_alias on_rbs_constant
+          alias on_rbs_attribute on_rbs_constant
+          alias on_rbs_var on_rbs_constant
 
           # @rbs type: ::RBS::Types::t
           def check_type(type)
