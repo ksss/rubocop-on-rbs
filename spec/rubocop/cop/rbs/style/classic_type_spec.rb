@@ -16,6 +16,15 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassicType, :config do
         def baz: (a: FalseClass, **NilClass) -> void
                      ^^^^^^^^^^ Use `false` instead of `FalseClass`
                                    ^^^^^^^^ Use `nil` instead of `NilClass`
+
+        @ivar: NilClass
+               ^^^^^^^^ Use `nil` instead of `NilClass`
+
+        @@cvar: TrueClass
+                ^^^^^^^^^ Use `true` instead of `TrueClass`
+
+        self.@civar: FalseClass
+                     ^^^^^^^^^^ Use `false` instead of `FalseClass`
       end
     RBS
 
@@ -26,6 +35,12 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassicType, :config do
         def bar: (true, ?false) -> void
 
         def baz: (a: false, **nil) -> void
+
+        @ivar: nil
+
+        @@cvar: true
+
+        self.@civar: false
       end
     RBS
   end

@@ -29,6 +29,10 @@ module RuboCop
             end
           end
 
+          def on_rbs_var(decl)
+            check_type(decl.type)
+          end
+
           # @rbs type: ::RBS::Types::t
           def check_type(type)
             find_replacement(type) do |t, replaced|
