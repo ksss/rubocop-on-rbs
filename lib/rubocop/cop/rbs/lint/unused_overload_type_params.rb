@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module RBS
       module Lint
-        # Notice useless overload type parameters.
+        # Notice unused overload type parameters.
         #
         # @example default
         #   # bad
@@ -12,8 +12,8 @@ module RuboCop
         #
         #   # good
         #   def foo: [T] (T) -> T
-        class UselessOverloadTypeParams < RuboCop::RBS::CopBase
-          MSG = 'Useless overload type variable - `%<variable>s`.'
+        class UnusedOverloadTypeParams < RuboCop::RBS::CopBase
+          MSG = 'Unused overload type variable - `%<variable>s`.'
 
           def on_rbs_def(decl)
             decl.overloads.each do |overload|

@@ -2,21 +2,21 @@
 
 require 'spec_helper'
 
-RSpec.describe RuboCop::Cop::RBS::Lint::UselessOverloadTypeParams, :config do
+RSpec.describe RuboCop::Cop::RBS::Lint::UnusedOverloadTypeParams, :config do
   it 'registers an offense' do
     expect_offense(<<~RBS)
       class Foo
         def foo: [T] () -> void
-                  ^ Useless overload type variable - `T`.
+                  ^ Unused overload type variable - `T`.
         def bar: [A, B] (A) -> void
-                     ^ Useless overload type variable - `B`.
+                     ^ Unused overload type variable - `B`.
         def baz: [T < Integer, U < String] () -> T
-                               ^ Useless overload type variable - `U`.
+                               ^ Unused overload type variable - `U`.
       end
 
       class Bar[A]
         def m: [B] () -> A
-                ^ Useless overload type variable - `B`.
+                ^ Unused overload type variable - `B`.
       end
     RBS
   end
