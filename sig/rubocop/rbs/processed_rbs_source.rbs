@@ -10,7 +10,7 @@ module RuboCop
       @tokens: ::Array[::RBS::Parser::Token]?
 
       def initialize: (::RBS::Buffer source) -> void
-      def tokens: () -> ::Array[::RBS::Parser::Token]
+      def tokens: (?with_trivia: bool) -> ::Array[::RBS::Parser::Token]
     end
   end
 end

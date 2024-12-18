@@ -11,6 +11,7 @@
 * xref:cops_rbs_layout.adoc#rbslayoutextraspacing[RBS/Layout/ExtraSpacing]
 * xref:cops_rbs_layout.adoc#rbslayoutindentationwidth[RBS/Layout/IndentationWidth]
 * xref:cops_rbs_layout.adoc#rbslayoutoverloadindentation[RBS/Layout/OverloadIndentation]
+* xref:cops_rbs_layout.adoc#rbslayoutspaceaftercomma[RBS/Layout/SpaceAfterComma]
 * xref:cops_rbs_layout.adoc#rbslayoutspacearoundarrow[RBS/Layout/SpaceAroundArrow]
 * xref:cops_rbs_layout.adoc#rbslayoutspacearoundbraces[RBS/Layout/SpaceAroundBraces]
 * xref:cops_rbs_layout.adoc#rbslayoutspacearoundoperators[RBS/Layout/SpaceAroundOperators]

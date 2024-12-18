@@ -71,6 +71,10 @@ RBS/Layout/OverloadIndentation:
   Description: 'Indent overload method'
   Enabled: true
 
+RBS/Layout/SpaceAfterComma:
+  Description: 'Use space after `,`'
+  Enabled: true
+
 RBS/Layout/SpaceAroundArrow:
   Description: 'Use space around `->`'
   Enabled: true
