@@ -11,6 +11,7 @@
 * xref:cops_rbs_layout.adoc#rbslayoutextraspacing[RBS/Layout/ExtraSpacing]
 * xref:cops_rbs_layout.adoc#rbslayoutindentationwidth[RBS/Layout/IndentationWidth]
 * xref:cops_rbs_layout.adoc#rbslayoutoverloadindentation[RBS/Layout/OverloadIndentation]
+* xref:cops_rbs_layout.adoc#rbslayoutspaceaftercomma[RBS/Layout/SpaceAfterComma]
 * xref:cops_rbs_layout.adoc#rbslayoutspacearoundarrow[RBS/Layout/SpaceAroundArrow]
 * xref:cops_rbs_layout.adoc#rbslayoutspacearoundbraces[RBS/Layout/SpaceAroundBraces]
 * xref:cops_rbs_layout.adoc#rbslayoutspacearoundoperators[RBS/Layout/SpaceAroundOperators]
@@ -27,9 +28,9 @@
 * xref:cops_rbs_lint.adoc#rbslintsyntax[RBS/Lint/Syntax]
 * xref:cops_rbs_lint.adoc#rbslinttoplevelinterface[RBS/Lint/TopLevelInterface]
 * xref:cops_rbs_lint.adoc#rbslinttopleveltypealias[RBS/Lint/TopLevelTypeAlias]
+* xref:cops_rbs_lint.adoc#rbslintunusedoverloadtypeparams[RBS/Lint/UnusedOverloadTypeParams]
 * xref:cops_rbs_lint.adoc#rbslintunusedtypealiastypeparams[RBS/Lint/UnusedTypeAliasTypeParams]
 * xref:cops_rbs_lint.adoc#rbslintuselessaccessmodifier[RBS/Lint/UselessAccessModifier]
-* xref:cops_rbs_lint.adoc#rbslintuselessoverloadtypeparams[RBS/Lint/UselessOverloadTypeParams]
 * xref:cops_rbs_lint.adoc#rbslintwillsyntaxerror[RBS/Lint/WillSyntaxError]
 
 === Department xref:cops_rbs_style.adoc[RBS/Style]

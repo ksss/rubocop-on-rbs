@@ -364,6 +364,36 @@ def foo: () -> String
        | () -> Integer
 ----
 
+[#rbslayoutspaceaftercomma]
+== RBS/Layout/SpaceAfterComma
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+
+
+[#examples-rbslayoutspaceaftercomma]
+=== Examples
+
+[#default-rbslayoutspaceaftercomma]
+==== default
+
+[source,rbs]
+----
+# bad
+def foo: (Integer,String) -> void
+
+# good
+def foo: (Integer, String) -> void
+----
+
 [#rbslayoutspacearoundarrow]
 == RBS/Layout/SpaceAroundArrow
 

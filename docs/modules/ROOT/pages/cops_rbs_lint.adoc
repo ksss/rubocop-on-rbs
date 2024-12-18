@@ -209,6 +209,36 @@ class Foo
 end
 ----
 
+[#rbslintunusedoverloadtypeparams]
+== RBS/Lint/UnusedOverloadTypeParams
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Notice unused overload type parameters.
+
+[#examples-rbslintunusedoverloadtypeparams]
+=== Examples
+
+[#default-rbslintunusedoverloadtypeparams]
+==== default
+
+[source,rbs]
+----
+# bad
+def foo: [T] () -> void
+
+# good
+def foo: [T] (T) -> T
+----
+
 [#rbslintunusedtypealiastypeparams]
 == RBS/Lint/UnusedTypeAliasTypeParams
 
@@ -290,36 +320,6 @@ class Foo
   def method2
   end
 end
-----
-
-[#rbslintuselessoverloadtypeparams]
-== RBS/Lint/UselessOverloadTypeParams
-
-|===
-| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
-
-| Enabled
-| Yes
-| No
-| -
-| -
-|===
-
-Notice useless overload type parameters.
-
-[#examples-rbslintuselessoverloadtypeparams]
-=== Examples
-
-[#default-rbslintuselessoverloadtypeparams]
-==== default
-
-[source,rbs]
-----
-# bad
-def foo: [T] () -> void
-
-# good
-def foo: [T] (T) -> T
 ----
 
 [#rbslintwillsyntaxerror]
