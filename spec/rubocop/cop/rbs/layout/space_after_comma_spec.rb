@@ -22,7 +22,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAfterComma, :config do
 
     expect_correction(<<~RBS)
       class Foo[A, B]
-        def foo: [T, U] (Integer, String) -> void
+        def foo: [T, U] (Integer, String, *rest, foo: Integer, ?bar: String, **kwrest) -> void
         type hash[K, V] = Hash[K, V]
       end
     RBS
