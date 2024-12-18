@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module RBS
       module Lint
-        # Notice useless type parameters.
+        # Notice unused type parameters.
         #
         # @example default
         #   # bad
@@ -12,8 +12,8 @@ module RuboCop
         #
         #   # good
         #   type ary[T] = Array[T]
-        class UselessTypeAliasTypeParams < RuboCop::RBS::CopBase
-          MSG = 'Useless type variable - `%<variable>s`.'
+        class UnusedTypeAliasTypeParams < RuboCop::RBS::CopBase
+          MSG = 'Unused type variable - `%<variable>s`.'
 
           def on_rbs_type_alias(decl)
             return if decl.type_params.empty?

@@ -141,7 +141,7 @@ RBS/Lint/UselessOverloadTypeParams:
   Description: 'Check redundant overload type params'
   Enabled: true
 
-RBS/Lint/UselessTypeAliasTypeParams:
+RBS/Lint/UnusedTypeAliasTypeParams:
   Description: 'Check redundant type alias type params'
   Enabled: true
 

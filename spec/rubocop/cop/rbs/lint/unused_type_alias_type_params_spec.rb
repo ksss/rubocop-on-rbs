@@ -2,20 +2,20 @@
 
 require 'spec_helper'
 
-RSpec.describe RuboCop::Cop::RBS::Lint::UselessTypeAliasTypeParams, :config do
+RSpec.describe RuboCop::Cop::RBS::Lint::UnusedTypeAliasTypeParams, :config do
   it 'registers an offense' do
     expect_offense(<<~RBS)
       class Foo
         type ary[T] = Array[Integer]
-                 ^ Useless type variable - `T`.
+                 ^ Unused type variable - `T`.
 
         type upper_bound[T < Array[Integer]] = Array[Integer]
-                         ^ Useless type variable - `T`.
+                         ^ Unused type variable - `T`.
       end
 
       class Bar[A]
         type ary[B] = Array[A]
-                 ^ Useless type variable - `B`.
+                 ^ Unused type variable - `B`.
       end
     RBS
   end
