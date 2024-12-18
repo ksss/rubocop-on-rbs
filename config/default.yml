@@ -137,7 +137,7 @@ RBS/Lint/UselessAccessModifier:
   Description: 'Check useless access modifier'
   Enabled: true
 
-RBS/Lint/UselessOverloadTypeParams:
+RBS/Lint/UnusedOverloadTypeParams:
   Description: 'Check redundant overload type params'
   Enabled: true
 
