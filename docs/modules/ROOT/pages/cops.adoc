@@ -40,6 +40,7 @@
 * xref:cops_rbs_style.adoc#rbsstyleduplicatedtype[RBS/Style/DuplicatedType]
 * xref:cops_rbs_style.adoc#rbsstyleemptyargument[RBS/Style/EmptyArgument]
 * xref:cops_rbs_style.adoc#rbsstyleinitializereturntype[RBS/Style/InitializeReturnType]
+* xref:cops_rbs_style.adoc#rbsstyleinstancewithinstance[RBS/Style/InstanceWithInstance]
 * xref:cops_rbs_style.adoc#rbsstyleoptionalnil[RBS/Style/OptionalNil]
 * xref:cops_rbs_style.adoc#rbsstyleredundantparentheses[RBS/Style/RedundantParentheses]
 * xref:cops_rbs_style.adoc#rbsstyletruefalse[RBS/Style/TrueFalse]

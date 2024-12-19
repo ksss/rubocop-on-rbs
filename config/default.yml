@@ -178,6 +178,10 @@ RBS/Style/InitializeReturnType:
   Description: 'Use `void` for initialize method'
   Enabled: true
 
+RBS/Style/InstanceWithInstance:
+  Description: 'Check `instance` with instance context'
+  Enabled: pending
+
 RBS/Style/OptionalNil:
   Description: 'Use nil instead of nil?'
   Enabled: true
