@@ -54,6 +54,9 @@ GEM
       ffi (~> 1.0)
     rbs (3.6.1)
       logger
+    rbs-inline (0.10.0)
+      prism (>= 0.29, < 1.3)
+      rbs (>= 3.5.0)
     regexp_parser (2.9.3)
     repl_type_completor (0.1.7)
       prism (~> 1.0)
@@ -118,6 +121,7 @@ DEPENDENCIES
   prism
   rake
   rbs
+  rbs-inline
   repl_type_completor
   rspec
   rubocop

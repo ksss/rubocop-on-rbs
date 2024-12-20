@@ -5,11 +5,12 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'activesupport', '~> 7.0' # 8.0 need Ruby 3.2 or later
-gem 'prism', require: false
-gem 'rake', require: false
+gem 'prism'
+gem 'rake'
 gem 'rbs'
-gem 'repl_type_completor', require: false
-gem 'rspec', require: false
-gem 'rubocop', require: false
-gem 'steep', require: false
-gem 'yard', require: false
+gem 'rbs-inline'
+gem 'repl_type_completor'
+gem 'rspec'
+gem 'rubocop'
+gem 'steep'
+gem 'yard'
