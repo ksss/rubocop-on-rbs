@@ -1,0 +1,29 @@
+# Generated from lib/rubocop/cop/rbs/style/instance_with_instance.rb with RBS::Inline
+
+module RuboCop
+  module Cop
+    module RBS
+      module Style
+        # Checks that `instance` in instance context.
+        #
+        # @example (default)
+        #   # bad
+        #   def foo: (instance) -> instance
+        #
+        #   # good
+        #   def foo: (self) -> self
+        class InstanceWithInstance < RuboCop::RBS::CopBase
+          extend AutoCorrector
+
+          MSG: ::String
+
+          def on_rbs_def: (untyped decl) -> untyped
+
+          def on_rbs_var: (untyped decl) -> untyped
+
+          def check_type: (untyped type) -> untyped
+        end
+      end
+    end
+  end
+end
