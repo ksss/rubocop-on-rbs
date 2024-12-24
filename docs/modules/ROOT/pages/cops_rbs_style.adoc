@@ -36,6 +36,36 @@ def foo: () { () -> bool } -> void
 def foo: () { () -> boolish } -> void
 ----
 
+[#rbsstyleclasswithsingleton]
+== RBS/Style/ClassWithSingleton
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Pending
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks that `class` in singleton context.
+
+[#examples-rbsstyleclasswithsingleton]
+=== Examples
+
+[#_default_-rbsstyleclasswithsingleton]
+==== (default)
+
+[source,rbs]
+----
+# bad
+def self.foo: (class) -> class
+
+# good
+def self.foo: (self) -> self
+----
+
 [#rbsstyleclassictype]
 == RBS/Style/ClassicType
 

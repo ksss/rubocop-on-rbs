@@ -35,6 +35,7 @@ require_relative 'rbs/lint/useless_access_modifier'
 require_relative 'rbs/lint/will_syntax_error'
 
 require_relative 'rbs/style/block_return_boolish'
+require_relative 'rbs/style/class_with_singleton'
 require_relative 'rbs/style/classic_type'
 require_relative 'rbs/style/duplicated_type'
 require_relative 'rbs/style/empty_argument'

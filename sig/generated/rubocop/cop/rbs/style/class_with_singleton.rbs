@@ -1,0 +1,31 @@
+# Generated from lib/rubocop/cop/rbs/style/class_with_singleton.rb with RBS::Inline
+
+module RuboCop
+  module Cop
+    module RBS
+      module Style
+        # Checks that `class` in singleton context.
+        #
+        # @example (default)
+        #   # bad
+        #   def self.foo: (class) -> class
+        #
+        #   # good
+        #   def self.foo: (self) -> self
+        class ClassWithSingleton < RuboCop::RBS::CopBase
+          extend AutoCorrector
+
+          MSG: ::String
+
+          # @rbs decl: RBS::AST::Members::MethodDefinition
+          def on_rbs_def: (RBS::AST::Members::MethodDefinition decl) -> untyped
+
+          def on_rbs_var: (untyped decl) -> untyped
+
+          # @rbs type: RBS::Types::t
+          def check_type: (RBS::Types::t type) -> untyped
+        end
+      end
+    end
+  end
+end
