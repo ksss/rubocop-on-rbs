@@ -18,20 +18,24 @@ module RuboCop
           extend AutoCorrector
           MSG = 'Use `self` instead of `instance`.'
 
-          def on_rbs_def(decl)
-            return unless decl.kind == :instance
+          # @rbs decl: RBS::AST::Declarations::Class
+          def on_rbs_class(decl)
+            # The meaning of `self` and `instance` changes in generic class.
+            return unless decl.type_params.empty?
 
-            decl.overloads.each do |overload|
-              overload.method_type.each_type do |type|
-                check_type(type)
+            decl.members.each do |member|
+              case member
+              when ::RBS::AST::Members::MethodDefinition
+                next unless member.kind == :instance
+
+                member.overloads.each do |overload|
+                  overload.method_type.each_type do |type|
+                    check_type(type)
+                  end
+                end
+              when ::RBS::AST::Members::InstanceVariable
+                check_type(member.type)
               end
-            end
-          end
-
-          def on_rbs_var(decl)
-            case decl
-            when ::RBS::AST::Members::InstanceVariable
-              check_type(decl.type)
             end
           end
 
