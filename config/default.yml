@@ -162,6 +162,10 @@ RBS/Style/BlockReturnBoolish:
   Description: 'Use `bool` for block return type'
   Enabled: true
 
+RBS/Style/ClassWithSingleton:
+  Description: 'Check `class` with singleton context'
+  Enabled: pending
+
 RBS/Style/ClassicType:
   Description: 'Use simple type'
   Enabled: true

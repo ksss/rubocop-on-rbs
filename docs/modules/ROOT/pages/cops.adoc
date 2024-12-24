@@ -36,6 +36,7 @@
 === Department xref:cops_rbs_style.adoc[RBS/Style]
 
 * xref:cops_rbs_style.adoc#rbsstyleblockreturnboolish[RBS/Style/BlockReturnBoolish]
+* xref:cops_rbs_style.adoc#rbsstyleclasswithsingleton[RBS/Style/ClassWithSingleton]
 * xref:cops_rbs_style.adoc#rbsstyleclassictype[RBS/Style/ClassicType]
 * xref:cops_rbs_style.adoc#rbsstyleduplicatedtype[RBS/Style/DuplicatedType]
 * xref:cops_rbs_style.adoc#rbsstyleemptyargument[RBS/Style/EmptyArgument]
