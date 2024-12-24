@@ -1,5 +1,23 @@
 ## [Unreleased]
 
+## [1.3.0] - 2024-12-24
+
+* Add RBS/Lint/AmbiguousKeywordArgumentKey by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/51
+* Fix false positive for TopLevel* by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/52
+* Support `RBS::AST::Members::Var` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/53
+* [RBS/Layout/SpaceAroundOperators] Support other declarations by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/54
+* Support other declarations by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/55
+* Use 3.4.0-rc1 by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/56
+* Add RBS/Lint/UselessTypeAliasTypeParams by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/57
+* Use "Unused" instead of "Useless" as much as possible. by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/58
+* Check config/default.yml on CI by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/59
+* Use "Unused" instead of "Useless" as much as possible. by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/60
+* Add RBS/Layout/SpaceAfterComma by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/61
+* Add RBS/Style/InstanceWithInstance by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/62
+* Introduce rbs-inline by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/63
+* Reimplement RBS/Style/InstanceWithInstance  by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/64
+* Add RBS/Style/ClassWithSingleton by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/65
+
 ## [1.2.0] - 2024-11-18
 
 * Fix false positive when oneline class by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/41
