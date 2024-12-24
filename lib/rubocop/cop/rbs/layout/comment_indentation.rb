@@ -58,10 +58,6 @@ module RuboCop
               decl.members.each { |member| walk_decl(member, &block) }
             end
           end
-
-          def tokenize(source)
-            ::RBS::Parser.lex(source).value
-          end
         end
       end
     end
