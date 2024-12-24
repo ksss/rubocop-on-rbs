@@ -17,9 +17,8 @@ module RuboCop
 
           MSG: ::String
 
-          def on_rbs_def: (untyped decl) -> untyped
-
-          def on_rbs_var: (untyped decl) -> untyped
+          # @rbs decl: RBS::AST::Declarations::Class
+          def on_rbs_class: (RBS::AST::Declarations::Class decl) -> untyped
 
           def check_type: (untyped type) -> untyped
         end
