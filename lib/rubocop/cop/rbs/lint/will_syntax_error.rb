@@ -45,14 +45,26 @@ module RuboCop
             check_module_or_class(decl)
           end
 
-          def check_module_or_class(decl)
+          def check_type_params(decl)
             decl.type_params.each do |param|
               if ub = param.upper_bound
                 void_type_context_validator(ub)
                 no_self_type_validator(ub)
                 no_classish_type_validator(ub)
               end
+
+              if param.respond_to?(:default_type)
+                if dt = param.default_type
+                  void_type_context_validator(dt)
+                  no_self_type_validator(dt)
+                  no_classish_type_validator(dt)
+                end
+              end
             end
+          end
+
+          def check_module_or_class(decl)
+            check_type_params(decl)
 
             decl.each_member do |member|
               case member
@@ -79,6 +91,8 @@ module RuboCop
           end
 
           def on_rbs_interface(decl)
+            check_type_params(decl)
+
             decl.members.each do |member|
               case member
               when AST::Members::MethodDefinition
@@ -96,7 +110,14 @@ module RuboCop
             void_type_context_validator(decl.type)
           end
           alias on_rbs_global on_rbs_constant
-          alias on_rbs_type_alias on_rbs_constant
+
+          def on_rbs_type_alias(decl)
+            no_self_type_validator(decl.type)
+            no_classish_type_validator(decl.type)
+            void_type_context_validator(decl.type)
+
+            check_type_params(decl)
+          end
 
           private
 
