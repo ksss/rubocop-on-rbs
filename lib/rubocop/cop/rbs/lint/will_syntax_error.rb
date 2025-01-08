@@ -45,7 +45,7 @@ module RuboCop
             check_module_or_class(decl)
           end
 
-          def check_module_or_class(decl)
+          def check_type_params(decl)
             decl.type_params.each do |param|
               if ub = param.upper_bound
                 void_type_context_validator(ub)
@@ -61,6 +61,10 @@ module RuboCop
                 end
               end
             end
+          end
+
+          def check_module_or_class(decl)
+            check_type_params(decl)
 
             decl.each_member do |member|
               case member
@@ -87,6 +91,8 @@ module RuboCop
           end
 
           def on_rbs_interface(decl)
+            check_type_params(decl)
+
             decl.members.each do |member|
               case member
               when AST::Members::MethodDefinition
