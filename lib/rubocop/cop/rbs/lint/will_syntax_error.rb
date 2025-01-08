@@ -52,6 +52,14 @@ module RuboCop
                 no_self_type_validator(ub)
                 no_classish_type_validator(ub)
               end
+
+              if param.respond_to?(:default_type)
+                if dt = param.default_type
+                  void_type_context_validator(dt)
+                  no_self_type_validator(dt)
+                  no_classish_type_validator(dt)
+                end
+              end
             end
 
             decl.each_member do |member|
