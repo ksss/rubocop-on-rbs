@@ -110,7 +110,14 @@ module RuboCop
             void_type_context_validator(decl.type)
           end
           alias on_rbs_global on_rbs_constant
-          alias on_rbs_type_alias on_rbs_constant
+
+          def on_rbs_type_alias(decl)
+            no_self_type_validator(decl.type)
+            no_classish_type_validator(decl.type)
+            void_type_context_validator(decl.type)
+
+            check_type_params(decl)
+          end
 
           private
 

@@ -51,12 +51,36 @@ RSpec.describe RuboCop::Cop::RBS::Lint::WillSyntaxError, :config do
                                      ^^^^^ `class` type is not allowed in this context
                                             ^^^^^^^^ `instance` type is not allowed in this context
         end
+
+        interface _UpperBound[T < A[self, class, instance]]
+                                    ^^^^ `self` type is not allowed in this context
+                                          ^^^^^ `class` type is not allowed in this context
+                                                 ^^^^^^^^ `instance` type is not allowed in this context
+        end
       RBS
     end
 
     it 'no registers an offense' do
       expect_no_offenses(<<~RBS)
         class UpperBound[T < A[void]]
+        end
+      RBS
+    end
+  end
+
+  describe 'default type params' do
+    it 'registers an offense' do
+      expect_offense(<<~RBS)
+        class DefaultTypeParams[T = A[self, class, instance]]
+                                      ^^^^ `self` type is not allowed in this context
+                                            ^^^^^ `class` type is not allowed in this context
+                                                   ^^^^^^^^ `instance` type is not allowed in this context
+        end
+
+        interface _DefaultTypeParams[T = A[self, class, instance]]
+                                           ^^^^ `self` type is not allowed in this context
+                                                 ^^^^^ `class` type is not allowed in this context
+                                                        ^^^^^^^^ `instance` type is not allowed in this context
         end
       RBS
     end
@@ -231,6 +255,11 @@ RSpec.describe RuboCop::Cop::RBS::Lint::WillSyntaxError, :config do
                           ^^^^ `self` type is not allowed in this context
                                 ^^^^^ `class` type is not allowed in this context
                                        ^^^^^^^^ `instance` type is not allowed in this context
+          type a[A < B[void, self, class, instance]] = void
+                             ^^^^ `self` type is not allowed in this context
+                                   ^^^^^ `class` type is not allowed in this context
+                                          ^^^^^^^^ `instance` type is not allowed in this context
+                                                       ^^^^ `void` type is only allowed in return type or generics parameter
         end
       RBS
     end
