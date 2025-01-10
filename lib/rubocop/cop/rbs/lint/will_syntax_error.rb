@@ -187,6 +187,7 @@ module RuboCop
               end
             when Types::Proc
               void_type_context_validator(type.type)
+              void_type_context_validator(type.self_type) if type.self_type
               if type.block
                 void_type_context_validator(type.block.type)
                 void_type_context_validator(type.block.self_type) if type.block.self_type

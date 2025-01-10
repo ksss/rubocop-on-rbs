@@ -102,12 +102,14 @@ RSpec.describe RuboCop::Cop::RBS::Lint::WillSyntaxError, :config do
                      ^^^^ `void` type is only allowed in return type or generics parameter
                                ^^^^ `void` type is only allowed in return type or generics parameter
                                       ^^^^ `void` type is only allowed in return type or generics parameter
-          def proc: (^(void) -> void | ^() { (void) [self: void] -> void } -> (void | void)) -> void
+          def proc: (^(void) -> void | ^() [self: void] { (void) [self: void] -> void } -> (void | void)) -> void
                        ^^^^ `void` type is only allowed in return type or generics parameter
-                                              ^^^^ `void` type is only allowed in return type or generics parameter
+                                                  ^^^^ `void` type is only allowed in return type or generics parameter
                                                            ^^^^ `void` type is only allowed in return type or generics parameter
-                                                                               ^^^^ `void` type is only allowed in return type or generics parameter
-                                                                                      ^^^^ `void` type is only allowed in return type or generics parameter
+                                                                        ^^^^ `void` type is only allowed in return type or generics parameter
+                                                                                            ^^^^ `void` type is only allowed in return type or generics parameter
+                                                                                                   ^^^^ `void` type is only allowed in return type or generics parameter
+
           def untyped_function: (?) -> void
         end
       RBS
