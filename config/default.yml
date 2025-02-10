@@ -121,6 +121,10 @@ RBS/Lint/LiteralIntersection:
   Description: 'Check literal intersection'
   Enabled: true
 
+RBS/Lint/NewReturnsVoid:
+  Description: 'sigleton `new` method should not returns `void` type'
+  Enabled: true
+
 RBS/Lint/Syntax:
   Severity: fatal
   Description: 'Check RBS syntax'

@@ -9,6 +9,9 @@ Naming/FileName:
   Exclude:
     - lib/rubocop-on-rbs.rb
 
+Layout/LeadingCommentSpace:
+    AllowRBSInlineAnnotation: true
+
 Lint/AssignmentInCondition:
   Enabled: false
 
