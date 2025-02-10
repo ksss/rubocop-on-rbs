@@ -25,6 +25,7 @@
 * xref:cops_rbs_lint.adoc#rbslintambiguousoperatorprecedence[RBS/Lint/AmbiguousOperatorPrecedence]
 * xref:cops_rbs_lint.adoc#rbslintduplicateoverload[RBS/Lint/DuplicateOverload]
 * xref:cops_rbs_lint.adoc#rbslintliteralintersection[RBS/Lint/LiteralIntersection]
+* xref:cops_rbs_lint.adoc#rbslintnewreturnsvoid[RBS/Lint/NewReturnsVoid]
 * xref:cops_rbs_lint.adoc#rbslintsyntax[RBS/Lint/Syntax]
 * xref:cops_rbs_lint.adoc#rbslinttoplevelinterface[RBS/Lint/TopLevelInterface]
 * xref:cops_rbs_lint.adoc#rbslinttopleveltypealias[RBS/Lint/TopLevelTypeAlias]

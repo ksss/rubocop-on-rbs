@@ -132,12 +132,12 @@ RBS/Lint/Syntax:
 
 RBS/Lint/TopLevelInterface:
   Description: 'Check top level interface'
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.2.0'
 
 RBS/Lint/TopLevelTypeAlias:
   Description: 'Check top level type alias'
-  Enabled: pending
+  Enabled: true
   VersionAdded: '1.2.0'
 
 RBS/Lint/UselessAccessModifier:
@@ -168,7 +168,7 @@ RBS/Style/BlockReturnBoolish:
 
 RBS/Style/ClassWithSingleton:
   Description: 'Check `class` with singleton context'
-  Enabled: pending
+  Enabled: true
 
 RBS/Style/ClassicType:
   Description: 'Use simple type'
@@ -188,7 +188,7 @@ RBS/Style/InitializeReturnType:
 
 RBS/Style/InstanceWithInstance:
   Description: 'Check `instance` with instance context'
-  Enabled: pending
+  Enabled: true
 
 RBS/Style/OptionalNil:
   Description: 'Use nil instead of nil?'

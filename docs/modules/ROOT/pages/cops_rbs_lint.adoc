@@ -121,6 +121,38 @@ Checks that there are no repeated overload bodies
 1 & _Foo
 ----
 
+[#rbslintnewreturnsvoid]
+== RBS/Lint/NewReturnsVoid
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Checks that there are void types in the return type of `.new` method
+`self.new` is a special and fundamental method, and extra care should be taken regarding its return value.
+In most cases, assigning it `void` is an unintended mistake.
+
+[#examples-rbslintnewreturnsvoid]
+=== Examples
+
+[#default-rbslintnewreturnsvoid]
+==== default
+
+[source,rbs]
+----
+# bad
+def self.new: () -> void
+
+# good
+def self.new: () -> instance
+----
+
 [#rbslintsyntax]
 == RBS/Lint/Syntax
 
@@ -153,7 +185,7 @@ Just only for syntax error
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 1.2.0
@@ -186,7 +218,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 1.2.0
