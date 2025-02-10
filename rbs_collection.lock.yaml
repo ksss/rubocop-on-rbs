@@ -141,10 +141,6 @@ gems:
   version: '0'
   source:
     type: stdlib
-- name: prism
-  version: 1.3.0
-  source:
-    type: rubygems
 - name: rainbow
   version: '3.0'
   source:
@@ -163,10 +159,6 @@ gems:
     repo_dir: gems
 - name: rbs
   version: 3.8.1
-  source:
-    type: rubygems
-- name: rbs-inline
-  version: 0.10.0
   source:
     type: rubygems
 - name: rdoc

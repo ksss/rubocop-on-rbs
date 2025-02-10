@@ -18,3 +18,7 @@ gems:
     ignore: true
   - name: minitest
     ignore: true
+  - name: prism
+    ignore: true
+  - name: rbs-inline
+    ignore: true
