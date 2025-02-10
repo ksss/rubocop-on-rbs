@@ -1,0 +1,24 @@
+# Generated from lib/rubocop/cop/rbs/lint/new_returns_void.rb with RBS::Inline
+
+module RuboCop
+  module Cop
+    module RBS
+      module Lint
+        # Checks that there are void types in the return type of `.new` method
+        #
+        # @example default
+        #   # bad
+        #   def self.new: () -> void
+        #
+        #   # good
+        #   def self.new: () -> instance
+        class NewReturnsVoid < RuboCop::RBS::CopBase
+          MSG: ::String
+
+          # @rbs decl: RBS::AST::Members::MethodDefinition
+          def on_rbs_def: (RBS::AST::Members::MethodDefinition decl) -> untyped
+        end
+      end
+    end
+  end
+end
