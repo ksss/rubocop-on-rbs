@@ -16,3 +16,5 @@ path: .gem_rbs_collection
 gems:
   - name: ffi
     ignore: true
+  - name: minitest
+    ignore: true
