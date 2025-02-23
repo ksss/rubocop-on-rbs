@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [1.4.1] - 2025-02-23
+
+* Default type params allows void by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/82
+
 ## [1.4.0] - 2025-02-23
 
 * Bundle update by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/71
