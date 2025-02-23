@@ -84,6 +84,13 @@ RSpec.describe RuboCop::Cop::RBS::Lint::WillSyntaxError, :config do
         end
       RBS
     end
+
+    it 'no registers an offense' do
+      expect_no_offenses(<<~RBS)
+        class DefaultTypeParams[T = void]
+        end
+      RBS
+    end
   end
 
   describe 'method' do

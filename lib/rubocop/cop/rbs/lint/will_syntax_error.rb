@@ -55,7 +55,7 @@ module RuboCop
 
               if param.respond_to?(:default_type)
                 if dt = param.default_type
-                  void_type_context_validator(dt)
+                  void_type_context_validator(dt, true)
                   no_self_type_validator(dt)
                   no_classish_type_validator(dt)
                 end
