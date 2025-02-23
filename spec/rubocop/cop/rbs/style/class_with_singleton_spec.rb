@@ -13,6 +13,10 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassWithSingleton, :config do
         def self.bar: [T] () { () [self: class] -> void } -> T
                                          ^^^^^ Use `self` instead of `class`.
 
+        def self.baz: (class | class) -> void
+                       ^^^^^ Use `self` instead of `class`.
+                               ^^^^^ Use `self` instead of `class`.
+
         def foo: () -> class
 
         def self?.foo: () -> class
@@ -22,6 +26,13 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassWithSingleton, :config do
         @@cvar: class
 
         self.@civar: class
+
+        def self.proc: (^() [self: class] { (class) [self: class] -> class } -> class) -> void
+                                   ^^^^^ Use `self` instead of `class`.
+                                             ^^^^^ Use `self` instead of `class`.
+                                                           ^^^^^ Use `self` instead of `class`.
+                                                                     ^^^^^ Use `self` instead of `class`.
+                                                                                ^^^^^ Use `self` instead of `class`.
       end
 
       module Foo
@@ -36,6 +47,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassWithSingleton, :config do
 
         def self.bar: [T] () { () [self: self] -> void } -> T
 
+        def self.baz: (self | self) -> void
+
         def foo: () -> class
 
         def self?.foo: () -> class
@@ -45,6 +58,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::ClassWithSingleton, :config do
         @@cvar: class
 
         self.@civar: class
+
+        def self.proc: (^() [self: self] { (self) [self: self] -> self } -> self) -> void
       end
 
       module Foo
