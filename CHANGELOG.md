@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [1.4.2] - 2025-02-23
+
+* [RBS/Style/ClassWithSingleton] Digging into each types
+* [RBS/Style/InstanceWithInstance] Digging into each types
+
 ## [1.4.1] - 2025-02-23
 
 * Default type params allows void by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/82
