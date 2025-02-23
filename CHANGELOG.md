@@ -2,8 +2,8 @@
 
 ## [1.4.2] - 2025-02-23
 
-* [RBS/Style/ClassWithSingleton] Digging into each types
-* [RBS/Style/InstanceWithInstance] Digging into each types
+* [RBS/Style/ClassWithSingleton] Digging into each types by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/84
+* [RBS/Style/InstanceWithInstance] Digging into each types by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/83
 
 ## [1.4.1] - 2025-02-23
 
