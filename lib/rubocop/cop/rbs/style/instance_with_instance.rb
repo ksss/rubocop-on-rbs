@@ -48,6 +48,10 @@ module RuboCop
               add_offense(range) do |corrector|
                 corrector.replace(range, 'self')
               end
+            else
+              type.each_type do |t|
+                check_type(t)
+              end
             end
           end
         end

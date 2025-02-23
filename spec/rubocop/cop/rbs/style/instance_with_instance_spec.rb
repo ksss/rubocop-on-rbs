@@ -13,6 +13,10 @@ RSpec.describe RuboCop::Cop::RBS::Style::InstanceWithInstance, :config do
         def bar: [T] () { () [self: instance] -> void } -> T
                                     ^^^^^^^^ Use `self` instead of `instance`.
 
+        def baz: (instance | instance) -> void
+                  ^^^^^^^^ Use `self` instead of `instance`.
+                             ^^^^^^^^ Use `self` instead of `instance`.
+
         def self.foo: () -> instance
 
         def self?.foo: () -> instance
@@ -23,6 +27,13 @@ RSpec.describe RuboCop::Cop::RBS::Style::InstanceWithInstance, :config do
         @@cvar: instance
 
         self.@civar: instance
+
+        def proc: (^() [self: instance] { (instance) [self: instance] -> instance } -> instance) -> void
+                              ^^^^^^^^ Use `self` instead of `instance`.
+                                           ^^^^^^^^ Use `self` instead of `instance`.
+                                                            ^^^^^^^^ Use `self` instead of `instance`.
+                                                                         ^^^^^^^^ Use `self` instead of `instance`.
+                                                                                       ^^^^^^^^ Use `self` instead of `instance`.
       end
     RBS
 
@@ -31,6 +42,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::InstanceWithInstance, :config do
         def foo: (self) -> self
 
         def bar: [T] () { () [self: self] -> void } -> T
+
+        def baz: (self | self) -> void
 
         def self.foo: () -> instance
 
@@ -41,6 +54,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::InstanceWithInstance, :config do
         @@cvar: instance
 
         self.@civar: instance
+
+        def proc: (^() [self: self] { (self) [self: self] -> self } -> self) -> void
       end
     RBS
   end
