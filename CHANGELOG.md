@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+## [1.4.0] - 2025-02-23
+
+* Bundle update by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/71
+* Improve will syntax error by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/73
+* [RBS/Lint/WillSyntaxError] Support Proc self_type by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/74
+* Add RBS/Lint/NewReturnsVoid by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/79
+* Bundle update by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/80
+* Enabled pending cops by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/81
+* Use Ruby 3.4 on CI by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/72
+
 ## [1.3.0] - 2024-12-24
 
 * Add RBS/Lint/AmbiguousKeywordArgumentKey by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/51
