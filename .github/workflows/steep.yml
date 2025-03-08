@@ -21,4 +21,4 @@ jobs:
     - name: Run the RuboCop
       run: |
         bundle exec rbs collection install
-        bundle exec steep check --jobs 2
+        bundle exec steep check --jobs 2 --format=github

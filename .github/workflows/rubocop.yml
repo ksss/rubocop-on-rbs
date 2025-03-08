@@ -20,4 +20,4 @@ jobs:
         bundler-cache: true
     - name: Run the RuboCop
       run: |
-        bundle exec rubocop --format github
+        bundle exec rubocop
