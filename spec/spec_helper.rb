@@ -41,7 +41,6 @@ module CopHelperHack
 end
 
 RSpec.configure do |config|
-  config.include RuboCop::RSpec::ExpectOffense
   config.include CopHelperHack
 
   config.disable_monkey_patching!
