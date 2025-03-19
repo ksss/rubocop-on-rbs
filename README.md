@@ -137,13 +137,13 @@ ways to do this:
 Put this into your `.rubocop.yml`.
 
 ```yaml
-require: rubocop-on-rbs
+plugins: rubocop-on-rbs
 ```
 
 Alternatively, use the following array notation when specifying multiple extensions.
 
 ```yaml
-require:
+plugins:
   - rubocop-other-extension
   - rubocop-on-rbs
 ```
@@ -151,10 +151,13 @@ require:
 Now you can run `rubocop` and it will automatically load the RuboCop on RBS
 cops together with the standard cops.
 
+> [!NOTE]
+> The plugin system is supported in RuboCop 1.72+. In earlier versions, use `require` instead of `plugins`.
+
 ### Command line
 
 ```sh
-$ rubocop --require rubocop-on-rbs
+$ rubocop --plugin rubocop-on-rbs
 ```
 
 ### Rake task
@@ -163,7 +166,7 @@ $ rubocop --require rubocop-on-rbs
 require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new do |task|
-  task.requires << 'rubocop-on-rbs'
+  task.plugin << 'rubocop-on-rbs'
 end
 ```
 

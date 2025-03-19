@@ -1,5 +1,5 @@
-require:
-  - './lib/rubocop-on-rbs'
+plugins:
+  - rubocop-on-rbs
 
 AllCops:
   TargetRubyVersion: 3.1

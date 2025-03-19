@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+* Pluginfy RuboCop on RBS by @ydah in https://github.com/ksss/rubocop-on-rbs/pull/88
+
 ## [1.4.2] - 2025-02-23
 
 * [RBS/Style/ClassWithSingleton] Digging into each types by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/84
