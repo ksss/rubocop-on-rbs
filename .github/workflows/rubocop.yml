@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
+    name: Rubocop
     steps:
     - uses: actions/checkout@v4
     - name: Set up Ruby
@@ -20,4 +20,9 @@ jobs:
         bundler-cache: true
     - name: Run the RuboCop
       run: |
-        bundle exec rubocop --format github
+        readarray -t CHANGED_FILES < <(
+          comm -12 \
+            <(git diff --diff-filter=d --name-only "${{ github.event.pull_request.base.sha }}..${{ github.sha }}" | sort || kill $$) \
+            <(bundle exec rubocop --list-target-files | sort || kill $$)
+        )
+        bundle exec rubocop --format github "${CHANGED_FILES[@]}"
