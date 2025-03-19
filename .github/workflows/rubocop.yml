@@ -22,7 +22,7 @@ jobs:
       run: |
         readarray -t CHANGED_FILES < <(
           comm -12 \
-            <(git diff --diff-filter=d --name-only "${BASE_REF}..${HEAD_REF}" | sort || kill $$) \
+            <(git diff --diff-filter=d --name-only "${{ github.event.pull_request.base.sha }}..${{ github.sha }}" | sort || kill $$) \
             <(bundle exec rubocop --list-target-files | sort || kill $$)
         )
         bundle exec rubocop --format github "${CHANGED_FILES[@]}"
