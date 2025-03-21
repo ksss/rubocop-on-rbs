@@ -166,7 +166,7 @@ $ rubocop --plugin rubocop-on-rbs
 require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new do |task|
-  task.plugin << 'rubocop-on-rbs'
+  task.plugins << 'rubocop-on-rbs'
 end
 ```
 
