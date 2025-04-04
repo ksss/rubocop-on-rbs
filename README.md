@@ -33,20 +33,10 @@ def foo: (   void) -> untyped
 
 ## Support VSCode
 
-We are currently working on a response, but it is possible to modify part of [vscode-rubocop](https://github.com/rubocop/vscode-rubocop) as a temporary hack to use it in vscode as well.
+[vscode-rubocop](https://github.com/rubocop/vscode-rubocop) with [rubocop.additionalLanguages](https://github.com/rubocop/vscode-rubocop?tab=readme-ov-file#rubocopadditionallanguages) option is recommended.
 
-Open your installed vscode extension.
-
-```
-$ code ~/.vscode/extensions/rubocop.vscode-rubocop-X.Y.Z/
-```
-
-Search `documentSelector:[{`.
-
-Then, Edit to add following to `documentSelector[]`
-
-```js
-{scheme:"file",language:"rbs"}
+```json
+"rubocop.additionalLanguages": ["rbs"]
 ```
 
 Additionally, by configuring the `settings.json` below, you can enable auto-correction to run on file save.
