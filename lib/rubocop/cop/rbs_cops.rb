@@ -2,6 +2,8 @@
 
 require 'rbs'
 
+require_relative 'rbs/inline/syntax'
+
 require_relative 'rbs/layout/comment_indentation'
 require_relative 'rbs/layout/empty_lines_around_access_modifier'
 require_relative 'rbs/layout/empty_lines_around_body'

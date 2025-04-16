@@ -13,47 +13,49 @@ module RuboCop
 
       exclude_from_registry
 
+      private
+
       def on_new_investigation
-        # Called here when valid as Ruby
-        investigation_rbs()
+        buffer_name = processed_source.buffer.name
+        case
+        when buffer_name.end_with?(".rb")
+          super
+        when buffer_name.end_with?(".rbs")
+          investigation_rbs()
+        when buffer_name == "(string)"
+          # on testing
+          begin
+            ::RBS::Parser.parse_signature(processed_source.raw_source)
+            # Maybe rbs
+            investigation_rbs()
+          rescue ::RBS::ParsingError
+            # Maybe ruby
+            super
+          end
+        end
       end
 
       def on_other_file
-        investigation_rbs()
+        on_new_investigation
       end
 
       @@cache = {}
       def parse_rbs
         buffer = rbs_buffer()
-        @processed_rbs_source = RuboCop::RBS::ProcessedRBSSource.new(buffer)
+        RuboCop::RBS::ProcessedRBSSource.new(buffer)
       end
 
       def investigation_rbs
         return unless processed_source.buffer.name.then { |n| n.end_with?(".rbs") || n == "(string)" }
 
-        if processed_source.buffer.name == "(string)"
-          parse_rbs
-        else
-          crc32 = Zlib.crc32(processed_source.raw_source)
-          hit_path = @@cache[processed_source.buffer.name]
-          if hit_path
-            if hit_crc32 = hit_path[crc32]
-              @processed_rbs_source = hit_crc32
-            else
-              hit_path.clear # Other key expect clear by GC
-              hit_path[crc32] = parse_rbs
-            end
-          else
-            (@@cache[processed_source.buffer.name] ||= {})[crc32] = parse_rbs
-          end
-        end
+        @processed_rbs_source = process_rbs
 
-        if processed_rbs_source.error
+        if @processed_rbs_source.error
           on_rbs_parsing_error()
         else
           on_rbs_new_investigation()
 
-          processed_rbs_source.decls.each do |decl|
+          @processed_rbs_source.decls.each do |decl|
             walk(decl)
           end
         end
@@ -120,11 +122,51 @@ module RuboCop
         ::RBS::Parser.lex(source).value.reject { |t| t.type == :tTRIVIA }
       end
 
-      private
-
       # HACK: Required to autocorrect
       def current_corrector
-        @current_corrector ||= RuboCop::Cop::Corrector.new(@processed_source) if @processed_rbs_source.valid_syntax?
+        if @processed_rbs_source
+          if @processed_rbs_source.valid_syntax?
+            @current_corrector ||= RuboCop::Cop::Corrector.new(@processed_source)
+          end
+        else
+          super
+        end
+      end
+
+      def process_rbs
+        if processed_source.buffer.name == "(string)"
+          parse_rbs
+        else
+          cache { parse_rbs }
+        end
+      end
+
+      def parse_rbs_inline
+        prism = Prism.parse(processed_source.raw_source)
+        ::RBS::InlineParser.parse(rbs_buffer, prism)
+      end
+
+      def rbs_inline
+        if processed_source.buffer.name == "(string)"
+          parse_rbs_inline
+        else
+          cache { parse_rbs_inline }
+        end
+      end
+
+      def cache
+        crc32 = Zlib.crc32(processed_source.raw_source)
+        hit_path = @@cache[processed_source.buffer.name]
+        if hit_path
+          if hit_crc32 = hit_path[crc32]
+            hit_crc32
+          else
+            hit_path.clear # Other key expect clear by GC
+            hit_path[crc32] = yield
+          end
+        else
+          (@@cache[processed_source.buffer.name] ||= {})[crc32] = yield
+        end
       end
     end
   end

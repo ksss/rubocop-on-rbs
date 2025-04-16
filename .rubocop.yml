@@ -10,7 +10,7 @@ Naming/FileName:
     - lib/rubocop-on-rbs.rb
 
 Layout/LeadingCommentSpace:
-    AllowRBSInlineAnnotation: true
+  AllowRBSInlineAnnotation: true
 
 Lint/AssignmentInCondition:
   Enabled: false

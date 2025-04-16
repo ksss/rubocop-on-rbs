@@ -6,6 +6,8 @@ require 'rubocop/rspec/support'
 RuboCop::RSpec::ExpectOffense.prepend(Module.new do
   # skip ruby syntax check
   def parse_processed_source(source, file = nil)
+    return super if file && file.end_with?('.rb')
+
     parse_source(source, file).tap do
       begin
         ::RBS::Parser.parse_signature(source)
@@ -28,6 +30,8 @@ end)
 
 module CopHelperHack
   def inspect_source(source, file = nil)
+    return super if file && file.end_with?('.rb')
+
     RuboCop::Formatter::DisabledConfigFormatter.config_to_allow_offenses = {}
     RuboCop::Formatter::DisabledConfigFormatter.detected_styles = {}
     processed_source = parse_source(source, file)
@@ -40,8 +44,15 @@ module CopHelperHack
   end
 end
 
+module MinimumRubyVersion
+  extend RSpec::SharedContext
+
+  let(:ruby_version) { 3.2 }
+end
+
 RSpec.configure do |config|
   config.include CopHelperHack
+  config.include MinimumRubyVersion
 
   config.disable_monkey_patching!
   config.raise_errors_for_deprecations!

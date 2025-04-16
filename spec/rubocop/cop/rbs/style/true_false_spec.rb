@@ -3,8 +3,20 @@
 require 'spec_helper'
 
 RSpec.describe RuboCop::Cop::RBS::Style::TrueFalse, :config do
+  it 'registers an offense on ruby' do
+    expect_offense(<<~RBS, "a.rb")
+      class Foo
+        # Comment
+        # @rbs return: true | false
+                       ^^^^^^^^^^^^ Use `bool` instead of `true | false`
+        def foo
+        end
+      end
+    RBS
+  end
+
   it 'registers an offense' do
-    expect_offense(<<~RBS)
+    expect_offense(<<~RBS, "a.rbs")
       class Foo
         def foo: () -> (true | true | false)
                         ^^^^^^^^^^^^^^^^^^^ Use `bool` instead of `true | true | false`
@@ -67,7 +79,7 @@ RSpec.describe RuboCop::Cop::RBS::Style::TrueFalse, :config do
   end
 
   it 'should registers an offense in optional type' do
-    expect_offense(<<~RBS)
+    expect_offense(<<~RBS, "a.rbs")
       class Foo
         def foo: () -> (true | false)?
                         ^^^^^^^^^^^^ Use `bool` instead of `true | false`

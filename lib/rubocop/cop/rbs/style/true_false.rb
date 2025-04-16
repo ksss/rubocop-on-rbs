@@ -16,20 +16,49 @@ module RuboCop
         class TrueFalse < RuboCop::RBS::CopBase
           extend AutoCorrector
 
-          # @sig decl: ::RBS::AST::Members::MethodDefinition
-          def on_rbs_def(decl)
-            decl.overloads.each do |overload|
-              overload.method_type.each_type do |type|
-                check_type(type)
+          def on_new_investigation
+            if processed_source.buffer.name.then { |n| n.end_with?(".rb") || n == "(string)" }
+              rbs_inline.declarations.each do |decl|
+                case decl
+                when ::RBS::AST::Ruby::Declarations::ModuleDecl,
+                    ::RBS::AST::Ruby::Declarations::ClassDecl
+                  case_ruby_decl(decl)
+                when ::RBS::AST::Ruby::Members::Base
+                  case_ruby_member(decl)
+                end
+              end
+            else
+              super
+            end
+          end
+
+          def case_ruby_decl(decl)
+            decl.members.each do |member|
+              case_ruby_member(member)
+            end
+          end
+
+          def case_ruby_member(member)
+            case member
+            when ::RBS::AST::Ruby::Members::DefMember
+              member.method_type.overloads.each do |overload|
+                check_overload(overload)
               end
             end
           end
 
-          def on_rbs_constant(const) = check_type(const.type)
-          alias on_rbs_global on_rbs_constant
-          alias on_rbs_type_alias on_rbs_constant
-          alias on_rbs_attribute on_rbs_constant
-          alias on_rbs_var on_rbs_constant
+          # @sig decl: ::RBS::AST::Members::MethodDefinition
+          def on_rbs_def(decl)
+            decl.overloads.each do |overload|
+              check_overload(overload)
+            end
+          end
+
+          def check_overload(overload)
+            overload.method_type.each_type do |type|
+              check_type(type)
+            end
+          end
 
           def check_type(type)
             find_replacement(type) do |t, replaced|
@@ -39,6 +68,12 @@ module RuboCop
               end
             end
           end
+
+          def on_rbs_constant(const) = check_type(const.type)
+          alias on_rbs_global on_rbs_constant
+          alias on_rbs_type_alias on_rbs_constant
+          alias on_rbs_attribute on_rbs_constant
+          alias on_rbs_var on_rbs_constant
 
           # @rbs type: ::RBS::Types::t
           def find_replacement(type, &block)
