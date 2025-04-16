@@ -20,12 +20,22 @@ module RuboCop
           def on_rbs_def(decl)
             decl.overloads.each do |overload|
               overload.method_type.each_type do |type|
-                find_replacement(type) do |t, replaced|
-                  range = location_to_range(t.location)
-                  add_offense(range, message: "Use `#{replaced}` instead of `#{t}`") do |corrector|
-                    corrector.replace(range, replaced.to_s)
-                  end
-                end
+                check_type(type)
+              end
+            end
+          end
+
+          def on_rbs_constant(const) = check_type(const.type)
+          alias on_rbs_global on_rbs_constant
+          alias on_rbs_type_alias on_rbs_constant
+          alias on_rbs_attribute on_rbs_constant
+          alias on_rbs_var on_rbs_constant
+
+          def check_type(type)
+            find_replacement(type) do |t, replaced|
+              range = location_to_range(t.location)
+              add_offense(range, message: "Use `#{replaced}` instead of `#{t}`") do |corrector|
+                corrector.replace(range, replaced.to_s)
               end
             end
           end

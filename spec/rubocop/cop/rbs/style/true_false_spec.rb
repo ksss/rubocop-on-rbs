@@ -23,7 +23,22 @@ RSpec.describe RuboCop::Cop::RBS::Style::TrueFalse, :config do
 
         def self.bar: (TrueClass | FalseClass) -> void
                        ^^^^^^^^^^^^^^^^^^^^^^ Use `bool` instead of `TrueClass | FalseClass`
+
+        CONST: true | false
+               ^^^^^^^^^^^^ Use `bool` instead of `true | false`
+
+        type t = TrueClass | FalseClass
+                 ^^^^^^^^^^^^^^^^^^^^^^ Use `bool` instead of `TrueClass | FalseClass`
+
+        attr_accessor a: true | FalseClass
+                         ^^^^^^^^^^^^^^^^^ Use `bool` instead of `true | FalseClass`
+
+        @var: TrueClass | false
+              ^^^^^^^^^^^^^^^^^ Use `bool` instead of `TrueClass | false`
       end
+
+      $global: true | false
+               ^^^^^^^^^^^^ Use `bool` instead of `true | false`
     RBS
 
     expect_correction(<<~RBS)
@@ -37,7 +52,17 @@ RSpec.describe RuboCop::Cop::RBS::Style::TrueFalse, :config do
         def intersection: (Integer & (bool)) -> void
 
         def self.bar: (bool) -> void
+
+        CONST: bool
+
+        type t = bool
+
+        attr_accessor a: bool
+
+        @var: bool
       end
+
+      $global: bool
     RBS
   end
 
