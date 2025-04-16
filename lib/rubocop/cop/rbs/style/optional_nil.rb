@@ -30,6 +30,7 @@ module RuboCop
               end
             end
           end
+
           def on_rbs_constant(const) = check_type(const.type)
           alias on_rbs_global on_rbs_constant
           alias on_rbs_type_alias on_rbs_constant
