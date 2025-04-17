@@ -15,7 +15,21 @@ RSpec.describe RuboCop::Cop::RBS::Style::DuplicatedType, :config do
         def baz: ([Integer | Integer], {a: Integer | Integer}) -> void
                              ^^^^^^^ Duplicated type `Integer`.
                                                      ^^^^^^^ Duplicated type `Integer`.
-       end
+
+        type t = (Integer | Integer)
+                            ^^^^^^^ Duplicated type `Integer`.
+
+        attr_accessor a: (Integer | Integer)
+                                    ^^^^^^^ Duplicated type `Integer`.
+
+        @var: (Integer | Integer)
+                         ^^^^^^^ Duplicated type `Integer`.
+      end
+
+      $global: (Integer | Integer)
+                          ^^^^^^^ Duplicated type `Integer`.
+      CONST: (Integer | Integer)
+                        ^^^^^^^ Duplicated type `Integer`.
     RBS
 
     expect_no_offenses(<<~RBS)
@@ -23,6 +37,8 @@ RSpec.describe RuboCop::Cop::RBS::Style::DuplicatedType, :config do
         def foo: ([Integer, Integer]) -> void
         def bar: ({a: Integer, b: Integer}) -> void
       end
+
+      $global: Integer
     RBS
   end
 end
