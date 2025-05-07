@@ -53,14 +53,6 @@ gems:
     revision: eb6867fdb70e82e3aac6b51623ed1b6760c3c072
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
-- name: csv
-  version: '3.3'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: eb6867fdb70e82e3aac6b51623ed1b6760c3c072
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
 - name: date
   version: '0'
   source:
@@ -85,10 +77,6 @@ gems:
   version: '0'
   source:
     type: stdlib
-- name: forwardable
-  version: '0'
-  source:
-    type: stdlib
 - name: i18n
   version: '1.10'
   source:
@@ -101,14 +89,6 @@ gems:
   version: '0'
   source:
     type: stdlib
-- name: listen
-  version: '3.9'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: eb6867fdb70e82e3aac6b51623ed1b6760c3c072
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
 - name: logger
   version: '0'
   source:
@@ -118,9 +98,9 @@ gems:
   source:
     type: stdlib
 - name: mutex_m
-  version: 0.3.0
+  version: '0'
   source:
-    type: rubygems
+    type: stdlib
 - name: openssl
   version: '0'
   source:
@@ -145,10 +125,6 @@ gems:
     revision: eb6867fdb70e82e3aac6b51623ed1b6760c3c072
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
-- name: pathname
-  version: '0'
-  source:
-    type: stdlib
 - name: rainbow
   version: '3.0'
   source:
@@ -165,14 +141,6 @@ gems:
     revision: eb6867fdb70e82e3aac6b51623ed1b6760c3c072
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
-- name: rbs
-  version: 3.9.2
-  source:
-    type: rubygems
-- name: rdoc
-  version: '0'
-  source:
-    type: stdlib
 - name: regexp_parser
   version: '2.8'
   source:
@@ -217,23 +185,11 @@ gems:
   version: '0'
   source:
     type: stdlib
-- name: stringio
-  version: '0'
-  source:
-    type: stdlib
-- name: strscan
-  version: '0'
-  source:
-    type: stdlib
 - name: time
   version: '0'
   source:
     type: stdlib
 - name: timeout
-  version: '0'
-  source:
-    type: stdlib
-- name: tsort
   version: '0'
   source:
     type: stdlib

@@ -18,14 +18,14 @@ module RuboCop
 
       def case_ruby_decl(decl)
         case decl
+        when ::RBS::AST::Ruby::Members::Base
+          case_ruby_member(decl)
         when ::RBS::AST::Ruby::Declarations::ModuleDecl
           on_rbs_inline_module(decl)
           decl.members.each { |member| case_ruby_decl(member) }
         when ::RBS::AST::Ruby::Declarations::ClassDecl
           on_rbs_inline_class(decl)
           decl.members.each { |member| case_ruby_decl(member) }
-        when ::RBS::AST::Ruby::Members::Base
-          case_ruby_member(decl)
         end
       end
 
