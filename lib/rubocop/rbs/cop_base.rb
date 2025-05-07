@@ -9,56 +9,51 @@ module RuboCop
       include RuboCop::Cop::RangeHelp
       include RuboCop::RBS::OnTypeHelper
 
-      attr_reader :processed_rbs_source
-
       exclude_from_registry
 
       private
 
-      def on_new_investigation
+      def handle_by_file
+        # Can parse ruby or rbs
         buffer_name = processed_source.buffer.name
         case
         when buffer_name.end_with?(".rb")
-          super
+          investigation_rbs_inline()
         when buffer_name.end_with?(".rbs")
           investigation_rbs()
         when buffer_name == "(string)"
           # on testing
           begin
-            ::RBS::Parser.parse_signature(processed_source.raw_source)
             # Maybe rbs
             investigation_rbs()
           rescue ::RBS::ParsingError
             # Maybe ruby
-            super
+            investigation_rbs_inline()
           end
         end
       end
-
-      def on_other_file
-        on_new_investigation
-      end
-
-      @@cache = {}
-      def parse_rbs
-        buffer = rbs_buffer()
-        RuboCop::RBS::ProcessedRBSSource.new(buffer)
-      end
+      alias on_new_investigation handle_by_file
+      alias on_other_file handle_by_file
 
       def investigation_rbs
         return unless processed_source.buffer.name.then { |n| n.end_with?(".rbs") || n == "(string)" }
 
-        @processed_rbs_source = process_rbs
-
-        if @processed_rbs_source.error
+        source = processed_rbs_source
+        if source.error
           on_rbs_parsing_error()
         else
           on_rbs_new_investigation()
 
-          @processed_rbs_source.decls.each do |decl|
+          source.decls.each do |decl|
             walk(decl)
           end
         end
+      end
+
+      # We can use rbs inline hooks by `include RuboCop::RBS::RBSInlineHooks`.
+      # But it should be optional.
+      def investigation_rbs_inline
+        # Must be empty on here
       end
 
       def on_rbs_new_investigation; end
@@ -124,36 +119,45 @@ module RuboCop
 
       # HACK: Required to autocorrect
       def current_corrector
-        if @processed_rbs_source
-          if @processed_rbs_source.valid_syntax?
-            @current_corrector ||= RuboCop::Cop::Corrector.new(@processed_source)
-          end
+        source = processed_rbs_source
+        if source&.valid_syntax?
+          @current_corrector ||= RuboCop::Cop::Corrector.new(@processed_source)
         else
           super
         end
       end
 
-      def process_rbs
-        if processed_source.buffer.name == "(string)"
+      def processed_rbs_source
+        name = processed_source.buffer.name
+        case
+        when name == "(string)"
           parse_rbs
-        else
+        when name.end_with?(".rbs")
           cache { parse_rbs }
         end
       end
 
-      def parse_rbs_inline
-        prism = Prism.parse(processed_source.raw_source)
-        ::RBS::InlineParser.parse(rbs_buffer, prism)
-      end
-
-      def rbs_inline
-        if processed_source.buffer.name == "(string)"
+      def processed_rbs_inline
+        name = processed_source.buffer.name
+        case
+        when name == "(string)"
           parse_rbs_inline
-        else
+        when name.end_with?(".rb")
           cache { parse_rbs_inline }
         end
       end
 
+      def parse_rbs
+        buffer = rbs_buffer()
+        RuboCop::RBS::ProcessedRBSSource.new(buffer)
+      end
+
+      def parse_rbs_inline
+        prism = ::Prism.parse(processed_source.raw_source)
+        ::RBS::InlineParser.parse(rbs_buffer, prism)
+      end
+
+      @@cache = {}
       def cache
         crc32 = Zlib.crc32(processed_source.raw_source)
         hit_path = @@cache[processed_source.buffer.name]

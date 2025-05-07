@@ -87,7 +87,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::IndentationWidth, :config do
   end
 
   it 'should register an offense in module' do
-    expect_offense(<<~RBS)
+    expect_offense(<<~RBS, "a.rbs")
       module Foo
           module Bar
       ^^^^ Use 2 (not 4) spaces for indentation.

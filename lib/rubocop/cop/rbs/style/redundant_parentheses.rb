@@ -116,6 +116,16 @@ module RuboCop
 
           include BeforeTokenIfLparen
           extend AutoCorrector
+          include RuboCop::RBS::RBSInlineHooks
+
+          def on_rbs_inline_def(member)
+            return unless member.method_type.type_annotations
+
+            a = member.method_type.type_annotations.return_type_annotation
+            base = a.colon_location.start_pos + 1
+            source = processed_source.raw_source[base..a.location.end_pos]
+            check_type(tokens: ::RBS::Parser.lex(source).value, type: a.return_type, base:)
+          end
 
           def on_rbs_def(decl)
             base = decl.location.start_pos

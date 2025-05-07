@@ -3,6 +3,17 @@
 require 'spec_helper'
 
 RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
+  it 'registers an offense on ruby' do
+    expect_offense(<<~RUBY, "a.rb")
+      class Foo
+        # @rbs return: (Integer)
+                       ^^^^^^^^^ Don't use parentheses around simple type.
+        def foo
+        end
+      end
+    RUBY
+  end
+
   it 'registers an offense' do
     expect_offense(<<~RBS)
       class Foo

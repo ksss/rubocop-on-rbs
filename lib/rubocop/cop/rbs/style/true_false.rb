@@ -15,35 +15,12 @@ module RuboCop
         #   def foo: (bool) -> bool
         class TrueFalse < RuboCop::RBS::CopBase
           extend AutoCorrector
+          include RuboCop::RBS::RBSInlineHooks
 
-          def on_new_investigation
-            if processed_source.buffer.name.then { |n| n.end_with?(".rb") || n == "(string)" }
-              rbs_inline.declarations.each do |decl|
-                case decl
-                when ::RBS::AST::Ruby::Declarations::ModuleDecl,
-                    ::RBS::AST::Ruby::Declarations::ClassDecl
-                  case_ruby_decl(decl)
-                when ::RBS::AST::Ruby::Members::Base
-                  case_ruby_member(decl)
-                end
-              end
-            else
-              super
-            end
-          end
-
-          def case_ruby_decl(decl)
-            decl.members.each do |member|
-              case_ruby_member(member)
-            end
-          end
-
-          def case_ruby_member(member)
-            case member
-            when ::RBS::AST::Ruby::Members::DefMember
-              member.method_type.overloads.each do |overload|
-                check_overload(overload)
-              end
+          # @rbs member: ::RBS::AST::Ruby::Members::DefMember
+          def on_rbs_inline_def(member)
+            member.method_type.overloads.each do |overload|
+              check_overload(overload)
             end
           end
 

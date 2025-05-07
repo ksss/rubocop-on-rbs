@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = spec.homepage
   spec.metadata['changelog_uri'] = spec.homepage
   spec.metadata['default_lint_roller_plugin'] = 'RuboCop::RBS::Plugin'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -34,5 +35,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rbs', '~> 3.5'
   spec.add_dependency 'rubocop', '>= 1.72.1', '< 2.0'
   spec.add_dependency 'zlib'
-  spec.metadata['rubygems_mfa_required'] = 'true'
 end

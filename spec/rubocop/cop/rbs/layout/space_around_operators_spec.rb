@@ -3,6 +3,27 @@
 require 'spec_helper'
 
 RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundOperators, :config do
+  it 'registers an offense on ruby' do
+    expect_offense(<<~RUBY, "a.rb")
+      class Foo
+        # @rbs return: Integer| String
+                              ^ Use one space before `|`.
+        def foo
+        end
+
+        # @rbs return: Integer &String
+                               ^ Use one space after `&`.
+        def bar
+        end
+
+        # @rbs return: Integer|String
+                              ^ Use one space before `|`.
+        def baz
+        end
+      end
+    RUBY
+  end
+
   it 'registers an offense' do
     expect_offense(<<~RBS)
       $global: Integer|String

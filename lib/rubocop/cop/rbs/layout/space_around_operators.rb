@@ -12,12 +12,17 @@ module RuboCop
         #   Integer | String
         class SpaceAroundOperators < RuboCop::RBS::CopBase
           extend AutoCorrector
+          include RuboCop::RBS::RBSInlineHooks
+
+          def on_rbs_inline_def(member)
+            member.method_type.overloads.each do |overload|
+              check_overload(overload)
+            end
+          end
 
           def on_rbs_def(decl)
             decl.overloads.each do |overload|
-              overload.method_type.each_type do |type|
-                check_type(type)
-              end
+              check_overload(overload)
             end
           end
 
@@ -28,6 +33,12 @@ module RuboCop
           alias on_rbs_type_alias on_rbs_constant
           alias on_rbs_attribute on_rbs_constant
           alias on_rbs_var on_rbs_constant
+
+          def check_overload(overload)
+            overload.method_type.each_type do |type|
+              check_type(type)
+            end
+          end
 
           def check_type(type)
             case type
