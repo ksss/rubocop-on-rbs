@@ -20,6 +20,12 @@ module RuboCop
         class NewReturnsVoid < RuboCop::RBS::CopBase
           MSG = "Don't use `void` in self.new method. Did you mean `instance`?"
 
+          include RuboCop::RBS::RBSInlineHooks
+
+          def on_rbs_inline_def(decl)
+            return unless decl.name == :new
+          end
+
           # @rbs decl: RBS::AST::Members::MethodDefinition
           def on_rbs_def(decl)
             return unless decl.kind == :singleton

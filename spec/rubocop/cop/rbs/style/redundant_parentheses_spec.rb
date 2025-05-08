@@ -12,6 +12,23 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
         end
       end
     RUBY
+
+    expect_offense(<<~RUBY, "a.rb")
+      class Foo
+        #: (Integer) -> (Integer)
+                        ^^^^^^^^^ Don't use parentheses around simple type.
+        def foo
+        end
+      end
+    RUBY
+
+    expect_offense(<<~RUBY, "a.rb")
+      class Foo
+        def foo #: (Integer)
+                   ^^^^^^^^^ Don't use parentheses around simple type.
+        end
+      end
+    RUBY
   end
 
   it 'registers an offense' do

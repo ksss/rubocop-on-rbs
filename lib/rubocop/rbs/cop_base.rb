@@ -102,6 +102,7 @@ module RuboCop
         end
       end
 
+      # @rbs return: ::RBS::Buffer
       def rbs_buffer
         ::RBS::Buffer.new(
           name: processed_source.buffer.name,
@@ -113,6 +114,7 @@ module RuboCop
         range_between(location.start_pos, location.end_pos)
       end
 
+      # @rbs return: Array[::RBS::Parser::Token]
       def tokenize(source)
         ::RBS::Parser.lex(source).value.reject { |t| t.type == :tTRIVIA }
       end
@@ -127,6 +129,7 @@ module RuboCop
         end
       end
 
+      # @rbs return: ::RuboCop::RBS::ProcessedRBSSource
       def processed_rbs_source
         name = processed_source.buffer.name
         case
@@ -137,6 +140,7 @@ module RuboCop
         end
       end
 
+      # @rbs return: ::RBS::InlineParser::Parser
       def processed_rbs_inline
         name = processed_source.buffer.name
         case
@@ -147,14 +151,19 @@ module RuboCop
         end
       end
 
+      # @rbs return: ::RuboCop::RBS::ProcessedRBSSource
       def parse_rbs
         buffer = rbs_buffer()
         RuboCop::RBS::ProcessedRBSSource.new(buffer)
       end
 
+      # @rbs return: ::RBS::InlineParser::Parser
       def parse_rbs_inline
         prism = ::Prism.parse(processed_source.raw_source)
-        ::RBS::InlineParser.parse(rbs_buffer, prism)
+        result = ::RBS::InlineParser::Result.new(rbs_buffer, prism)
+        parser = ::RBS::InlineParser::Parser.new(result)
+        parser.visit(prism.value)
+        parser
       end
 
       @@cache = {}

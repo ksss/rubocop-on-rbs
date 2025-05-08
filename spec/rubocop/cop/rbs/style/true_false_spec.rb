@@ -13,6 +13,14 @@ RSpec.describe RuboCop::Cop::RBS::Style::TrueFalse, :config do
         end
       end
     RBS
+
+    expect_offense(<<~RUBY, "a.rb")
+      class Foo
+        def foo #: true | false
+                   ^^^^^^^^^^^^ Use `bool` instead of `true | false`
+        end
+      end
+    RUBY
   end
 
   it 'registers an offense' do

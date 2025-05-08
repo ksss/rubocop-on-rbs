@@ -10,7 +10,7 @@ module RuboCop
     module RBSInlineHooks
       def investigation_rbs_inline
         if processed_source.buffer.name.then { |n| n.end_with?(".rb") || n == "(string)" }
-          processed_rbs_inline.declarations.each do |decl|
+          processed_rbs_inline.result.declarations.each do |decl|
             case_ruby_decl(decl)
           end
         end
