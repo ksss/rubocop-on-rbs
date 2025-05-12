@@ -11,4 +11,12 @@ RSpec.describe RuboCop::Cop::RBS::Lint::RestKeywordHash, :config do
       end
     RBS
   end
+
+  it 'does not register an offense' do
+    expect_no_offenses(<<~RBS)
+      class Bar
+        def bar: (?) -> void
+      end
+    RBS
+  end
 end

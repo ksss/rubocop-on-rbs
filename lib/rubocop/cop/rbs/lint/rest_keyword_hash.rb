@@ -20,6 +20,8 @@ module RuboCop
           def on_rbs_def(decl)
             decl.overloads.each do |overload|
               func = overload.method_type.type
+              next unless func.is_a?(::RBS::Types::Function)
+
               if !func.rest_keywords.nil?
                 check_type(func.rest_keywords.type)
               end
