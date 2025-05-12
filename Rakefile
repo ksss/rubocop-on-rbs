@@ -10,7 +10,7 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task default: [:spec, :rubocop, :check_config_default_yml]
+task default: [:spec, :check_config_default_yml, :rubocop]
 
 require 'yard'
 require 'rubocop-on-rbs'

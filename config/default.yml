@@ -125,6 +125,10 @@ RBS/Lint/NewReturnsVoid:
   Description: 'sigleton `new` method should not returns `void` type'
   Enabled: true
 
+RBS/Lint/RestKeywordHash:
+  Description: 'Check rest keyword with `Hash` type'
+  Enabled: true
+
 RBS/Lint/Syntax:
   Severity: fatal
   Description: 'Check RBS syntax'

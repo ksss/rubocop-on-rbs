@@ -153,6 +153,36 @@ def self.new: () -> void
 def self.new: () -> instance
 ----
 
+[#rbslintrestkeywordhash]
+== RBS/Lint/RestKeywordHash
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Specifying the `Hash` type for `**` is a very special case and,
+in most situations, it is a mistake in type specification.
+
+[#examples-rbslintrestkeywordhash]
+=== Examples
+
+[source,rbs]
+----
+# bad
+def foo: (**Hash[Symbol, String]) -> void
+# e.g.) foo(a: {x: "x"}, b: {y: "y"}, c: {z: "z"})
+
+# good
+def foo: (**String) -> void
+# e.g.) foo(a: "x", b: "y", c: "z")
+----
+
 [#rbslintsyntax]
 == RBS/Lint/Syntax
 
@@ -168,17 +198,6 @@ def self.new: () -> instance
 
 Just only for syntax error
 
-[#configurable-attributes-rbslintsyntax]
-=== Configurable attributes
-
-|===
-| Name | Default value | Configurable values
-
-| Severity
-| `fatal`
-| String
-|===
-
 [#rbslinttoplevelinterface]
 == RBS/Lint/TopLevelInterface
 
@@ -188,7 +207,7 @@ Just only for syntax error
 | Enabled
 | Yes
 | No
-| 1.2.0
+| -
 | -
 |===
 
@@ -221,7 +240,7 @@ end
 | Enabled
 | Yes
 | No
-| 1.2.0
+| -
 | -
 |===
 
@@ -309,7 +328,7 @@ type ary[T] = Array[T]
 
 | Enabled
 | Yes
-| Command-line only
+| Always
 | -
 | -
 |===
