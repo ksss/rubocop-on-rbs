@@ -7,9 +7,8 @@ module RuboCop
         # Checks if empty lines around the bodies of classes match
         # the configuration.
         #
-        # @example default
+        # @example
         #   # good
-        #
         #   class Foo
         #     def bar: () -> void
         #   end

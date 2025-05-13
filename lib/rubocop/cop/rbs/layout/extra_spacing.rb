@@ -4,12 +4,15 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks for unnecessary spacing between tokens.
+        #
+        # @example
         #   # bad
         #   def   foo:   ()   ->   void
         #
         #   # good
         #   def foo: () -> void
+        #
         class ExtraSpacing < RuboCop::RBS::CopBase
           extend AutoCorrector
 

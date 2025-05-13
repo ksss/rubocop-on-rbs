@@ -4,12 +4,13 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # @example
         #   # bad
         #   Integer|String
         #
         #   # good
         #   Integer | String
+        #
         class SpaceAroundOperators < RuboCop::RBS::CopBase
           extend AutoCorrector
 

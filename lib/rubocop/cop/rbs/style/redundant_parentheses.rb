@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Style
-        # @example default
+        # Check for redundant parentheses.
+        #
+        # @example
         #   # bad
         #   def foo: () -> (bool)
         #
@@ -16,6 +18,7 @@ module RuboCop
         #
         #   # good
         #   def foo: ((true | false)) -> bool
+        #
         class RedundantParentheses < RuboCop::RBS::CopBase
           module BeforeTokenIfLparen
             def before_token_if_lparen(tokens, base, fun)

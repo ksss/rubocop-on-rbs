@@ -4,12 +4,15 @@ module RuboCop
   module Cop
     module RBS
       module Style
-        # @example default
+        # `nil?` is the same as `nil`.
+        #
+        # @example
         #   # bad
         #   def foo: (nil?) -> void
         #
         #   # good
         #   def foo: (nil) -> void
+        #
         class OptionalNil < RuboCop::RBS::CopBase
           extend AutoCorrector
 

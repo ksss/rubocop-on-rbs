@@ -6,12 +6,13 @@ module RuboCop
       module Lint
         # Notice unused overload type parameters.
         #
-        # @example default
+        # @example
         #   # bad
         #   def foo: [T] () -> void
         #
         #   # good
         #   def foo: [T] (T) -> T
+        #
         class UnusedOverloadTypeParams < RuboCop::RBS::CopBase
           MSG = 'Unused overload type variable - `%<variable>s`.'
 

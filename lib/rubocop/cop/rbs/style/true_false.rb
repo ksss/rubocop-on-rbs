@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Style
-        # @example default
+        # `true | false` is simply the same as `bool`.
+        #
+        # @example
         #   # bad
         #   def foo: (true | false) -> (true | false)
         #
@@ -13,6 +15,7 @@ module RuboCop
         #
         #   # good
         #   def foo: (bool) -> bool
+        #
         class TrueFalse < RuboCop::RBS::CopBase
           extend AutoCorrector
 

@@ -7,7 +7,6 @@ module RuboCop
         # Checks for two or more consecutive blank lines.
         #
         # @example
-        #
         #   # bad - It has two empty lines.
         #   def foo: () -> void
         #   # one empty line

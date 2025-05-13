@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks for missing spaces around the `->` operator.
+        #
+        # @example
         #   # bad
         #   def foo: ()->void
         #
@@ -16,6 +18,7 @@ module RuboCop
         #
         #   # good
         #   def bar: () { () -> void } -> void
+        #
         class SpaceAroundArrow < RuboCop::RBS::CopBase
           extend AutoCorrector
 

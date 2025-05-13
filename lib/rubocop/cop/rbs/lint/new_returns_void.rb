@@ -10,7 +10,7 @@ module RuboCop
         # `self.new` is a special and fundamental method, and extra care should be taken regarding its return value.
         # In most cases, assigning it `void` is an unintended mistake.
         #
-        # @example default
+        # @example
         #   # bad
         #   def self.new: () -> void
         #

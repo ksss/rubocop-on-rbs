@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Style
-        # @example default
+        # Checks parentheses for empty arguments.
+        #
+        # @example
         #   # bad
         #   def foo: -> void
         #
@@ -16,6 +18,7 @@ module RuboCop
         #
         #   # good
         #   def foo: () { () -> void } -> ^() -> void
+        #
         class EmptyArgument < RuboCop::RBS::CopBase
           class MethodTypeChecker
             include RuboCop::RBS::OnTypeHelper

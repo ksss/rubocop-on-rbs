@@ -4,12 +4,15 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks for missing spaces after commas.
+        #
+        # @example
         #   # bad
         #   def foo: (Integer,String) -> void
         #
         #   # good
         #   def foo: (Integer, String) -> void
+        #
         class SpaceAfterComma < RuboCop::RBS::CopBase
           extend AutoCorrector
 

@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module RBS
       module Style
-        # @example default
+        # @example
         #   # bad
         #   def foo: () -> TrueClass
         #
@@ -16,6 +16,7 @@ module RuboCop
         #
         #   # good
         #   def bar: () -> nil
+        #
         class ClassicType < RuboCop::RBS::CopBase
           extend AutoCorrector
 
