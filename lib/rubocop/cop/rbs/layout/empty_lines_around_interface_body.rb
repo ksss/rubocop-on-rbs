@@ -7,12 +7,12 @@ module RuboCop
         # Checks if empty lines around the bodies of interfaces match
         # the configuration.
         #
-        # @example default
+        # @example
         #   # good
-        #
         #   interface _Foo
         #     def bar: () -> void
         #   end
+        #
         class EmptyLinesAroundInterfaceBody < RuboCop::RBS::CopBase
           include EmptyLinesAroundBody
           extend AutoCorrector

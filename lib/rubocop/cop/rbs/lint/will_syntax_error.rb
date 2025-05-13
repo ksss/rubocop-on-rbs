@@ -7,12 +7,13 @@ module RuboCop
         # This cop checks the WillSyntaxError in RBS.
         # RBS with this diagnostics will fail in `rbs validate` command.
         #
-        # @example default
+        # @example
         #   # bad
         #   def foo: (void) -> void
         #
         #   # bad
         #   CONST: self
+        #
         class WillSyntaxError < RuboCop::RBS::CopBase
           # @rbs!
           #    module Types = ::RBS::Types

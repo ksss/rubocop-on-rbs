@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks empty lines around overloads.
+        #
+        # @example
         #   # bad
         #   def foo: () -> void
         #
@@ -13,6 +15,7 @@ module RuboCop
         #   # good
         #   def foo: () -> void
         #          | (Integer) -> Integer
+        #
         class EmptyLinesAroundOverloads < RuboCop::RBS::CopBase
           extend AutoCorrector
 

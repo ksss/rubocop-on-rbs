@@ -4,12 +4,15 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks for missing spaces around braces in method definitions.
+        #
+        # @example
         #   # bad
         #   def bar: (){() -> void}-> void
         #
         #   # good
         #   def bar: () { () -> void } -> void
+        #
         class SpaceAroundBraces < RuboCop::RBS::CopBase
           extend AutoCorrector
 

@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks the indentation of comments in RBS.
+        #
+        # @example
         #   # bad
         #     # comment here
         #   def foo: () -> void
@@ -12,6 +14,7 @@ module RuboCop
         #   # good
         #   # comment here
         #   def foo: () -> void
+        #
         class CommentIndentation < RuboCop::RBS::CopBase
           extend AutoCorrector
 

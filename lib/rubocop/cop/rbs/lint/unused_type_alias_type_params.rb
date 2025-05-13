@@ -6,12 +6,13 @@ module RuboCop
       module Lint
         # Notice unused type parameters.
         #
-        # @example default
+        # @example
         #   # bad
         #   type ary[T] = Array[Integer]
         #
         #   # good
         #   type ary[T] = Array[T]
+        #
         class UnusedTypeAliasTypeParams < RuboCop::RBS::CopBase
           MSG = 'Unused type variable - `%<variable>s`.'
 

@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Style
-        # @example default
+        # Unions and intersections of the same type are meaningless.
+        #
+        # @example
         #   # bad
         #   def foo: (Integer | Integer) -> void
         #
@@ -13,6 +15,7 @@ module RuboCop
         #
         #   # good
         #   def foo: (Integer) -> void
+        #
         class DuplicatedType < RuboCop::RBS::CopBase
           extend AutoCorrector
 

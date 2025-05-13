@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks the indentation of overloads.
+        #
+        # @example
         #   # bad
         #   def foo: () -> String | () -> (Integer)
         #
@@ -19,6 +21,7 @@ module RuboCop
         #   # good
         #   def foo: () -> String
         #          | () -> Integer
+        #
         class OverloadIndentation < RuboCop::RBS::CopBase
           extend AutoCorrector
 

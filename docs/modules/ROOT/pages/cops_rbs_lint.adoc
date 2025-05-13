@@ -141,9 +141,6 @@ In most cases, assigning it `void` is an unintended mistake.
 [#examples-rbslintnewreturnsvoid]
 === Examples
 
-[#default-rbslintnewreturnsvoid]
-==== default
-
 [source,rbs]
 ----
 # bad
@@ -278,9 +275,6 @@ Notice unused overload type parameters.
 [#examples-rbslintunusedoverloadtypeparams]
 === Examples
 
-[#default-rbslintunusedoverloadtypeparams]
-==== default
-
 [source,rbs]
 ----
 # bad
@@ -308,9 +302,6 @@ Notice unused type parameters.
 [#examples-rbslintunusedtypealiastypeparams]
 === Examples
 
-[#default-rbslintunusedtypealiastypeparams]
-==== default
-
 [source,rbs]
 ----
 # bad
@@ -333,13 +324,10 @@ type ary[T] = Array[T]
 | -
 |===
 
-
+Checks for redundant access modifiers in class and module definitions.
 
 [#examples-rbslintuselessaccessmodifier]
 === Examples
-
-[#default-rbslintuselessaccessmodifier]
-==== default
 
 [source,rbs]
 ----
@@ -391,9 +379,6 @@ RBS with this diagnostics will fail in `rbs validate` command.
 
 [#examples-rbslintwillsyntaxerror]
 === Examples
-
-[#default-rbslintwillsyntaxerror]
-==== default
 
 [source,rbs]
 ----

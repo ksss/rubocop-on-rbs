@@ -24,9 +24,6 @@
 [#examples-rbsstyleblockreturnboolish]
 === Examples
 
-[#default-rbsstyleblockreturnboolish]
-==== default
-
 [source,rbs]
 ----
 # bad
@@ -84,9 +81,6 @@ def self.foo: (self) -> self
 [#examples-rbsstyleclassictype]
 === Examples
 
-[#default-rbsstyleclassictype]
-==== default
-
 [source,rbs]
 ----
 # bad
@@ -115,13 +109,10 @@ def bar: () -> nil
 | -
 |===
 
-
+Unions and intersections of the same type are meaningless.
 
 [#examples-rbsstyleduplicatedtype]
 === Examples
-
-[#default-rbsstyleduplicatedtype]
-==== default
 
 [source,rbs]
 ----
@@ -148,13 +139,10 @@ def foo: (Integer) -> void
 | -
 |===
 
-
+Checks parentheses for empty arguments.
 
 [#examples-rbsstyleemptyargument]
 === Examples
-
-[#default-rbsstyleemptyargument]
-==== default
 
 [source,rbs]
 ----
@@ -184,18 +172,19 @@ def foo: () { () -> void } -> ^() -> void
 | -
 |===
 
-
+`#initialize` is a private method and is likely to be overridden.
+The return type of `#initialize` should not be specific.
 
 [#examples-rbsstyleinitializereturntype]
 === Examples
-
-[#default-rbsstyleinitializereturntype]
-==== default
 
 [source,rbs]
 ----
 # bad
 def initialize: () -> nil
+
+# bad
+def initialize: () -> false
 
 # good
 def initialize: () -> untyped
@@ -222,9 +211,6 @@ Checks that `instance` in instance context.
 [#examples-rbsstyleinstancewithinstance]
 === Examples
 
-[#_default_-rbsstyleinstancewithinstance]
-==== (default)
-
 [source,rbs]
 ----
 # bad
@@ -247,13 +233,10 @@ def foo: (self) -> self
 | -
 |===
 
-
+`nil?` is the same as `nil`.
 
 [#examples-rbsstyleoptionalnil]
 === Examples
-
-[#default-rbsstyleoptionalnil]
-==== default
 
 [source,rbs]
 ----
@@ -277,13 +260,10 @@ def foo: (nil) -> void
 | -
 |===
 
-
+Check for redundant parentheses.
 
 [#examples-rbsstyleredundantparentheses]
 === Examples
-
-[#default-rbsstyleredundantparentheses]
-==== default
 
 [source,rbs]
 ----
@@ -313,13 +293,10 @@ def foo: ((true | false)) -> bool
 | -
 |===
 
-
+`true | false` is simply the same as `bool`.
 
 [#examples-rbsstyletruefalse]
 === Examples
-
-[#default-rbsstyletruefalse]
-==== default
 
 [source,rbs]
 ----

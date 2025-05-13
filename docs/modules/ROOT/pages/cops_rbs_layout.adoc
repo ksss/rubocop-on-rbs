@@ -19,13 +19,10 @@
 | -
 |===
 
-
+Checks the indentation of comments in RBS.
 
 [#examples-rbslayoutcommentindentation]
 === Examples
-
-[#default-rbslayoutcommentindentation]
-==== default
 
 [source,rbs]
 ----
@@ -85,21 +82,27 @@ def bar: () -> void
 
 Access modifiers should be surrounded by blank lines.
 
-  # bad
-  class Foo
-    def bar: () -> void
-    private
-    def baz: () -> void
-  end
+[#examples-rbslayoutemptylinesaroundaccessmodifier]
+=== Examples
 
-  # good
-  class Foo
-    def bar: () -> void
+[source,rbs]
+----
+# bad
+class Foo
+  def bar: () -> void
+  private
+  def baz: () -> void
+end
 
-    private
+# good
+class Foo
+  def bar: () -> void
 
-    def baz: () -> void
-  end
+  private
+
+  def baz: () -> void
+end
+----
 
 [#rbslayoutemptylinesaroundclassbody]
 == RBS/Layout/EmptyLinesAroundClassBody
@@ -120,13 +123,9 @@ the configuration.
 [#examples-rbslayoutemptylinesaroundclassbody]
 === Examples
 
-[#default-rbslayoutemptylinesaroundclassbody]
-==== default
-
 [source,rbs]
 ----
 # good
-
 class Foo
   def bar: () -> void
 end
@@ -151,13 +150,9 @@ the configuration.
 [#examples-rbslayoutemptylinesaroundinterfacebody]
 === Examples
 
-[#default-rbslayoutemptylinesaroundinterfacebody]
-==== default
-
 [source,rbs]
 ----
 # good
-
 interface _Foo
   def bar: () -> void
 end
@@ -182,13 +177,9 @@ the configuration.
 [#examples-rbslayoutemptylinesaroundmodulebody]
 === Examples
 
-[#default-rbslayoutemptylinesaroundmodulebody]
-==== default
-
 [source,rbs]
 ----
 # good
-
 module Foo
   def bar: () -> void
 end
@@ -207,13 +198,10 @@ end
 | -
 |===
 
-
+Checks empty lines around overloads.
 
 [#examples-rbslayoutemptylinesaroundoverloads]
 === Examples
-
-[#default-rbslayoutemptylinesaroundoverloads]
-==== default
 
 [source,rbs]
 ----
@@ -240,13 +228,10 @@ def foo: () -> void
 | -
 |===
 
-
+Checks if `end` is aligned with the start of the class, module or interface.
 
 [#examples-rbslayoutendalignment]
 === Examples
-
-[#default-rbslayoutendalignment]
-==== default
 
 [source,rbs]
 ----
@@ -274,13 +259,10 @@ end
 | -
 |===
 
-
+Checks for unnecessary spacing between tokens.
 
 [#examples-rbslayoutextraspacing]
 === Examples
-
-[#default-rbslayoutextraspacing]
-==== default
 
 [source,rbs]
 ----
@@ -304,13 +286,10 @@ def foo: () -> void
 | -
 |===
 
-
+Checks if the indentation width.
 
 [#examples-rbslayoutindentationwidth]
 === Examples
-
-[#default-rbslayoutindentationwidth]
-==== default
 
 [source,rbs]
 ----
@@ -338,13 +317,10 @@ end
 | -
 |===
 
-
+Checks the indentation of overloads.
 
 [#examples-rbslayoutoverloadindentation]
 === Examples
-
-[#default-rbslayoutoverloadindentation]
-==== default
 
 [source,rbs]
 ----
@@ -377,13 +353,10 @@ def foo: () -> String
 | -
 |===
 
-
+Checks for missing spaces after commas.
 
 [#examples-rbslayoutspaceaftercomma]
 === Examples
-
-[#default-rbslayoutspaceaftercomma]
-==== default
 
 [source,rbs]
 ----
@@ -407,13 +380,10 @@ def foo: (Integer, String) -> void
 | -
 |===
 
-
+Checks for missing spaces around the `->` operator.
 
 [#examples-rbslayoutspacearoundarrow]
 === Examples
-
-[#default-rbslayoutspacearoundarrow]
-==== default
 
 [source,rbs]
 ----
@@ -443,13 +413,10 @@ def bar: () { () -> void } -> void
 | -
 |===
 
-
+Checks for missing spaces around braces in method definitions.
 
 [#examples-rbslayoutspacearoundbraces]
 === Examples
-
-[#default-rbslayoutspacearoundbraces]
-==== default
 
 [source,rbs]
 ----
@@ -477,9 +444,6 @@ def bar: () { () -> void } -> void
 
 [#examples-rbslayoutspacearoundoperators]
 === Examples
-
-[#default-rbslayoutspacearoundoperators]
-==== default
 
 [source,rbs]
 ----

@@ -7,7 +7,7 @@ module RuboCop
       module Style
         # Checks that `instance` in instance context.
         #
-        # @example (default)
+        # @example
         #   # bad
         #   def foo: (instance) -> instance
         #

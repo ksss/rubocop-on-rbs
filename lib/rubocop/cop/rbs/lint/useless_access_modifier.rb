@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Lint
-        # @example default
+        # Checks for redundant access modifiers in class and module definitions.
+        #
+        # @example
         #   # bad
         #   class Foo
         #     public # this is redundant (default access is public)

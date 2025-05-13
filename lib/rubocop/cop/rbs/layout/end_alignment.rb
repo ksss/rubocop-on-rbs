@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module RBS
       module Layout
-        # @example default
+        # Checks if `end` is aligned with the start of the class, module or interface.
+        #
+        # @example
         #   # bad
         #   class Foo
         #     def foo: () -> void
@@ -14,6 +16,7 @@ module RuboCop
         #   class Foo
         #     def foo: () -> void
         #   end
+        #
         class EndAlignment < RuboCop::RBS::CopBase
           extend AutoCorrector
 

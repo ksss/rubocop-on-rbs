@@ -6,6 +6,7 @@ module RuboCop
       module Layout
         # Access modifiers should be surrounded by blank lines.
         #
+        # @example
         #   # bad
         #   class Foo
         #     def bar: () -> void
