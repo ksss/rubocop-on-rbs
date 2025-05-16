@@ -33,6 +33,13 @@ RBS/Layout/CommentIndentation:
   Description: 'Use 2 spaces for comment indentation'
   Enabled: true
 
+RBS/Layout/EmptyLineBetweenDeclarations:
+  Description: 'Keep 1 blank line between declarations'
+  Enabled: true
+  Class: true
+  Module: true
+  Interface: true
+
 RBS/Layout/EmptyLinesAroundAccessModifier:
   Description: "Keeps track of empty lines around access modifiers."
   Enabled: true
