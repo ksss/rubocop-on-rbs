@@ -1,6 +1,7 @@
 === Department xref:cops_rbs_layout.adoc[RBS/Layout]
 
 * xref:cops_rbs_layout.adoc#rbslayoutcommentindentation[RBS/Layout/CommentIndentation]
+* xref:cops_rbs_layout.adoc#rbslayoutemptylinebetweendeclarations[RBS/Layout/EmptyLineBetweenDeclarations]
 * xref:cops_rbs_layout.adoc#rbslayoutemptylines[RBS/Layout/EmptyLines]
 * xref:cops_rbs_layout.adoc#rbslayoutemptylinesaroundaccessmodifier[RBS/Layout/EmptyLinesAroundAccessModifier]
 * xref:cops_rbs_layout.adoc#rbslayoutemptylinesaroundclassbody[RBS/Layout/EmptyLinesAroundClassBody]

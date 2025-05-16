@@ -35,6 +35,87 @@ def foo: () -> void
 def foo: () -> void
 ----
 
+[#rbslayoutemptylinebetweendeclarations]
+== RBS/Layout/EmptyLineBetweenDeclarations
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks for empty lines between declarations.
+
+[#examples-rbslayoutemptylinebetweendeclarations]
+=== Examples
+
+[#class_-true-_default_-rbslayoutemptylinebetweendeclarations]
+==== Class: true (default)
+
+[source,rbs]
+----
+# checks for empty lines between class declarations.
+
+# bad
+class A
+end
+class B
+end
+
+# good
+class A
+end
+
+class B
+end
+----
+
+[#module_-true-_default_-rbslayoutemptylinebetweendeclarations]
+==== Module: true (default)
+
+[source,rbs]
+----
+# checks for empty lines between module declarations.
+
+# bad
+module A
+end
+module B
+end
+
+# good
+module A
+end
+
+module B
+end
+----
+
+[#interface_-true-_default_-rbslayoutemptylinebetweendeclarations]
+==== Interface: true (default)
+
+[source,rbs]
+----
+# checks for empty lines between interface declarations.
+
+# bad
+interface _A
+end
+interface _B
+end
+
+# good
+interface _A
+end
+
+interface _B
+end
+----
+
 [#rbslayoutemptylines]
 == RBS/Layout/EmptyLines
 
