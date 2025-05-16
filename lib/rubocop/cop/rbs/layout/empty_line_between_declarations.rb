@@ -132,7 +132,7 @@ module RuboCop
               *decl.annotations.map(&:location),
               decl.comment&.location,
               decl.location
-            ].compact.min_by(&:start_line)
+            ].compact.min_by(&:start_pos)
           end
 
           def candidate?(decl)

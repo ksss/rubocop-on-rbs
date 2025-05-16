@@ -120,6 +120,9 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EmptyLineBetweenDeclarations, :config 
       class C
       ^^^^^^^ Expected 1 empty line between class definitions; found 3.
       end
+      %a{annotationA} %a{annotationB} class D
+                                      ^^^^^^^ Expected 1 empty line between class definitions; found 0.
+      end
     RBS
 
     expect_correction(<<~RBS)
@@ -132,6 +135,9 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EmptyLineBetweenDeclarations, :config 
       # Comment
       %a{annotation}
       class C
+      end
+
+      %a{annotationA} %a{annotationB} class D
       end
     RBS
   end
