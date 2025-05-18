@@ -141,4 +141,23 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EmptyLineBetweenDeclarations, :config 
       end
     RBS
   end
+
+  it 'not registers an offense if comment between declarations' do
+    expect_no_offenses(<<~RBS)
+      class A
+      end
+
+      # Comment
+
+      class B
+      end
+
+      # Comment
+
+      # Comment
+
+      class C
+      end
+    RBS
+  end
 end
