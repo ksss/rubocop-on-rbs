@@ -97,6 +97,7 @@ module RuboCop
           def check(before, after)
             count = blank_lines_count_between(before, after)
             return if count == 1
+            return if multiple_blank_lines_groups?(before, after)
 
             after_start_line = processed_source.lines[after.location.start_line - 1]
             range = range_between(after.location.start_pos, after.location.start_pos + after_start_line.length)
@@ -123,8 +124,25 @@ module RuboCop
             end
           end
 
+          def multiple_blank_lines_groups?(first_def_decl, second_def_decl)
+            lines = lines_between_decl(first_def_decl, second_def_decl)
+            blank_start = lines.each_index.select { |i| lines[i].blank? }.max
+            non_blank_end = lines.each_index.reject { |i| lines[i].blank? }.min
+            return false if blank_start.nil? || non_blank_end.nil?
+
+            blank_start > non_blank_end
+          end
+
+          def lines_between_decl(first_def_decl, second_def_decl)
+            begin_line_num = first_def_decl.location.end_line
+            end_line_num = location_of_first(second_def_decl).start_line - 2
+            return [] if end_line_num.negative?
+
+            processed_source.lines[begin_line_num..end_line_num]
+          end
+
           def blank_lines_count_between(before, after)
-            location_of_first(after).start_line - before.location.end_line - 1
+            lines_between_decl(before, after).count(&:blank?)
           end
 
           def location_of_first(decl)
@@ -132,7 +150,7 @@ module RuboCop
               *decl.annotations.map(&:location),
               decl.comment&.location,
               decl.location
-            ].compact.min_by(&:start_line)
+            ].compact.min_by(&:start_pos)
           end
 
           def candidate?(decl)
