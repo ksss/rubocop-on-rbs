@@ -1,0 +1,25 @@
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/zlib-3.2.1/ext/zlib
+/opt/hostedtoolcache/Ruby/3.4.4/x64/bin/ruby extconf.rb
+checking for deflateReset(NULL) in -lz... yes
+checking for crc32_combine() in zlib.h... yes
+checking for adler32_combine() in zlib.h... yes
+checking for z_crc_t in zlib.h... yes
+checking for z_size_t in zlib.h... yes
+checking for crc32_z() in zlib.h... yes
+checking for adler32_z() in zlib.h... yes
+creating Makefile
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/zlib-3.2.1/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-z7ovah sitelibdir\=./.gem.20250602-1974-z7ovah clean
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/zlib-3.2.1/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-z7ovah sitelibdir\=./.gem.20250602-1974-z7ovah
+compiling zlib.c
+linking shared-object zlib.so
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/zlib-3.2.1/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-z7ovah sitelibdir\=./.gem.20250602-1974-z7ovah install
+/usr/bin/install -c -m 0755 zlib.so ./.gem.20250602-1974-z7ovah
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/zlib-3.2.1/ext/zlib
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-z7ovah sitelibdir\=./.gem.20250602-1974-z7ovah clean

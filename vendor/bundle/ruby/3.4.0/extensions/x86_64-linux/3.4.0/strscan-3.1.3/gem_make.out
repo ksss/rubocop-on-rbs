@@ -1,0 +1,20 @@
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/strscan-3.1.3/ext/strscan
+/opt/hostedtoolcache/Ruby/3.4.4/x64/bin/ruby extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+checking for rb_reg_onig_match() in ruby.h... yes
+creating Makefile
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/strscan-3.1.3/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-kwhraz sitelibdir\=./.gem.20250602-1974-kwhraz clean
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/strscan-3.1.3/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-kwhraz sitelibdir\=./.gem.20250602-1974-kwhraz
+compiling strscan.c
+linking shared-object strscan.so
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/strscan-3.1.3/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-kwhraz sitelibdir\=./.gem.20250602-1974-kwhraz install
+/usr/bin/install -c -m 0755 strscan.so ./.gem.20250602-1974-kwhraz
+
+current directory: /home/runner/work/rubocop-on-rbs/rubocop-on-rbs/vendor/bundle/ruby/3.4.0/gems/strscan-3.1.3/ext/strscan
+make DESTDIR\= sitearchdir\=./.gem.20250602-1974-kwhraz sitelibdir\=./.gem.20250602-1974-kwhraz clean

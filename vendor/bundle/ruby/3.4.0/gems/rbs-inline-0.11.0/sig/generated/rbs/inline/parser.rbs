@@ -1,0 +1,140 @@
+# Generated from lib/rbs/inline/parser.rb with RBS::Inline
+
+use Prism::*
+
+module RBS
+  module Inline
+    class Parser < Prism::Visitor
+      type with_members = AST::Declarations::ModuleDecl | AST::Declarations::ClassDecl | AST::Declarations::SingletonClassDecl | AST::Declarations::BlockDecl
+
+      # The top level declarations
+      attr_reader decls: Array[AST::Declarations::t]
+
+      # The surrounding declarations
+      attr_reader surrounding_decls: Array[with_members]
+
+      # ParsingResult associated with the line number at the end
+      #
+      # ```rb
+      # # Hello
+      # # world       <= The comments hash includes `2` (line 2) to the two lines
+      # ```
+      #
+      # > [!IMPORTANT]
+      # > The values will be removed during parsing.
+      attr_reader comments: Hash[Integer, AnnotationParser::ParsingResult]
+
+      # The current visibility applied to single `def` node
+      #
+      # Assuming it's directly inside `private` or `public` calls.
+      # `nil` when the `def` node is not inside `private` or `public` calls.
+      attr_reader current_visibility: RBS::AST::Members::visibility?
+
+      # The current module_function applied to single `def` node
+      attr_reader current_module_function: bool
+
+      def initialize: () -> void
+
+      # Parses the given Prism result to a three tuple
+      #
+      # Returns a three tuple of:
+      #
+      # 1. An array of `use` directives
+      # 2. An array of declarations
+      # 3. An array of RBS declarations given as `@rbs!` annotation at top-level
+      #
+      # Note that only RBS declarations are allowed in the top-level `@rbs!` annotations.
+      # RBS *members* are ignored in the array.
+      #
+      # @rbs result: ParseResult
+      # @rbs opt_in: bool -- `true` for *opt-out* mode, `false` for *opt-in* mode.
+      # @rbs return: [Array[AST::Annotations::Use], Array[AST::Declarations::t], Array[RBS::AST::Declarations::t]]?
+      def self.parse: (ParseResult result, opt_in: bool) -> [ Array[AST::Annotations::Use], Array[AST::Declarations::t], Array[RBS::AST::Declarations::t] ]?
+
+      # @rbs return: with_members?
+      def current_class_module_decl: () -> with_members?
+
+      # @rbs return: with_members
+      def current_class_module_decl!: () -> with_members
+
+      # : (with_members) { () -> void } -> void
+      def push_class_module_decl: (with_members) { () -> void } -> void
+
+      # Load inner declarations and delete them from `#comments` hash
+      #
+      # It also sorts the `members` by `#start_line`` ascending.
+      #
+      # @rbs start_line: Integer
+      # @rbs end_line: Integer
+      # @rbs members: Array[AST::Members::t | AST::Declarations::t] --
+      #   The destination.
+      #   The method doesn't insert declarations, but have it to please type checker.
+      def load_inner_annotations: (Integer start_line, Integer end_line, Array[AST::Members::t | AST::Declarations::t] members) -> void
+
+      # @rbs override
+      def visit_class_node: ...
+
+      # @rbs override
+      def visit_singleton_class_node: ...
+
+      # @rbs override
+      def visit_module_node: ...
+
+      # Returns an array of annotations from comments that is located between start_line and end_line
+      #
+      # ```rb
+      # module Foo        # line 1 (start_line)
+      #   # foo
+      #   # bar
+      # end               # line 4 (end_line)
+      # ```
+      #
+      # @rbs start_line: Integer
+      # @rbs end_line: Integer
+      def inner_annotations: (Integer start_line, Integer end_line) -> Array[AnnotationParser::ParsingResult]
+
+      # @rbs override
+      def visit_def_node: ...
+
+      # @rbs override
+      def visit_alias_method_node: ...
+
+      # @rbs override
+      def visit_call_node: ...
+
+      # @rbs new_visibility: RBS::AST::Members::visibility?
+      # @rbs &block: () -> void
+      # @rbs return: void
+      def push_visibility: (RBS::AST::Members::visibility? new_visibility) { () -> void } -> void
+
+      # @rbs [A] (Node) { () -> A } -> A?
+      def process_nesting_node: [A] (Node) { () -> A } -> A?
+
+      # @rbs node: Node
+      # @rbs return: bool
+      def ignored_node?: (Node node) -> bool
+
+      # Fetch Application annotation which is associated to `node`
+      #
+      # The application annotation is removed from `comments`.
+      #
+      # @rbs node: Node
+      # @rbs return: AST::Annotations::Application?
+      def application_annotation: (Node node) -> AST::Annotations::Application?
+
+      # Fetch TypeAssertion annotation which is associated to `node`
+      #
+      # The assertion annotation is removed from `comments`.
+      #
+      # @rbs node: Node | Location
+      # @rbs return: AST::Annotations::TypeAssertion?
+      def assertion_annotation: (Node | Location node) -> AST::Annotations::TypeAssertion?
+
+      # @rbs override
+      def visit_constant_write_node: ...
+
+      # @rbs override
+      def visit_block_node: ...
+    end
+  end
+end

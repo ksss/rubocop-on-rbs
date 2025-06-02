@@ -1,0 +1,119 @@
+# Generated from lib/rbs/inline/writer.rb with RBS::Inline
+
+module RBS
+  module Inline
+    class Writer
+      interface _Content
+        def <<: (RBS::AST::Declarations::t | RBS::AST::Members::t) -> void
+
+        def concat: (Array[RBS::AST::Declarations::t | RBS::AST::Members::t]) -> void
+      end
+
+      attr_reader output: String
+
+      attr_reader writer: RBS::Writer
+
+      attr_accessor default_type: Types::t
+
+      # @rbs buffer: String
+      def initialize: (?String buffer) -> void
+
+      # @rbs uses: Array[AST::Annotations::Use]
+      # @rbs decls: Array[AST::Declarations::t]
+      # @rbs rbs_decls: Array[RBS::AST::Declarations::t]
+      # @rbs &: ? (Writer) -> void
+      def self.write: (Array[AST::Annotations::Use] uses, Array[AST::Declarations::t] decls, Array[RBS::AST::Declarations::t] rbs_decls) ?{ (Writer) -> void } -> void
+
+      # @rbs *lines: String
+      # @rbs return: void
+      def header: (*String lines) -> void
+
+      # @rbs uses: Array[AST::Annotations::Use]
+      # @rbs decls: Array[AST::Declarations::t]
+      # @rbs rbs_decls: Array[RBS::AST::Declarations::t] --
+      #    Top level `rbs!` declarations
+      # @rbs return: void
+      def write: (Array[AST::Annotations::Use] uses, Array[AST::Declarations::t] decls, Array[RBS::AST::Declarations::t] rbs_decls) -> void
+
+      # @rbs decl: AST::Declarations::t
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_decl: (AST::Declarations::t decl, _Content rbs) -> void
+
+      # @rbs decl: AST::Declarations::ClassDecl
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_class_decl: (AST::Declarations::ClassDecl decl, _Content rbs) -> void
+
+      # @rbs members: Array[AST::Declarations::t | AST::Members::t]
+      # @rbs decl: AST::Declarations::SingletonClassDecl?
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_members: (Array[AST::Declarations::t | AST::Members::t] members, AST::Declarations::SingletonClassDecl? decl, _Content rbs) -> void
+
+      # @rbs decl: AST::Declarations::ModuleDecl
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_module_decl: (AST::Declarations::ModuleDecl decl, _Content rbs) -> void
+
+      # @rbs decl: AST::Declarations::ConstantDecl
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_constant_decl: (AST::Declarations::ConstantDecl decl, _Content rbs) -> void
+
+      # @rbs decl: AST::Declarations::DataAssignDecl
+      # @rbs rbs: _Content
+      def translate_data_assign_decl: (AST::Declarations::DataAssignDecl decl, _Content rbs) -> void
+
+      # @rbs decl: AST::Declarations::StructAssignDecl
+      # @rbs rbs: _Content
+      def translate_struct_assign_decl: (AST::Declarations::StructAssignDecl decl, _Content rbs) -> void
+
+      # @rbs decl: AST::Declarations::SingletonClassDecl
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_singleton_decl: (AST::Declarations::SingletonClassDecl decl, _Content rbs) -> void
+
+      # @rbs member: AST::Members::t
+      # @rbs decl: AST::Declarations::SingletonClassDecl? --
+      #   The surrouding singleton class definition
+      # @rbs rbs: _Content
+      # @rbs return void
+      def translate_member: (AST::Members::t member, AST::Declarations::SingletonClassDecl? decl, _Content rbs) -> void
+
+      private
+
+      # Returns the `kind` of the method definition
+      #
+      # ```rb
+      # def self.foo = ()    # :singleton
+      # class A
+      #   class << self
+      #     def bar = ()     # :singleton
+      #   end
+      # end
+      #
+      # def object.foo = ()  # Not supported (returns :instance)
+      # ```
+      #
+      # @rbs member: AST::Members::RubyDef
+      # @rbs decl: AST::Declarations::SingletonClassDecl?
+      # @rbs return: RBS::AST::Members::MethodDefinition::kind
+      def method_kind: (AST::Members::RubyDef member, AST::Declarations::SingletonClassDecl? decl) -> RBS::AST::Members::MethodDefinition::kind
+
+      # @rbs block: AST::Declarations::BlockDecl
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_module_block_decl: (AST::Declarations::BlockDecl block, _Content rbs) -> void
+
+      # @rbs block: AST::Declarations::BlockDecl
+      # @rbs rbs: _Content
+      # @rbs return: void
+      def translate_class_block_decl: (AST::Declarations::BlockDecl block, _Content rbs) -> void
+
+      # @rbs decl: AST::Declarations::ConstantDecl
+      # @rbs return: RBS::Types::t
+      def constant_decl_to_type: (AST::Declarations::ConstantDecl decl) -> RBS::Types::t
+    end
+  end
+end

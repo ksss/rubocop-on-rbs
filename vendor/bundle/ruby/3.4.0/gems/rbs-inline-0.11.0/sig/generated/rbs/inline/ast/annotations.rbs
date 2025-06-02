@@ -1,0 +1,293 @@
+# Generated from lib/rbs/inline/ast/annotations.rb with RBS::Inline
+
+module RBS
+  module Inline
+    module AST
+      module Annotations
+        type t = VarType | ReturnType | Use | Inherits | Generic | ModuleSelf | Skip | MethodTypeAssertion | TypeAssertion | SyntaxErrorAssertion | Dot3Assertion | Application | RBSAnnotation | Override | IvarType | Embedded | Method | SplatParamType | DoubleSplatParamType | BlockType | ModuleDecl | ClassDecl
+
+        module Utils
+          # @rbs (Tree) -> RBS::AST::TypeParam?
+          def translate_type_param: (Tree) -> RBS::AST::TypeParam?
+
+          # @rbs (Types::t) -> RBS::AST::Declarations::Class::Super?
+          def translate_super_class: (Types::t) -> RBS::AST::Declarations::Class::Super?
+
+          # Assumes the tree is generated through `#parse_module_name`
+          #
+          # Returns a type name, or `nil` if the tree is something invalid.
+          #
+          # @param tree -- A tree object that is generated through `#parse_module_name`
+          #
+          # @rbs (AST::Tree) -> TypeName?
+          def translate_type_name: (AST::Tree) -> TypeName?
+        end
+
+        class Base
+          attr_reader source: CommentLines
+
+          attr_reader tree: Tree
+
+          # @rbs tree: Tree
+          # @rbs source: CommentLines
+          # @rbs return: void
+          def initialize: (Tree tree, CommentLines source) -> void
+        end
+
+        class VarType < Base
+          attr_reader name: Symbol
+
+          attr_reader type: Types::t?
+
+          attr_reader comment: String?
+
+          # @rbs override
+          def initialize: ...
+
+          # : () -> bool
+          def complete?: () -> bool
+        end
+
+        class SpecialVarTypeAnnotation < Base
+          attr_reader name: Symbol?
+
+          attr_reader type: Types::t?
+
+          attr_reader comment: String?
+
+          attr_reader type_source: String
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `@rbs *x: T`
+        class SplatParamType < SpecialVarTypeAnnotation
+        end
+
+        # `@rbs` **x: T
+        class DoubleSplatParamType < SpecialVarTypeAnnotation
+        end
+
+        # `@rbs &block: METHOD-TYPE` or `@rbs &block: ? METHOD-TYPE`
+        class BlockType < Base
+          attr_reader name: Symbol?
+
+          attr_reader type: Types::Block?
+
+          attr_reader comment: String?
+
+          attr_reader type_source: String
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `@rbs return: T`
+        class ReturnType < Base
+          attr_reader type: Types::t?
+
+          attr_reader comment: String?
+
+          # @rbs override
+          def initialize: ...
+
+          # @rbs return: bool
+          def complete?: () -> bool
+        end
+
+        # `@rbs @foo: T` or `@rbs self.@foo: T`
+        class IvarType < Base
+          attr_reader name: Symbol
+
+          attr_reader type: Types::t?
+
+          attr_reader class_instance: bool
+
+          attr_reader comment: String?
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        class MethodTypeAssertion < Base
+          attr_reader method_type: MethodType
+
+          # @rbs override
+          def initialize: ...
+
+          def type_source: () -> String
+        end
+
+        class TypeAssertion < Base
+          attr_reader type: Types::t
+
+          # @rbs override
+          def initialize: ...
+
+          def type_source: () -> String
+        end
+
+        class SyntaxErrorAssertion < Base
+          attr_reader error_string: String
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        class Dot3Assertion < Base
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `#[TYPE, ..., TYPE]`
+        class Application < Base
+          attr_reader types: Array[Types::t]?
+
+          # @rbs override
+          def initialize: ...
+
+          # @rbs return: bool
+          def complete?: () -> bool
+        end
+
+        # `# @rbs %a{a} %a{a} ...`
+        class RBSAnnotation < Base
+          attr_reader contents: Array[String]
+
+          # @rbs override
+          def initialize: ...
+
+          def annotations: () -> Array[RBS::AST::Annotation]
+        end
+
+        # `# @rbs skip`
+        class Skip < Base
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `# @rbs inherits T`
+        class Inherits < Base
+          attr_reader super_name: TypeName?
+
+          attr_reader args: Array[Types::t]?
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `# @rbs override`
+        #
+        # Specify the method types as `...` (overriding super class method)
+        class Override < Base
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `# @rbs use [USES]`
+        class Use < Base
+          attr_reader clauses: Array[RBS::AST::Directives::Use::clause]
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `# @rbs module-self [MODULE_SELF]`
+        class ModuleSelf < Base
+          attr_reader self_types: Array[RBS::AST::Declarations::Module::Self]
+
+          attr_reader comment: String?
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `# @rbs generic [type param]`
+        #
+        # ```rb
+        # # @rbs generic X
+        # # @rbs generic in Y
+        # # @rbs generic unchecked out Z < String -- Comment here
+        # ```
+        class Generic < Base
+          # TypeParam object or `nil` if syntax error
+          attr_reader type_param: RBS::AST::TypeParam?
+
+          attr_reader comment: String?
+
+          include Utils
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `# @rbs!` annotation
+        class Embedded < Base
+          attr_reader content: String
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `@rbs METHOD-TYPE``
+        class Method < Base
+          type method_type = [ MethodType, method_type? ] | String
+
+          attr_reader method_types: method_type?
+
+          # `true` if the method definition is overloading something
+          attr_reader overloading: bool
+
+          attr_reader type: MethodType?
+
+          attr_reader method_type_source: String
+
+          # @rbs override
+          def initialize: ...
+
+          # : (Array[tree]) -> method_type?
+          def construct_method_types: (Array[tree]) -> method_type?
+
+          # @rbs () { (MethodType) -> void } -> void
+          #    | () -> Enumerator[MethodType, void]
+          def each_method_type: () { (MethodType) -> void } -> void
+                              | () -> Enumerator[MethodType, void]
+
+          # Returns the parsing error overload string
+          #
+          # Returns `nil` if no parsing error found.
+          def error_source: () -> String?
+        end
+
+        # `@rbs module Foo`
+        class ModuleDecl < Base
+          attr_reader name: TypeName?
+
+          attr_reader type_params: Array[RBS::AST::TypeParam]
+
+          attr_reader self_types: Array[RBS::AST::Declarations::Module::Self]
+
+          include Utils
+
+          # @rbs override
+          def initialize: ...
+        end
+
+        # `@rbs class Foo`
+        class ClassDecl < Base
+          attr_reader name: TypeName?
+
+          attr_reader type_params: Array[RBS::AST::TypeParam]
+
+          attr_reader super_class: RBS::AST::Declarations::Class::Super?
+
+          include Utils
+
+          # @rbs override
+          def initialize: ...
+        end
+      end
+    end
+  end
+end
