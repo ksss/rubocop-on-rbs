@@ -25,6 +25,7 @@ jobs:
 
       - name: Update dependencies
         run: |
+          bundle config set frozen false
           bundle update
           bundle exec rbs collection update
 
