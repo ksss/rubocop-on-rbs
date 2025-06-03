@@ -13,6 +13,12 @@ module RuboCop
 
       exclude_from_registry
 
+      def self.documentation_url(_config = nil)
+        base = "cops_#{department.to_s.downcase.tr('/', '_')}"
+        fragment = cop_name.downcase.gsub(/[^a-z]/, '')
+        "https://github.com/ksss/rubocop-on-rbs/blob/v#{VERSION}/docs/modules/ROOT/pages/#{base}.adoc##{fragment}"
+      end
+
       def on_new_investigation
         # Called here when valid as Ruby
         investigation_rbs()

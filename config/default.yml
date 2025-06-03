@@ -26,8 +26,6 @@ RBS:
 
 RBS/Layout:
   Enabled: true
-  DocumentationBaseURL: 'https://github.com/ksss/rubocop-on-rbs/blob/main/docs/modules/ROOT/pages'
-  DocumentationExtension: '.adoc'
 
 RBS/Layout/CommentIndentation:
   Description: 'Use 2 spaces for comment indentation'
@@ -113,8 +111,6 @@ RBS/Layout/TrailingWhitespace:
 RBS/Lint:
   Severity: warning
   Enabled: true
-  DocumentationBaseURL: 'https://github.com/ksss/rubocop-on-rbs/blob/main/docs/modules/ROOT/pages'
-  DocumentationExtension: '.adoc'
 
 RBS/Lint/AmbiguousKeywordArgumentKey:
   Description: 'Check ambiguous keyword argument key'
@@ -176,8 +172,6 @@ RBS/Lint/WillSyntaxError:
 
 RBS/Style:
   Enabled: true
-  DocumentationBaseURL: 'https://github.com/ksss/rubocop-on-rbs/blob/main/docs/modules/ROOT/pages'
-  DocumentationExtension: '.adoc'
 
 RBS/Style/BlockReturnBoolish:
   Description: 'Use `bool` for block return type'
