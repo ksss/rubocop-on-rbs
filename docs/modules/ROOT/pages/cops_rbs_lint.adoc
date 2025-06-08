@@ -91,6 +91,38 @@ def foo: () -> void
        | () -> void
 ----
 
+[#rbslintimplicitlyreturnsnil]
+== RBS/Lint/ImplicitlyReturnsNil
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+This cop checks for conflicts between `implicitly-returns-nil` annotations and return types.
+
+[#examples-rbslintimplicitlyreturnsnil]
+=== Examples
+
+[source,rbs]
+----
+# bad
+%a{implicitly-returns-nil}
+def foo: () -> Integer?
+
+# good
+%a{implicitly-returns-nil}
+def foo: () -> Integer
+
+# good
+def foo: () -> Integer?
+----
+
 [#rbslintliteralintersection]
 == RBS/Lint/LiteralIntersection
 
