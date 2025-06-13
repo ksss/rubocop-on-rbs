@@ -76,19 +76,17 @@ def foo: (A | (B & C)) -> void
 | -
 |===
 
-Checks that there are no repeated overload bodies
+Checks that there are no repeated overload bodies.
+This cop ignores the difference of return type.
 
 [#examples-rbslintduplicateoverload]
 === Examples
-
-[#default-rbslintduplicateoverload]
-==== default
 
 [source,rbs]
 ----
 # bad
 def foo: () -> void
-       | () -> void
+       | () -> top
 ----
 
 [#rbslintimplicitlyreturnsnil]

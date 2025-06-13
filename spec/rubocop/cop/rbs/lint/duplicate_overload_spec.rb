@@ -7,13 +7,13 @@ RSpec.describe RuboCop::Cop::RBS::Lint::DuplicateOverload, :config do
     expect_offense(<<~RBS)
       class Foo
         def foo: () -> void
+               | (top) -> top
                | () -> top
-               | () -> void
-                 ^^^^^^^^^^ Duplicate overload body detected.
+                 ^^^^^^^^^ Duplicate overload body detected.
         def bar: () -> top
                | () { () -> top } -> top
-               | () { () -> top } -> top
-                 ^^^^^^^^^^^^^^^^^^^^^^^ Duplicate overload body detected.
+               | () { () -> top } -> void
+                 ^^^^^^^^^^^^^^^^^^^^^^^^ Duplicate overload body detected.
       end
     RBS
   end
