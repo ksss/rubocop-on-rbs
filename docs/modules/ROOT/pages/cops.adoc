@@ -24,6 +24,7 @@
 
 * xref:cops_rbs_lint.adoc#rbslintambiguouskeywordargumentkey[RBS/Lint/AmbiguousKeywordArgumentKey]
 * xref:cops_rbs_lint.adoc#rbslintambiguousoperatorprecedence[RBS/Lint/AmbiguousOperatorPrecedence]
+* xref:cops_rbs_lint.adoc#rbslintduplicateannotation[RBS/Lint/DuplicateAnnotation]
 * xref:cops_rbs_lint.adoc#rbslintduplicateoverload[RBS/Lint/DuplicateOverload]
 * xref:cops_rbs_lint.adoc#rbslintimplicitlyreturnsnil[RBS/Lint/ImplicitlyReturnsNil]
 * xref:cops_rbs_lint.adoc#rbslintliteralintersection[RBS/Lint/LiteralIntersection]
