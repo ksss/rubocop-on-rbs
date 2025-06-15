@@ -63,6 +63,40 @@ def foo: (A | B & C) -> void
 def foo: (A | (B & C)) -> void
 ----
 
+[#rbslintduplicateannotation]
+== RBS/Lint/DuplicateAnnotation
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Checks that there are no repeated annotations.
+
+[#examples-rbslintduplicateannotation]
+=== Examples
+
+[source,rbs]
+----
+# bad
+def %a{foo} %a{foo} def foo: () -> void
+
+# bad
+def %a{foo} foo: %a{foo} () -> void
+
+# bad
+def foo: %a{foo} %a{foo} () -> void
+
+# not bad
+def foo: %a{foo} () -> void
+       | %a{foo} (Integer) -> void
+----
+
 [#rbslintduplicateoverload]
 == RBS/Lint/DuplicateOverload
 

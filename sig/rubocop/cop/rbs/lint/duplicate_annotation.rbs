@@ -1,0 +1,15 @@
+module RuboCop
+  module Cop
+    module RBS
+      module Lint
+        class DuplicateAnnotation < RuboCop::RBS::CopBase
+          def on_rbs_def: (::RBS::AST::Members::MethodDefinition) -> void
+
+          private
+
+          def check_annotations: (::RBS::AST::Annotation, Array[::RBS::AST::Annotation]) -> void
+        end
+      end
+    end
+  end
+end

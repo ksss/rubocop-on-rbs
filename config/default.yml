@@ -120,6 +120,10 @@ RBS/Lint/AmbiguousOperatorPrecedence:
   Description: 'Check ambiguous operator precedence'
   Enabled: true
 
+RBS/Lint/DuplicateAnnotation:
+  Description: 'Checks that there are no repeated annotations'
+  Enabled: true
+
 RBS/Lint/DuplicateOverload:
   Description: 'Checks that there are no repeated overload bodies'
   Enabled: true
