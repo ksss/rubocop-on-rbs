@@ -13,7 +13,7 @@ module RuboCop
         #          | () -> top
         #
         class DuplicateOverload < RuboCop::RBS::CopBase
-          MSG = 'Duplicate overload body detected.'
+          MSG = 'Duplicate overload arguments detected.'
 
           def on_rbs_def(decl)
             overloads = decl.overloads

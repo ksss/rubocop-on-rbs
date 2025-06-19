@@ -9,11 +9,11 @@ RSpec.describe RuboCop::Cop::RBS::Lint::DuplicateOverload, :config do
         def foo: () -> void
                | (top) -> top
                | () -> top
-                 ^^^^^^^^^ Duplicate overload body detected.
+                 ^^^^^^^^^ Duplicate overload arguments detected.
         def bar: () -> top
                | () { () -> top } -> top
                | () { () -> top } -> void
-                 ^^^^^^^^^^^^^^^^^^^^^^^^ Duplicate overload body detected.
+                 ^^^^^^^^^^^^^^^^^^^^^^^^ Duplicate overload arguments detected.
       end
     RBS
   end
