@@ -46,3 +46,4 @@ jobs:
           branch: update-dependencies-${{ steps.date.outputs.date }}
           delete-branch: true
           base: main
+          draft: always-true
