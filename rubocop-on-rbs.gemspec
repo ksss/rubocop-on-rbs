@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'lint_roller', '~> 1.1'
-  spec.add_dependency 'rbs', '~> 3.5'
+  spec.add_dependency 'rbs', '4.0.0.dev.4'
   spec.add_dependency 'rubocop', '>= 1.72.1', '< 2.0'
   spec.add_dependency 'zlib'
   spec.metadata['rubygems_mfa_required'] = 'true'
