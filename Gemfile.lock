@@ -24,7 +24,7 @@ GIT
 PATH
   remote: .
   specs:
-    rubocop-on-rbs (1.8.0)
+    rubocop-on-rbs (2.0.0.dev)
       lint_roller (~> 1.1)
       rbs (= 4.0.0.dev.4)
       rubocop (>= 1.72.1, < 2.0)
