@@ -27,6 +27,10 @@ RBS:
 RBS/Layout:
   Enabled: true
 
+RBS/Layout/AnnotationIndentation:
+  Description: 'Use 2 spaces for annotation indentation'
+  Enabled: true
+
 RBS/Layout/CommentIndentation:
   Description: 'Use 2 spaces for comment indentation'
   Enabled: true
