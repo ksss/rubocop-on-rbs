@@ -6,6 +6,37 @@
 
 = RBS/Layout
 
+[#rbslayoutannotationindentation]
+== RBS/Layout/AnnotationIndentation
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| Always
+| -
+| -
+|===
+
+Checks the indentation of annotations in RBS.
+
+[#examples-rbslayoutannotationindentation]
+=== Examples
+
+[source,rbs]
+----
+# bad
+# comment
+  %a{pure}
+def foo: () -> void
+
+# good
+# comment
+%a{pure}
+def foo: () -> void
+----
+
 [#rbslayoutcommentindentation]
 == RBS/Layout/CommentIndentation
 
