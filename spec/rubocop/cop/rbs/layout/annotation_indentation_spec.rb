@@ -7,7 +7,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::AnnotationIndentation, :config do
     expect_offense(<<~RBS)
       %a{ok}
 
-        %a{none:class:annotation}
+        %a{none:class:annotation} %a{next}
         ^^^^^^^^^^^^^^^^^^^^^^^^^ Incorrect indentation detected (column 0 instead of 2).
 
         %a{class:annotation}
@@ -44,7 +44,7 @@ RSpec.describe RuboCop::Cop::RBS::Layout::AnnotationIndentation, :config do
     expect_correction(<<~RBS)
       %a{ok}
 
-      %a{none:class:annotation}
+      %a{none:class:annotation} %a{next}
 
       %a{class:annotation}
       class Foo

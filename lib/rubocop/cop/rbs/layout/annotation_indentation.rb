@@ -44,6 +44,7 @@ module RuboCop
             end
 
             expected_width = 0
+            last_annotation_line = -1
             processed_rbs_source.tokens.each do |token|
               case token.type
               when :kMODULE, :kCLASS, :kINTERFACE
@@ -56,10 +57,15 @@ module RuboCop
                 expected_width -= 2
               when :tANNOTATION
                 next if ignore_poses.include?(token.location.start_pos)
-                next if token.location.start_column == expected_width
+                if token.location.start_column == expected_width
+                  last_annotation_line = token.location.start_line
+                  next
+                end
+                next if last_annotation_line == token.location.start_line
 
                 token_range = location_to_range(token.location)
                 message = format(MSG, expect: expected_width, actual: token.location.start_column)
+                last_annotation_line = token.location.start_line
                 add_offense(token_range, message: message) do |corrector|
                   line_start_pos = processed_source.buffer.line_range(token.location.start_line).begin_pos
                   indent = range_between(line_start_pos, token.location.start_pos)
