@@ -57,6 +57,7 @@ module RuboCop
                 expected_width -= 2
               when :tANNOTATION
                 next if ignore_poses.include?(token.location.start_pos)
+
                 if token.location.start_column == expected_width
                   last_annotation_line = token.location.start_line
                   next
