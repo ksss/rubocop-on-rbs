@@ -53,6 +53,41 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceAroundOperators, :config do
     RBS
   end
 
+  it 'registers an offense on type params' do
+    expect_offense(<<~RBS)
+      class ClassTypeParam[T < (Integer|String)]
+                                       ^ Use one space before `|`.
+        def t: [U < (Integer|String)] () -> U
+                            ^ Use one space before `|`.
+      end
+
+      module ModuleTypeParam[T = (Integer&String)]
+                                         ^ Use one space before `&`.
+      end
+
+      interface _InterfaceTypeParam[T < (Integer|String)]
+                                                ^ Use one space before `|`.
+      end
+
+      type a[T = (Integer|String)] = Array[T]
+                         ^ Use one space before `|`.
+    RBS
+
+    expect_correction(<<~RBS)
+      class ClassTypeParam[T < (Integer | String)]
+        def t: [U < (Integer | String)] () -> U
+      end
+
+      module ModuleTypeParam[T = (Integer & String)]
+      end
+
+      interface _InterfaceTypeParam[T < (Integer | String)]
+      end
+
+      type a[T = (Integer | String)] = Array[T]
+    RBS
+  end
+
   it 'does not register an offense' do
     expect_no_offenses(<<~RBS)
       class Foo
