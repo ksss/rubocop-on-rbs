@@ -14,8 +14,15 @@ module RuboCop
         class SpaceAroundOperators < RuboCop::RBS::CopBase
           extend AutoCorrector
 
+          def on_rbs_class(decl)
+            check_type_params(decl)
+          end
+          alias on_rbs_module on_rbs_class
+          alias on_rbs_interface on_rbs_class
+
           def on_rbs_def(decl)
             decl.overloads.each do |overload|
+              check_type_params(overload.method_type)
               overload.method_type.each_type do |type|
                 check_type(type)
               end
@@ -26,9 +33,13 @@ module RuboCop
             check_type(decl.type)
           end
           alias on_rbs_global on_rbs_constant
-          alias on_rbs_type_alias on_rbs_constant
           alias on_rbs_attribute on_rbs_constant
           alias on_rbs_var on_rbs_constant
+
+          def on_rbs_type_alias(decl)
+            check_type_params(decl)
+            check_type(decl.type)
+          end
 
           def check_type(type)
             case type
@@ -39,6 +50,13 @@ module RuboCop
             end
             type.each_type do |t|
               check_type(t)
+            end
+          end
+
+          def check_type_params(decl)
+            decl.type_params.each do |type_param|
+              check_type(type_param.default_type) if type_param.default_type
+              check_type(type_param.upper_bound_type) if type_param.upper_bound_type
             end
           end
 
