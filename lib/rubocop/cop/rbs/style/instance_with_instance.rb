@@ -16,6 +16,7 @@ module RuboCop
         #
         class InstanceWithInstance < RuboCop::RBS::CopBase
           extend AutoCorrector
+
           MSG = 'Use `self` instead of `instance`.'
 
           # @rbs decl: RBS::AST::Declarations::Class

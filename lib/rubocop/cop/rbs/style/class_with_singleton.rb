@@ -16,6 +16,7 @@ module RuboCop
         #
         class ClassWithSingleton < RuboCop::RBS::CopBase
           extend AutoCorrector
+
           MSG = 'Use `self` instead of `class`.'
 
           # @rbs decl: RBS::AST::Members::MethodDefinition

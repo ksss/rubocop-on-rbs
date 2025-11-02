@@ -22,6 +22,7 @@ module RuboCop
         #
         class InitializeReturnType < RuboCop::RBS::CopBase
           extend AutoCorrector
+
           MSG = '`#initialize` method should return `void`'
 
           def on_rbs_def(decl)

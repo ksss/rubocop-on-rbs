@@ -49,6 +49,7 @@ module RuboCop
           class ParenChecker
             include BeforeTokenIfLparen
             include RangeHelp
+
             attr_reader :processed_source
 
             def initialize(processed_source:, base:, tokens:, type:, skip:, cop:)
