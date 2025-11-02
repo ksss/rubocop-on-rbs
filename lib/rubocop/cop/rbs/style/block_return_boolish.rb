@@ -13,6 +13,7 @@ module RuboCop
         #
         class BlockReturnBoolish < RuboCop::RBS::CopBase
           extend AutoCorrector
+
           MSG = 'Use `boolish` instead of `bool` in block return type.'
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition

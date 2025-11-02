@@ -15,6 +15,10 @@ Layout/LeadingCommentSpace:
 Lint/AssignmentInCondition:
   Enabled: false
 
+Lint/EmptyInterpolation:
+  Exclude:
+    - spec/rubocop/cop/rbs/layout/trailing_whitespace_spec.rb
+
 Style:
   AutoCorrect: false
   Severity: info
