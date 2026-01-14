@@ -5,10 +5,12 @@ require 'spec_helper'
 RSpec.describe RuboCop::Cop::RBS::Layout::CommentIndentation, :config do
   it 'registers an offense' do
     expect_offense(<<~RBS)
-      # OK
-
         # None class comment
         ^^^^^^^^^^^^^^^^^^^^ Incorrect indentation detected (column 0 instead of 2).
+
+      class Foo
+        # empty
+      end
 
         # Class comment
         ^^^^^^^^^^^^^^^ Incorrect indentation detected (column 0 instead of 2).
@@ -16,10 +18,18 @@ RSpec.describe RuboCop::Cop::RBS::Layout::CommentIndentation, :config do
           # None method comment
           ^^^^^^^^^^^^^^^^^^^^^ Incorrect indentation detected (column 2 instead of 4).
 
+        def foo: () -> void
+
           # Method comment
           ^^^^^^^^^^^^^^^^ Incorrect indentation detected (column 2 instead of 4).
         # Method comment2
         def initialize: () -> void
+
+        def comment_in_arguments: (
+          ?aaa: Integer,
+          # comment
+          ?bbb: String,
+        ) -> void
 
         interface _I
           def end: () -> void
@@ -33,17 +43,27 @@ RSpec.describe RuboCop::Cop::RBS::Layout::CommentIndentation, :config do
     RBS
 
     expect_correction(<<~RBS)
-      # OK
-
       # None class comment
+
+      class Foo
+        # empty
+      end
 
       # Class comment
       class Foo
         # None method comment
 
+        def foo: () -> void
+
         # Method comment
         # Method comment2
         def initialize: () -> void
+
+        def comment_in_arguments: (
+          ?aaa: Integer,
+          # comment
+          ?bbb: String,
+        ) -> void
 
         interface _I
           def end: () -> void
