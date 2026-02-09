@@ -21,6 +21,9 @@ RSpec.describe RuboCop::Cop::RBS::Layout::OverloadIndentation, :config do
                |
                ^ Remove newline after `|`
                  () -> top
+        def override: () -> void
+            | ...
+            ^ Indent the `|` to the first `:`
       end
     RBS
 
@@ -36,6 +39,8 @@ RSpec.describe RuboCop::Cop::RBS::Layout::OverloadIndentation, :config do
                | () -> top
         def qux: () -> void
                | () -> top
+        def override: () -> void
+                    | ...
       end
     RBS
   end
