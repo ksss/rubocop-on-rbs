@@ -39,9 +39,9 @@ module RuboCop
               return unless 1 < decl.overloads.length
 
               decl.overloads.each_cons(2) do |overload, next_overload|
-                overload or next
-                next_overload or next
-                check_empty_lines(overload.method_type.location&.end_line || 0, next_overload.method_type.location&.start_line || 0)
+                end_line = overload&.method_type&.location&.end_line || 0
+                next_start_line = next_overload&.method_type&.location&.start_line || 0
+                check_empty_lines(end_line, next_start_line)
               end
             end
           end
