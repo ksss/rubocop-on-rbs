@@ -39,8 +39,11 @@ module RuboCop
 
               loc = bar&.location
               next unless loc
-              next unless overload_starts.include?(base_pos + after.location.start_pos)
 
+              # pDOT3 is not included in decl.overloads
+              next unless overload_starts.include?(base_pos + after.location.start_pos) || after.type == :pDOT3
+
+              # () -> void | (Integer) -> void
               if before.location.end_line == bar.location.start_line
                 range = range_between(base_pos + bar.location.start_pos, base_pos + bar.location.end_pos)
                 add_offense(range, message: "Insert newline before `|`") do |corrector|
@@ -49,12 +52,17 @@ module RuboCop
                 end
               end
 
+              # () -> void
+              # |
+              # (Integer) -> void
               if bar.location.end_line != after.location.start_line
                 range = range_between(base_pos + bar.location.start_pos, base_pos + bar.location.end_pos)
                 add_offense(range, message: "Remove newline after `|`") do |corrector|
                   space = range_between(base_pos + bar.location.end_pos, base_pos + after.location.start_pos)
                   corrector.replace(space, ' ')
                 end
+              # : () -> void
+              #   | (Integer) -> void
               elsif bar.location.start_column != first_colon_column
                 range = range_between(base_pos + bar.location.start_pos, base_pos + bar.location.end_pos)
                 add_offense(range, message: 'Indent the `|` to the first `:`') do |corrector|
