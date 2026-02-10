@@ -22,6 +22,13 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EmptyLinesAroundOverloads, :config do
 
       ^{} Empty line detected around overloads.
                | () -> void
+
+        def baz: () -> void
+
+      ^{} Empty line detected around overloads.
+               | ...
+
+        def overload: ...
       end
     RBS
 
@@ -33,6 +40,11 @@ RSpec.describe RuboCop::Cop::RBS::Layout::EmptyLinesAroundOverloads, :config do
         def bar: () -> void
                # () -> void
                | () -> void
+
+        def baz: () -> void
+               | ...
+
+        def overload: ...
       end
     RBS
   end

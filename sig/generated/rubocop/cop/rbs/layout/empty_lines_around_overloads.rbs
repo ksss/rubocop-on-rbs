@@ -1,0 +1,35 @@
+# Generated from lib/rubocop/cop/rbs/layout/empty_lines_around_overloads.rb with RBS::Inline
+
+module RuboCop
+  module Cop
+    module RBS
+      module Layout
+        # Checks empty lines around overloads.
+        #
+        # @example
+        #   # bad
+        #   def foo: () -> void
+        #
+        #          | (Integer) -> Integer
+        #
+        #   # good
+        #   def foo: () -> void
+        #          | (Integer) -> Integer
+        class EmptyLinesAroundOverloads < RuboCop::RBS::CopBase
+          extend AutoCorrector
+
+          MSG: ::String
+
+          # @rbs decl: ::RBS::AST::Members::MethodDefinition
+          # @rbs return: void
+          def on_rbs_def: (::RBS::AST::Members::MethodDefinition decl) -> void
+
+          # @rbs end_line: Integer
+          # @rbs next_start_line: Integer
+          # @rbs return: void
+          def check_empty_lines: (Integer end_line, Integer next_start_line) -> void
+        end
+      end
+    end
+  end
+end
