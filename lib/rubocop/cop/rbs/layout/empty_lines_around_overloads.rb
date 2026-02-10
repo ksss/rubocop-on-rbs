@@ -24,9 +24,13 @@ module RuboCop
           # @rbs decl: ::RBS::AST::Members::MethodDefinition
           # @rbs return: void
           def on_rbs_def(decl)
-            if decl.overloading?
-              return unless 0 < decl.overloads.length
+            decl.overloads.each_cons(2) do |overload, next_overload|
+              end_line = overload&.method_type&.location&.end_line || 0
+              next_start_line = next_overload&.method_type&.location&.start_line || 0
+              check_empty_lines(end_line, next_start_line)
+            end
 
+            if decl.overloading? && decl.overloads.length.positive?
               # : () -> void
               #
               #   | ...
@@ -35,14 +39,6 @@ module RuboCop
               bar_index = slice.index('|') or return
               bar_line = slice[0..bar_index]&.count("\n") or return
               check_empty_lines(end_location.end_line, end_location.end_line + bar_line)
-            else
-              return unless 1 < decl.overloads.length
-
-              decl.overloads.each_cons(2) do |overload, next_overload|
-                end_line = overload&.method_type&.location&.end_line || 0
-                next_start_line = next_overload&.method_type&.location&.start_line || 0
-                check_empty_lines(end_line, next_start_line)
-              end
             end
           end
 
