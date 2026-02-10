@@ -1,6 +1,49 @@
 ## [Unreleased]
 
+## [1.9.1] - 2026-02-10
+
+* [RBS/Layout/OverloadIndentation] Fix false positive by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/141
+* [RBS/Layout/EmptyLinesAroundOverloads] Fix false positive by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/142
+* [RBS/Layout/SpaceBeforeOverload] Support `...` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/143
+
+## [1.9.0] - 2026-01-14
+
+* Add cop `RBS/Layout/AnnotationIndentation` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/124
+* Fix bug when multi annotation by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/125
+* [RBS/Layout/SpaceAroundOperators] Support type params by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/126
+* Support new Cops by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/129
+* [RBS/Layout/CommentIndentation] Fix false positive by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/136
+* Use ruby v4 by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/137
+
+## [1.8.0] - 2025-06-26
+
+* Add task for update dependencies by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/110
+* Should melt down Gemfile.lock by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/111
+* Dynamically generate document URLs by version by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/114
+* Add new cop `RBS/Lint/ImplicitlyReturnsNil` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/115
+* [RBS/Lint/DuplicateOverload] Ignore the difference of return type. by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/116
+* Add `RBS/Lint/DuplicateAnnotation` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/117
+* Fix message by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/118
+
+## [1.7.0] - 2025-05-18
+
+* Add `RBS/Lint/RestKeywordHash` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/102
+* Support documentation URL for department by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/103
+* Refine documentation by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/104
+* Add RBS/Layout/EmptyLineBetweenDeclarations by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/105
+* [RBS/Layout/EmptyLineBetweenDeclarations] Short fix by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/106
+
+## [1.6.0] - 2025-04-25
+
+* [RBS::Style::TrueFalse] More support decls by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/97
+* [RBS/Style/OptionalNil] More support decls by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/98
+* [RBS/Style/DuplicatedType] More support decls by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/100
+
+## [1.5.0] - 2025-03-23
+
 * Pluginfy RuboCop on RBS by @ydah in https://github.com/ksss/rubocop-on-rbs/pull/88
+* Drop support for ruby v3.1 by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/90
+* Fix RuboCop RakeTask plugin assignment in README by @ydah in https://github.com/ksss/rubocop-on-rbs/pull/92
 
 ## [1.4.2] - 2025-02-23
 
