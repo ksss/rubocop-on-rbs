@@ -21,6 +21,13 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceBeforeOverload, :config do
 
         def qux: () -> void
                | [T] (T) -> T
+
+        def overload:...
+                    ^ Use one space before overload.
+
+        def overload2: () -> void
+                     |  ...
+                     ^ Use one space before overload.
       end
     RBS
 
@@ -36,6 +43,11 @@ RSpec.describe RuboCop::Cop::RBS::Layout::SpaceBeforeOverload, :config do
 
         def qux: () -> void
                | [T] (T) -> T
+
+        def overload: ...
+
+        def overload2: () -> void
+                     | ...
       end
     RBS
   end
