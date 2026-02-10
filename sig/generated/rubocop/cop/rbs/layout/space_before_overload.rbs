@@ -1,0 +1,31 @@
+# Generated from lib/rubocop/cop/rbs/layout/space_before_overload.rb with RBS::Inline
+
+module RuboCop
+  module Cop
+    module RBS
+      module Layout
+        # @example default
+        #   # bad
+        #   def foo:() -> void
+        #          |  () -> void
+        #
+        #   # good
+        #   def foo: () -> void
+        #          | () -> void
+        class SpaceBeforeOverload < RuboCop::RBS::CopBase
+          extend AutoCorrector
+
+          MSG: ::String
+
+          # @rbs decl: ::RBS::AST::Members::MethodDefinition
+          def on_rbs_def: (::RBS::AST::Members::MethodDefinition decl) -> untyped
+
+          private
+
+          # @rbs loc: ::RBS::Location[bot, bot]
+          def check: (::RBS::Location[bot, bot] loc, untyped overload_char) -> untyped
+        end
+      end
+    end
+  end
+end
