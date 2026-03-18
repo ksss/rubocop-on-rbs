@@ -38,7 +38,6 @@ require_relative 'rbs/lint/top_level_type_alias'
 require_relative 'rbs/lint/unused_overload_type_params'
 require_relative 'rbs/lint/unused_type_alias_type_params'
 require_relative 'rbs/lint/useless_access_modifier'
-require_relative 'rbs/lint/will_syntax_error'
 
 require_relative 'rbs/style/block_return_boolish'
 require_relative 'rbs/style/class_with_singleton'
