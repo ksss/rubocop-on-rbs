@@ -23,11 +23,11 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
         @ivar: (bool)
                ^^^^^^ Don't use parentheses around simple type.
       end
-      CONST: ^((bool)) { ((top)) [self: instance] -> (top) } -> (top)
+      CONST: ^((bool)) { ((top)) [self: Foo] -> (top) } -> (top)
                ^^^^^^ Don't use parentheses around simple type.
                           ^^^^^ Don't use parentheses around simple type.
-                                                     ^^^^^ Don't use parentheses around simple type.
-                                                                ^^^^^ Don't use parentheses around simple type.
+                                                ^^^^^ Don't use parentheses around simple type.
+                                                           ^^^^^ Don't use parentheses around simple type.
       $global: (bool)
                ^^^^^^ Don't use parentheses around simple type.
       type a = ((bool))
@@ -44,7 +44,7 @@ RSpec.describe RuboCop::Cop::RBS::Style::RedundantParentheses, :config do
         def symbol_optional: () -> (:sym)?
         @ivar: bool
       end
-      CONST: ^(bool) { (top) [self: instance] -> top } -> top
+      CONST: ^(bool) { (top) [self: Foo] -> top } -> top
       $global: bool
       type a = bool
     RBS
