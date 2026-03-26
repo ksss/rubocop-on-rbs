@@ -1,16 +1,18 @@
 name: Steep
 
-on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
+# TODO: Re-enable triggers
+# on:
+#   push:
+#     branches:
+#       - main
+#
+#   pull_request:
+#     types:
+#       - opened
+#       - synchronize
+#       - reopened
+#       - ready_for_review
+on: workflow_dispatch
 
 jobs:
   build:

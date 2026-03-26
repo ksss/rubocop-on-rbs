@@ -176,10 +176,6 @@ RBS/Lint/UnusedTypeAliasTypeParams:
   Description: 'Check redundant type alias type params'
   Enabled: true
 
-RBS/Lint/WillSyntaxError:
-  Description: 'Check RBS will syntax error'
-  Enabled: true
-
 ## RBS/Style
 
 RBS/Style:

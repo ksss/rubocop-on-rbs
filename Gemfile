@@ -12,5 +12,5 @@ gem 'rbs-inline'
 gem 'repl_type_completor'
 gem 'rspec'
 gem 'rubocop'
-gem 'steep'
+# gem 'steep' # Steep is not compatible with RBS 4.0.0 yet.
 gem 'yard'
