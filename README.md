@@ -24,11 +24,8 @@ def foo: (   void) -> untyped
 sig/foo.rbs:2:11: C: [Correctable] RBS/Layout/ExtraSpacing: Unnecessary spacing detected.
 def foo: (   void) -> untyped
           ^^
-sig/foo.rbs:2:14: W: RBS/Lint/WillSyntaxError: void type is only allowed in return type or generics parameter
-def foo: (   void) -> untyped
-             ^^^^
 
-1 file inspected, 3 offenses detected, 2 offenses autocorrectable
+1 file inspected, 2 offenses detected, 2 offenses autocorrectable
 ```
 
 ## Support VSCode
