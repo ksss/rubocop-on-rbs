@@ -2,6 +2,6 @@
 
 module RuboCop
   module RBS
-    VERSION = '1.9.1'
+    VERSION = '2.0.0'
   end
 end

@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [2.0.0] - 2026-03-27
+
+* Support rbs v4 by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/145
+* Drop `RBS/Lint/WillSyntaxError` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/145
+
 ## [1.9.1] - 2026-02-10
 
 * [RBS/Layout/OverloadIndentation] Fix false positive by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/141
