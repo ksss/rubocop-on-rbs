@@ -20,7 +20,7 @@ module RuboCop
         class ClassicType < RuboCop::RBS::CopBase
           extend AutoCorrector
 
-          Types = ::RBS::Types
+          Types = ::RBS::Types #: module-alias
 
           def on_rbs_def(decl)
             decl.overloads.each do |overload|
@@ -38,7 +38,7 @@ module RuboCop
           alias on_rbs_attribute on_rbs_constant
           alias on_rbs_var on_rbs_constant
 
-          # @rbs type: ::RBS::Types::t
+          #: (::RBS::Types::t type) -> untyped
           def check_type(type)
             find_replacement(type) do |t, replaced|
               range = location_to_range(t.location)
@@ -48,6 +48,7 @@ module RuboCop
             end
           end
 
+          #: (::RBS::Types::t type) ?{ ([::RBS::Types::t, String]) -> untyped } -> untyped
           def find_replacement(type, &block)
             case type
             when Types::Record,

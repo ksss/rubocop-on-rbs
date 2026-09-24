@@ -52,6 +52,13 @@ module RuboCop
 
             attr_reader :processed_source
 
+            # @rbs processed_source: RuboCop::AST::ProcessedSource
+            # @rbs base: Integer
+            # @rbs tokens: Array[::RBS::Parser::Token]
+            # @rbs type: ::RBS::Types::t
+            # @rbs skip: Set[Integer]
+            # @rbs cop: RuboCop::RBS::CopBase
+            # @rbs return: void
             def initialize(processed_source:, base:, tokens:, type:, skip:, cop:)
               @processed_source = processed_source
               @base = base

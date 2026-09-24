@@ -2,14 +2,18 @@
 
 module RuboCop
   module RBS
+    # Fake for RuboCop::ProcessedSource
     class ProcessedRBSSource
-      attr_reader :raw_source
-      attr_reader :source
-      attr_reader :buffer
-      attr_reader :directives
-      attr_reader :decls
-      attr_reader :error
+      # @rbs @tokens: ::Array[::RBS::Parser::Token]?
 
+      attr_reader :raw_source #: String
+      attr_reader :source
+      attr_reader :buffer #: ::RBS::Buffer
+      attr_reader :directives #: ::Array[::RBS::AST::Directives::t]
+      attr_reader :decls #: ::Array[::RBS::AST::Declarations::t]
+      attr_reader :error #: ::RBS::ParsingError?
+
+      #: (::RBS::Buffer source) -> void
       def initialize(source)
         @raw_source = source.content
         @buffer, @directives, @decls = ::RBS::Parser.parse_signature(source)
@@ -23,6 +27,7 @@ module RuboCop
         @error.nil?
       end
 
+      #: () -> ::Array[::RBS::Parser::Token]
       def tokens
         @tokens ||= ::RBS::Parser.lex(buffer).value
       end

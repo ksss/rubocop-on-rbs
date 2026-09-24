@@ -4,11 +4,14 @@ module RuboCop
   module Cop
     module RBS
       module Layout
+        # @rbs module-self: RuboCop::RBS::CopBase
         module EmptyLinesAroundBody
           MSG_EXTRA = 'Extra empty line detected at %<kind>s body %<location>s.'
 
           private
 
+          # Main endpoint
+          #: (untyped decl) -> void
           def check(decl)
             first_line = decl.location.start_line
             last_line = decl.location.end_line
@@ -18,14 +21,19 @@ module RuboCop
             check_ending(last_line)
           end
 
+          # Check line after `class/module/interface`
+          #: (Integer first_line) -> void
           def check_beginning(first_line)
             check_source(first_line, 'beginning')
           end
 
+          # Check line before `end`
+          #: (Integer last_line) -> void
           def check_ending(last_line)
             check_source(last_line - 2, 'end')
           end
 
+          #: (Integer line_no, untyped desc) -> void
           def check_source(line_no, desc)
             return unless line_no.positive?
             return unless processed_source.lines[line_no]
