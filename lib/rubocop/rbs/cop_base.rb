@@ -9,7 +9,7 @@ module RuboCop
       include RuboCop::Cop::RangeHelp
       include RuboCop::RBS::OnTypeHelper
 
-      attr_reader :processed_rbs_source
+      attr_reader :processed_rbs_source #: RuboCop::RBS::ProcessedRBSSource
 
       exclude_from_registry
 
@@ -34,6 +34,7 @@ module RuboCop
         @processed_rbs_source = RuboCop::RBS::ProcessedRBSSource.new(buffer)
       end
 
+      #: () -> void
       def investigation_rbs
         return unless processed_source.buffer.name.then { |n| n.end_with?(".rbs") || n == "(string)" }
 
@@ -65,22 +66,47 @@ module RuboCop
         end
       end
 
+      #: () -> void
       def on_rbs_new_investigation; end
+
+      #: () -> void
       def on_rbs_parsing_error; end
 
       # other on_* methods should sync with `#walk` method
+      #: (::RBS::AST::Declarations::Class) -> void
       def on_rbs_class(member); end
+
+      #: (::RBS::AST::Declarations::Module) -> void
       def on_rbs_module(member); end
+
+      #: (::RBS::AST::Declarations::Interface) -> void
       def on_rbs_interface(member); end
+
+      #: (::RBS::AST::Declarations::Constant) -> void
       def on_rbs_constant(const); end
+
+      #: (::RBS::AST::Declarations::Global) -> void
       def on_rbs_global(global); end
+
+      #: (::RBS::AST::Declarations::TypeAlias) -> void
       def on_rbs_type_alias(decl); end
+
+      #: (::RBS::AST::Members::MethodDefinition) -> void
       def on_rbs_def(member); end
+
+      #: (::RBS::AST::Members::Attribute) -> void
       def on_rbs_attribute(member); end
+
+      #: (::RBS::AST::Members::Public) -> void
       def on_rbs_public(member); end
+
+      #: (::RBS::AST::Members::Private) -> void
       def on_rbs_private(member); end
+
+      #: (::RBS::AST::Members::Var) -> void
       def on_rbs_var(member); end
 
+      #: (untyped) -> void
       def walk(decl)
         case decl
         when ::RBS::AST::Declarations::Module
@@ -111,6 +137,7 @@ module RuboCop
         end
       end
 
+      #: () -> ::RBS::Buffer
       def rbs_buffer
         ::RBS::Buffer.new(
           name: processed_source.buffer.name,
@@ -118,6 +145,7 @@ module RuboCop
         )
       end
 
+      #: (::RBS::Location[untyped, untyped]) -> Parser::Source::Range
       def location_to_range(location)
         range_between(location.start_pos, location.end_pos)
       end

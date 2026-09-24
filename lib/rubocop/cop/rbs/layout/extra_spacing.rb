@@ -38,6 +38,7 @@ module RuboCop
             end
           end
 
+          #: () -> ::Set[Integer]
           def aligned_locations
             comments = processed_rbs_source.tokens.select(&:comment?)
             Set.new.tap do |aligned|

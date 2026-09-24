@@ -3,6 +3,7 @@
 module RuboCop
   module RBS
     module OnTypeHelper
+      #: (Array[Class] types, ::RBS::Types::t type) { (::RBS::Types::t t) -> void } -> void
       def on_type(types, type, &block)
         case type
         when *types
@@ -13,6 +14,7 @@ module RuboCop
         end
       end
 
+      #: (Array[Class] types, ::RBS::Types::t type) { (::RBS::Types::t t) -> void } -> void
       def on_not_type(types, type, &block)
         case type
         when *types

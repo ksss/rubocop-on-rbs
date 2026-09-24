@@ -23,6 +23,7 @@ module RuboCop
         class DuplicateAnnotation < RuboCop::RBS::CopBase
           MSG = 'Duplicate annotation detected.'
 
+          #: (::RBS::AST::Members::MethodDefinition) -> void
           def on_rbs_def(decl)
             decl.annotations.each_with_index do |annotation, idx|
               next_annotations = decl.annotations[(idx + 1)..] or next
@@ -41,6 +42,7 @@ module RuboCop
             end
           end
 
+          #: (::RBS::AST::Annotation, Array[::RBS::AST::Annotation]) -> void
           def check_annotations(left_annotation, right_annotations)
             right_annotations.each do |right_annotation|
               next unless left_annotation == right_annotation
