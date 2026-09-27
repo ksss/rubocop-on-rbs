@@ -9,3 +9,4 @@
 /.ruby-lsp
 /.gem_rbs_collection/
 /vendor/
+/.crema/
