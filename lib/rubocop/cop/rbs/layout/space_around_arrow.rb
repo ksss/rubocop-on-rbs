@@ -27,13 +27,15 @@ module RuboCop
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition
           def on_rbs_def(decl)
-            base = decl.location.start_pos
-            tokens = ::RBS::Parser.lex(decl.location.source).value.reject { |t| t.type == :tTRIVIA }
+            location = decl.location or return
+            base = location.start_pos
+            tokens = ::RBS::Parser.lex(location.source).value.reject { |t| t.type == :tTRIVIA }
             ([nil] + tokens).each_cons(3) do |before, token, after|
               next unless token&.type == :pARROW
 
               loc = token&.location
               next unless loc
+              next unless after
 
               if before && (before.location.end_pos + 1 != loc.start_pos)
                 next unless before.location.end_line == loc.start_line

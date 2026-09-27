@@ -18,7 +18,7 @@ module RuboCop
           # @sig decl: ::RBS::AST::Members::MethodDefinition
           def on_rbs_def(decl)
             source = processed_source.raw_source
-            loc = decl.location
+            loc = decl.location or return
             colon_start_pos = source.index(':', loc.start_pos)
             return unless colon_start_pos
 

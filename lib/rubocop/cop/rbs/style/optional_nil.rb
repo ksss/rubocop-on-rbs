@@ -46,7 +46,7 @@ module RuboCop
             when ::RBS::Types::Optional
               case type.type
               when ::RBS::Types::Bases::Nil
-                block.call([type, ::RBS::Types::Bases::Nil.new(location: nil)])
+                block&.call([type, ::RBS::Types::Bases::Nil.new(location: nil)])
               else
                 find_replacement(type.type, &block)
               end

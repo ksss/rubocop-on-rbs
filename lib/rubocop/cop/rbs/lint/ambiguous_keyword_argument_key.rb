@@ -20,8 +20,9 @@ module RuboCop
               next unless func.kind_of?(::RBS::Types::Function)
               next unless !func.required_keywords.empty? || !func.optional_keywords.empty?
 
-              base_pos = overload.method_type.location.start_pos
-              lex_result = ::RBS::Parser.lex(overload.method_type.location.source)
+              location = overload.method_type.location or next
+              base_pos = location.start_pos
+              lex_result = ::RBS::Parser.lex(location.source)
               buf = []
               lex_result.value.each do |token|
                 case token.type

@@ -32,6 +32,17 @@ YARD::Rake::YardocTask.new(:yard_for_generate_documentation) do |task|
   task.options = ['--no-output']
 end
 
+namespace :crema do
+  desc 'Update crema tamped jsonl'
+  task :tamping do
+    begin
+      sh("crema check --tamp > crema-check-tamped.jsonl")
+    rescue RuntimeError => e
+      raise unless e.message == "Command failed with status (1): [crema check --tamp > crema-check-tamped.jsonl]"
+    end
+  end
+end
+
 desc 'Update Cops Documentation'
 task update_cops_documentation: :yard_for_generate_documentation do
   rm_rf('docs/')

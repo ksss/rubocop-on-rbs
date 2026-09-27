@@ -26,11 +26,13 @@ module RuboCop
           extend AutoCorrector
 
           def on_rbs_def(decl)
-            base_pos = decl.location.start_pos
-            base_col = decl.location.start_column
-            overload_starts = decl.overloads.map { |overload| overload.method_type.location.start_pos }
-            tokens = ::RBS::Parser.lex(decl.location.source).value.reject { |t| t.type == :tTRIVIA }
-            first_colon_column = base_col + tokens.find { |t| t.type == :pCOLON }&.location&.start_column
+            location = decl.location or return
+            base_pos = location.start_pos
+            base_col = location.start_column
+            overload_starts = decl.overloads.filter_map { |overload| overload.method_type.location&.start_pos }
+            tokens = ::RBS::Parser.lex(location.source).value.reject { |t| t.type == :tTRIVIA }
+            colon_column = tokens.find { |t| t.type == :pCOLON }&.location&.start_column or return
+            first_colon_column = base_col + colon_column
             ([nil] + tokens).each_cons(3) do |before, bar, after|
               next unless before
               next unless bar
