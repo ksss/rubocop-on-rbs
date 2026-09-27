@@ -4,6 +4,17 @@
 * Add cop `RBSInline/Lint/Syntax` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/159
 * Add cop `RBSInline/Lint/UnusedAnnotation` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/159
 * Replace crc32 cache with `ObjectSpace::WeakKeyMap` and drop `zlib` dependency by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/160
+* Add `RBSInline/Style` department by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/BlockReturnBoolish` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/ClassWithSingleton` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/ClassicType` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/DuplicatedType` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/EmptyArgument` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/InitializeReturnType` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/InstanceWithInstance` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/OptionalNil` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/RedundantParentheses` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+* Add cop `RBSInline/Style/TrueFalse` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
 
 ## [2.1.0] - 2026-09-27
 
