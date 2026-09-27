@@ -83,7 +83,8 @@ task update_cops_documentation: :yard_for_generate_documentation do
     'RBS/Layout',
     'RBS/Lint',
     'RBS/Style',
-    'RBSInline/Lint'
+    'RBSInline/Lint',
+    'RBSInline/Style'
   ]
   CopsDocumentationGeneratorOnRBS.new(departments: departments).call
 end

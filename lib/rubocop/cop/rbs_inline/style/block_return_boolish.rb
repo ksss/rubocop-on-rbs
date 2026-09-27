@@ -2,20 +2,24 @@
 
 module RuboCop
   module Cop
-    module RBS
+    module RBSInline
       module Style
         # @example
         #   # bad
-        #   def foo: () { () -> bool } -> void
+        #   #: () { () -> bool } -> void
+        #   def foo
+        #   end
         #
         #   # good
-        #   def foo: () { () -> boolish } -> void
+        #   #: () { () -> boolish } -> void
+        #   def foo
+        #   end
         #
-        class BlockReturnBoolish < RuboCop::RBS::CopBase
+        class BlockReturnBoolish < RuboCop::RBSInline::CopBase
           include RuboCop::Cop::RBS::Mixin::BlockReturnBoolish
           extend AutoCorrector
 
-          alias on_rbs_def check_def
+          alias on_inline_def check_def
         end
       end
     end

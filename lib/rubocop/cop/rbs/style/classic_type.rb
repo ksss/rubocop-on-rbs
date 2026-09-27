@@ -18,64 +18,15 @@ module RuboCop
         #   def bar: () -> nil
         #
         class ClassicType < RuboCop::RBS::CopBase
+          include RuboCop::Cop::RBS::Mixin::ClassicType
           extend AutoCorrector
 
-          Types = ::RBS::Types #: module-alias
-
-          def on_rbs_def(decl)
-            decl.overloads.each do |overload|
-              overload.method_type.each_type do |type|
-                check_type(type)
-              end
-            end
-          end
-
-          def on_rbs_constant(decl)
-            check_type(decl.type)
-          end
-          alias on_rbs_global on_rbs_constant
-          alias on_rbs_type_alias on_rbs_constant
-          alias on_rbs_attribute on_rbs_constant
-          alias on_rbs_var on_rbs_constant
-
-          #: (::RBS::Types::t type) -> untyped
-          def check_type(type)
-            find_replacement(type) do |t, replaced|
-              range = location_to_range(t.location)
-              add_offense(range, message: "Use `#{replaced}` instead of `#{t}`") do |corrector|
-                corrector.replace(range, replaced)
-              end
-            end
-          end
-
-          #: (::RBS::Types::t type) ?{ ([::RBS::Types::t, String]) -> untyped } -> untyped
-          def find_replacement(type, &block)
-            case type
-            when Types::Record,
-                 Types::Tuple,
-                 Types::Union,
-                 Types::Intersection,
-                 Types::Optional,
-                 Types::Proc,
-                 Types::Alias,
-                 Types::Interface
-              type.each_type do |t|
-                find_replacement(t, &block)
-              end
-            when Types::ClassInstance
-              case type.name.to_s
-              when 'TrueClass', '::TrueClass'
-                block&.call([type, 'true'])
-              when 'FalseClass', '::FalseClass'
-                block&.call([type, 'false'])
-              when 'NilClass', '::NilClass'
-                block&.call([type, 'nil'])
-              end
-              type.each_type do |arg|
-                find_replacement(arg, &block)
-              end
-            end
-          end
+          alias on_rbs_def check_def
+          alias on_rbs_constant check_member
+          alias on_rbs_global check_member
+          alias on_rbs_type_alias check_member
+          alias on_rbs_attribute check_member
+          alias on_rbs_var check_member
         end
       end
     end

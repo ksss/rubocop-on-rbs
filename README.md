@@ -125,6 +125,19 @@ RBSInline/Lint:
 $ bundle exec rubocop --only RBSInline/Lint
 ```
 
+### RBSInline/Style
+
+Same as `RBS/Style`, but for inline annotations.
+
+```yaml
+RBSInline/Style:
+  Enabled: true
+```
+
+```console
+$ bundle exec rubocop --only RBSInline/Style
+```
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:

@@ -2,22 +2,26 @@
 
 module RuboCop
   module Cop
-    module RBS
+    module RBSInline
       module Style
         # Checks that `instance` in instance context.
         #
         # @example
         #   # bad
-        #   def foo: (instance) -> instance
+        #   #: (instance) -> instance
+        #   def foo(x)
+        #   end
         #
         #   # good
-        #   def foo: (self) -> self
+        #   #: (self) -> self
+        #   def foo(x)
+        #   end
         #
-        class InstanceWithInstance < RuboCop::RBS::CopBase
+        class InstanceWithInstance < RuboCop::RBSInline::CopBase
           include RuboCop::Cop::RBS::Mixin::InstanceWithInstance
           extend AutoCorrector
 
-          alias on_rbs_class check_class
+          alias on_inline_class check_class
         end
       end
     end

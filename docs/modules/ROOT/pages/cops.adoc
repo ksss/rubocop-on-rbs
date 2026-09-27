@@ -55,3 +55,16 @@
 
 * xref:cops_rbsinline_lint.adoc#rbsinlinelintsyntax[RBSInline/Lint/Syntax]
 * xref:cops_rbsinline_lint.adoc#rbsinlinelintunusedannotation[RBSInline/Lint/UnusedAnnotation]
+
+=== Department xref:cops_rbsinline_style.adoc[RBSInline/Style]
+
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleblockreturnboolish[RBSInline/Style/BlockReturnBoolish]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleclasswithsingleton[RBSInline/Style/ClassWithSingleton]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleclassictype[RBSInline/Style/ClassicType]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleduplicatedtype[RBSInline/Style/DuplicatedType]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleemptyargument[RBSInline/Style/EmptyArgument]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleinitializereturntype[RBSInline/Style/InitializeReturnType]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleinstancewithinstance[RBSInline/Style/InstanceWithInstance]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleoptionalnil[RBSInline/Style/OptionalNil]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyleredundantparentheses[RBSInline/Style/RedundantParentheses]
+* xref:cops_rbsinline_style.adoc#rbsinlinestyletruefalse[RBSInline/Style/TrueFalse]
