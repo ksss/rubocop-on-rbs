@@ -23,6 +23,9 @@ module RuboCop
       # WeakKeyMap (not WeakMap) because values must stay alive while the key does.
       CACHE = ObjectSpace::WeakKeyMap.new
 
+      # Result of the annotation-like comment check, shared across cops in the same way as CACHE.
+      ANNOTATED = ObjectSpace::WeakKeyMap.new
+
       def self.documentation_url(_config = nil)
         base = "cops_#{department.to_s.downcase.tr('/', '_')}"
         fragment = cop_name.downcase.gsub(/[^a-z]/, '')
@@ -32,7 +35,7 @@ module RuboCop
       def on_new_investigation
         @processed_inline_source = nil
         return if processed_source.buffer.name.end_with?('.rbs')
-        return unless processed_source.comments.any? { |comment| inline_annotation_comment?(comment) }
+        return unless annotated?
 
         on_inline_new_investigation
 
@@ -81,6 +84,13 @@ module RuboCop
         when ::RBS::AST::Ruby::Members::InstanceVariableMember
           on_inline_var(decl)
         end
+      end
+
+      #: () -> bool
+      def annotated?
+        return ANNOTATED[processed_source] if ANNOTATED.key?(processed_source)
+
+        ANNOTATED[processed_source] = processed_source.comments.any? { |comment| inline_annotation_comment?(comment) }
       end
 
       #: () -> ProcessedInlineSource
