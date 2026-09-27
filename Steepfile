@@ -1,6 +1,7 @@
 D = Steep::Diagnostic
 
 target :lib do
+  signature "sig"
   check "lib", inline: true
   # configure_code_diagnostics(D::Ruby.default)      # `default` diagnostics setting (applies by default)
   # configure_code_diagnostics(D::Ruby.strict)       # `strict` diagnostics setting

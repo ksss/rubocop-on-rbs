@@ -10,7 +10,7 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task default: [:spec, :check_config_default_yml, :rubocop]
+task default: [:spec, :check_config_default_yml, :rubocop, 'crema:check']
 
 require 'yard'
 require 'rubocop-on-rbs'
@@ -19,9 +19,15 @@ require 'rubocop/cops_documentation_generator'
 class CopsDocumentationGeneratorOnRBS < CopsDocumentationGenerator
   private
 
-  def code_example(rbs_code)
-    content = +"[source,rbs]\n----\n"
-    content << rbs_code.text.gsub('@good', '# good').gsub('@bad', '# bad').strip
+  def examples(example_objects, cop)
+    @current_cop = cop
+    super
+  end
+
+  def code_example(code)
+    lang = @current_cop.to_s.start_with?('RuboCop::Cop::RBSInline::') ? 'ruby' : 'rbs'
+    content = "[source,#{lang}]\n----\n"
+    content << code.text.gsub('@good', '# good').gsub('@bad', '# bad').strip
     content << "\n----\n"
     content
   end
@@ -32,14 +38,40 @@ YARD::Rake::YardocTask.new(:yard_for_generate_documentation) do |task|
   task.options = ['--no-output']
 end
 
+CREMA_BASELINE = 'crema-check-tamped.jsonl'
+
 namespace :crema do
+  # crema exits 1 when any diagnostic exists, which is expected here.
+  def crema_tamped_diagnostics
+    require 'open3'
+    out, _status = Open3.capture2('crema', 'check', '--tamp')
+    out.lines(chomp: true)
+  rescue Errno::ENOENT
+    abort 'crema is not installed. See https://github.com/ksss/crema'
+  end
+
   desc 'Update crema tamped jsonl'
   task :tamping do
-    begin
-      sh("crema check --tamp > crema-check-tamped.jsonl")
-    rescue RuntimeError => e
-      raise unless e.message == "Command failed with status (1): [crema check --tamp > crema-check-tamped.jsonl]"
+    File.write(CREMA_BASELINE, crema_tamped_diagnostics.join("\n") + "\n")
+  end
+
+  desc 'Check crema diagnostics do not increase against the baseline'
+  task :check do
+    before = File.readlines(CREMA_BASELINE, chomp: true)
+    after = crema_tamped_diagnostics
+    removed = before - after
+    added = after - before
+
+    unless removed.empty?
+      warn "crema diagnostics resolved. Run 'rake crema:tamping' and commit #{CREMA_BASELINE} to update the baseline."
+      warn removed
     end
+    unless added.empty?
+      warn "New crema diagnostics found. Fix them, or run 'rake crema:tamping' and commit #{CREMA_BASELINE}."
+      warn added
+      abort
+    end
+    puts 'crema diagnostics OK'
   end
 end
 
@@ -50,7 +82,8 @@ task update_cops_documentation: :yard_for_generate_documentation do
   departments = [
     'RBS/Layout',
     'RBS/Lint',
-    'RBS/Style'
+    'RBS/Style',
+    'RBSInline/Lint'
   ]
   CopsDocumentationGeneratorOnRBS.new(departments: departments).call
 end

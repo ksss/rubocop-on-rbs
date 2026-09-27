@@ -1,0 +1,8 @@
+# Not declared in gem_rbs_collection (rubocop 1.57)
+module RuboCop
+  module Cop
+    module AllowedPattern
+      def matches_allowed_pattern?: (String line) -> bool
+    end
+  end
+end

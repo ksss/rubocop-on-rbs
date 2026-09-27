@@ -1,0 +1,8 @@
+# Not declared in gem_rbs_collection (rubocop-ast 1.46)
+module RuboCop
+  module AST
+    class ProcessedSource
+      def comment_at_line: (Integer line) -> Parser::Source::Comment?
+    end
+  end
+end

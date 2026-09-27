@@ -37,17 +37,4 @@ jobs:
     - name: Install RBS collection
       run: bundle exec rbs collection install
     - name: Check crema diagnostics do not increase
-      run: |
-        cp crema-check-tamped.jsonl "${RUNNER_TEMP}/before.jsonl"
-        bundle exec rake crema:tamping
-        added=$(comm -13 "${RUNNER_TEMP}/before.jsonl" crema-check-tamped.jsonl)
-        removed=$(comm -23 "${RUNNER_TEMP}/before.jsonl" crema-check-tamped.jsonl)
-        if [ -n "$removed" ]; then
-          echo "::warning::crema diagnostics resolved. Run 'rake crema:tamping' and commit crema-check-tamped.jsonl to update the baseline."
-          echo "$removed"
-        fi
-        if [ -n "$added" ]; then
-          echo "::error::New crema diagnostics found. Fix them, or run 'rake crema:tamping' and commit crema-check-tamped.jsonl."
-          echo "$added"
-          exit 1
-        fi
+      run: bundle exec rake crema:check

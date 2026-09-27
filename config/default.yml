@@ -222,3 +222,25 @@ RBS/Style/RedundantParentheses:
 RBS/Style/TrueFalse:
   Description: 'Use bool instead of true | false'
   Enabled: true
+
+# RBSInline
+
+RBSInline:
+  Enabled: true
+
+## RBSInline/Lint
+
+RBSInline/Lint:
+  Enabled: true
+
+RBSInline/Lint/Syntax:
+  Severity: error
+  Description: 'Check RBS inline annotation syntax'
+  Enabled: true
+  AllowedPatterns:
+    # Embedded RBS by rbs-inline gem. Not supported by RBS::InlineParser.
+    - '\A# @rbs!'
+
+RBSInline/Lint/UnusedAnnotation:
+  Description: 'Check unused RBS inline annotation'
+  Enabled: true
