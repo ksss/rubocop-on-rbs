@@ -43,7 +43,6 @@ namespace :crema do
   end
 end
 
-
 desc 'Update Cops Documentation'
 task update_cops_documentation: :yard_for_generate_documentation do
   rm_rf('docs/')
