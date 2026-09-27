@@ -5,7 +5,6 @@ PATH
       lint_roller (~> 1.1)
       rbs (~> 4.0)
       rubocop (>= 1.72.1, < 2.0)
-      zlib
 
 GEM
   remote: https://rubygems.org/
@@ -131,7 +130,6 @@ GEM
     unicode-emoji (4.3.0)
     uri (1.1.1)
     yard (0.9.45)
-    zlib (3.2.3)
 
 PLATFORMS
   aarch64-linux-gnu
