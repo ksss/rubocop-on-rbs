@@ -20,13 +20,14 @@ module RuboCop
             overloads.each_with_index do |overload, idx|
               next if idx == overloads.size - 1
 
-              next_overloads = overloads[(idx + 1)..-1]
+              next_overloads = overloads[(idx + 1)..-1] or next
               next_overloads.each do |next_overload|
                 a = method_type_with_untyped_return_type(overload.method_type)
                 b = method_type_with_untyped_return_type(next_overload.method_type)
                 next unless a == b
 
-                range = location_to_range(next_overload.method_type.location)
+                location = next_overload.method_type.location or next
+                range = location_to_range(location)
                 add_offense(range)
               end
             end

@@ -46,7 +46,7 @@ module RuboCop
 
           def line_after_comment(comment)
             lines = processed_source.lines
-            lines[comment.location.start_line..].find { |line| !line.blank? }
+            lines[comment.location.start_line..]&.find { |line| !line.blank? }
           end
 
           def correct_indentation(next_line)

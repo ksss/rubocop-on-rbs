@@ -36,6 +36,8 @@ module RuboCop
 
           def check_type(type)
             on_type([::RBS::Types::Union], type) do |union|
+              next unless union.is_a?(::RBS::Types::Union)
+
               union.types.each do |t|
                 case t
                 when ::RBS::Types::Intersection

@@ -42,7 +42,7 @@ module RuboCop
           MSG = 'Useless `%<current>s` access modifier.'
 
           def on_rbs_class(decl)
-            current = nil
+            current = nil #: ::RBS::AST::Members::Public | ::RBS::AST::Members::Private | nil
             unused = true
             decl.members.each do |member|
               next unless member.location
@@ -71,8 +71,8 @@ module RuboCop
               end
             end
 
-            if unused && current
-              range = location_to_range(current.location)
+            if unused && current && (location = current.location)
+              range = location_to_range(location)
               vis = case current
                     when ::RBS::AST::Members::Public
                       'public'

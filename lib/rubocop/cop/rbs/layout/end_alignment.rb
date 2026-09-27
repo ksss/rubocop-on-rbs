@@ -42,7 +42,8 @@ module RuboCop
             end_loc = decl.location[:end]
             actual = end_loc.start_column
             if actual != expect
-              line_start_pos = processed_source.raw_source.rindex(/\R/, end_loc.start_pos) + 1
+              newline_pos = processed_source.raw_source.rindex(/\R/, end_loc.start_pos) or return
+              line_start_pos = newline_pos + 1
               range = range_between(end_loc.start_pos, end_loc.end_pos)
               source = decl.location.source.each_line.first.strip
               message = "`end` at #{end_loc.start_line}, #{end_loc.start_column} is not aligned with " \

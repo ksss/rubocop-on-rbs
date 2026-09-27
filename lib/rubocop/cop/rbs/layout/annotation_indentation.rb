@@ -35,7 +35,8 @@ module RuboCop
                   when ::RBS::AST::Members::MethodDefinition
                     member.overloads.each do |overload|
                       overload.annotations.each do |annotation|
-                        ignore_poses << annotation.location.start_pos
+                        location = annotation.location or next
+                        ignore_poses << location.start_pos
                       end
                     end
                   end

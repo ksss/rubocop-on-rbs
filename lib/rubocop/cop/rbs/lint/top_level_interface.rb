@@ -27,17 +27,19 @@ module RuboCop
           end
 
           def on_rbs_class(decl)
-            return unless @last_end_pos.nil? || (@last_end_pos < decl.location.end_pos)
+            location = decl.location or return
+            return unless @last_end_pos.nil? || (@last_end_pos < location.end_pos)
 
-            @last_end_pos = decl.location.end_pos
+            @last_end_pos = location.end_pos
           end
           alias on_rbs_module on_rbs_class
 
           def on_rbs_interface(decl)
-            return unless @last_end_pos.nil? || (@last_end_pos < decl.location.start_pos)
+            location = decl.location or return
+            return unless @last_end_pos.nil? || (@last_end_pos < location.start_pos)
             return unless decl.name.namespace.path.empty?
 
-            range = location_to_range(decl.location)
+            range = location_to_range(location)
             add_offense(range)
           end
         end

@@ -82,7 +82,7 @@ module RuboCop
                   end
                 end
                 replaced.insert(first_index || 0, ::RBS::Types::Bases::Bool.new(location: nil))
-                block.call([type, ::RBS::Types::Union.new(types: replaced, location: nil)])
+                block&.call([type, ::RBS::Types::Union.new(types: replaced, location: nil)])
               end
             else
               type.each_type do |type|
