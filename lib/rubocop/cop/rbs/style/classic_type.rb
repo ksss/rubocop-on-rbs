@@ -65,11 +65,11 @@ module RuboCop
             when Types::ClassInstance
               case type.name.to_s
               when 'TrueClass', '::TrueClass'
-                block.call([type, 'true'])
+                block&.call([type, 'true'])
               when 'FalseClass', '::FalseClass'
-                block.call([type, 'false'])
+                block&.call([type, 'false'])
               when 'NilClass', '::NilClass'
-                block.call([type, 'nil'])
+                block&.call([type, 'nil'])
               end
               type.each_type do |arg|
                 find_replacement(arg, &block)

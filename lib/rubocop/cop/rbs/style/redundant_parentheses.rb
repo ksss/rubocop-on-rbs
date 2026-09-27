@@ -70,6 +70,8 @@ module RuboCop
 
             def check
               @cop.on_type([::RBS::Types::Proc], @type) do |proc_type|
+                next unless proc_type.is_a?(::RBS::Types::Proc)
+
                 before_token_if_lparen(@tokens, @base, proc_type.type) do |b|
                   @skip << (b.location.start_pos + @base)
                 end
@@ -93,7 +95,9 @@ module RuboCop
                     case type.type.literal
                     when Symbol
                       # Skip optional with symbol literal (e.g. `(:sym)?`)
-                      @skip << type.location.start_pos
+                      if (location = type.location)
+                        @skip << location.start_pos
+                      end
                     end
                   end
                 end
@@ -129,8 +133,9 @@ module RuboCop
           extend AutoCorrector
 
           def on_rbs_def(decl)
-            base = decl.location.start_pos
-            tokens = tokenize(decl.location.source)
+            location = decl.location or return
+            base = location.start_pos
+            tokens = tokenize(location.source)
             skip = Set.new
             decl.overloads.each do |overload|
               before_token_if_lparen(tokens, base, overload.method_type.type) do |b|
@@ -159,9 +164,10 @@ module RuboCop
           end
 
           def on_rbs_constant(const)
-            tokens = tokenize(const.location.source)
+            location = const.location or return
+            tokens = tokenize(location.source)
             type = const.type
-            base = const.location.start_pos
+            base = location.start_pos
             check_type(tokens:, type:, base:)
           end
           alias on_rbs_global on_rbs_constant

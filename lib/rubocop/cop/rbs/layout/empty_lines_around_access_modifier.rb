@@ -29,8 +29,9 @@ module RuboCop
           MSG = 'Keep a blank line before and after `<%<kind>s>`.'
 
           def on_rbs_class(decl)
-            @class_or_module_def_first_line = decl.location.start_line
-            @class_or_module_def_last_line = decl.location.end_line
+            location = decl.location or return
+            @class_or_module_def_first_line = location.start_line
+            @class_or_module_def_last_line = location.end_line
           end
           alias on_rbs_module on_rbs_class
 

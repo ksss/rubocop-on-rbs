@@ -18,9 +18,12 @@ module RuboCop
 
           # @sig decl: ::RBS::AST::Members::MethodDefinition
           def on_rbs_def(decl)
+            location = decl.location or return
             paren_level = 0
-            tokens = ::RBS::Parser.lex(decl.location.source).value.reject { |t| t.type == :tTRIVIA }
+            tokens = ::RBS::Parser.lex(location.source).value.reject { |t| t.type == :tTRIVIA }
             ([nil] + tokens).each_cons(3) do |before, token, after|
+              next unless token && after
+
               case token.type
               when :pLPAREN # '('
                 paren_level += 1
@@ -31,12 +34,12 @@ module RuboCop
                 next unless (after.type == :pLPAREN || after.type == :pARROW)
                 next unless paren_level == 0
 
-                check_around_space(decl.location, before, token, after)
+                check_around_space(location, before, token, after)
               when :pRBRACE # '}'
                 next unless after.type == :pARROW
                 next unless paren_level == 0
 
-                check_around_space(decl.location, before, token, after)
+                check_around_space(location, before, token, after)
               end
             end
           end
