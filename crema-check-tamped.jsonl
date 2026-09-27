@@ -51,7 +51,6 @@
 {"file":"lib/rubocop/cop/rbs/style/true_false.rb","code":"Crema::NonExhaustiveCase","fingerprint":"bd61dc722c2a35e3"}
 {"file":"lib/rubocop/rbs/cop_base.rb","code":"Crema::NonExhaustiveCase","fingerprint":"ddf3cac1a42b7654"}
 {"file":"lib/rubocop/rbs/cop_base.rb","code":"Ruby::UnexpectedPositionalArgument","fingerprint":"23bf1e74af843feb"}
-{"file":"lib/rubocop/rbs/cop_base.rb","code":"Ruby::UnknownClassVariable","fingerprint":"1f5566e6c5578ee0"}
 {"file":"lib/rubocop/rbs/cop_base.rb","code":"Ruby::UnknownInstanceVariable","fingerprint":"d7c1ca68aaf0a658"}
 {"file":"lib/rubocop/rbs/cop_base.rb","code":"Ruby::UnresolvedOverloading","fingerprint":"3d0a0816ec06e908"}
 {"file":"lib/rubocop/rbs/plugin.rb","code":"Ruby::ArgumentTypeMismatch","fingerprint":"1c58dff7ac69dfd2"}

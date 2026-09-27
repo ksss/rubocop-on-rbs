@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+#
+# Compare rubocop wall time and peak memory between a git ref and the working tree,
+# by running `rubocop --cache false` inside real RBS repositories.
+#
+# Usage:
+#   bin/bench [-b REF] [-n RUNS] TARGET_DIR...
+#
+#   -b REF   baseline git ref (default: main)
+#   -n RUNS  runs per variant (default: 3)
+#
+# Each TARGET_DIR is linted with its own .rubocop.yml. If that config loads plugins
+# other than rubocop-on-rbs, list them in BENCH_GEMS, e.g.
+#
+#   BENCH_GEMS=rubocop-rubycw bin/bench ../rbs ../gem_rbs_collection
+#
+set -euo pipefail
+
+ref=main
+runs=3
+while getopts 'b:n:' opt; do
+  case $opt in
+    b) ref=$OPTARG ;;
+    n) runs=$OPTARG ;;
+    *) exit 1 ;;
+  esac
+done
+shift $((OPTIND - 1))
+[ $# -ge 1 ] || { sed -n '3,15p' "$0" | sed 's/^# \{0,1\}//'; exit 1; }
+
+root=$(cd "$(dirname "$0")/.." && pwd)
+work=$(mktemp -d)
+trap 'git -C "$root" worktree remove --force "$work/before" 2>/dev/null; rm -rf "$work"' EXIT
+
+git -C "$root" worktree add -q --detach "$work/before" "$ref"
+
+gemfile() {
+  mkdir -p "$work/gem-$1"
+  {
+    echo "source 'https://rubygems.org'"
+    echo "gem 'rubocop'"
+    for g in ${BENCH_GEMS:-}; do echo "gem '$g'"; done
+    echo "gem 'rubocop-on-rbs', path: '$2'"
+  } > "$work/gem-$1/Gemfile"
+  (cd "$work/gem-$1" && bundle install --quiet)
+}
+gemfile before "$work/before"
+gemfile after "$root"
+
+if [ "$(uname)" = Darwin ]; then
+  time_cmd=(/usr/bin/time -l)
+  real_awk='/real/{print $1}'
+  rss_awk='/maximum resident set size/{print int($1/1024/1024)}'
+else
+  time_cmd=(/usr/bin/time -v)
+  real_awk='/Elapsed \(wall clock\)/{print $NF}'
+  rss_awk='/Maximum resident set size/{print int($NF/1024)}'
+fi
+
+printf 'repo\tvariant\trun\treal\tmax_rss\tresult\n'
+for dir in "$@"; do
+  for i in $(seq "$runs"); do
+    for v in before after; do
+      # stdout (rubocop report) goes to a file; stderr (time's report) is captured.
+      out=$(cd "$dir" && BUNDLE_GEMFILE="$work/gem-$v/Gemfile" "${time_cmd[@]}" bundle exec rubocop --cache false 2>&1 >"$work/out.txt" || true)
+      real=$(echo "$out" | awk "$real_awk")
+      rss=$(echo "$out" | awk "$rss_awk")
+      result=$(grep 'files inspected' "$work/out.txt" || echo 'FAILED')
+      printf '%s\t%s\t%s\t%ss\t%sMB\t%s\n' "$(basename "$dir")" "$v" "$i" "$real" "$rss" "$result"
+    done
+  done
+done
