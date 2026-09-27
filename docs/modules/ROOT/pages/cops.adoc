@@ -50,3 +50,8 @@
 * xref:cops_rbs_style.adoc#rbsstyleoptionalnil[RBS/Style/OptionalNil]
 * xref:cops_rbs_style.adoc#rbsstyleredundantparentheses[RBS/Style/RedundantParentheses]
 * xref:cops_rbs_style.adoc#rbsstyletruefalse[RBS/Style/TrueFalse]
+
+=== Department xref:cops_rbsinline_lint.adoc[RBSInline/Lint]
+
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintsyntax[RBSInline/Lint/Syntax]
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintunusedannotation[RBSInline/Lint/UnusedAnnotation]

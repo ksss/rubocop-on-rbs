@@ -104,6 +104,27 @@ RBS/Style:
 $ bundle exec rubocop --only RBS/Style
 ```
 
+### RBSInline
+
+Cops for RBS inline annotations (`#: String`, `# @rbs x: Integer`) written in Ruby files.
+They are separated from `RBS/*` cops and run only on Ruby files that contain annotations.
+
+```yaml
+RBSInline:
+  Enabled: true
+```
+
+### RBSInline/Lint
+
+```yaml
+RBSInline/Lint:
+  Enabled: true
+```
+
+```console
+$ bundle exec rubocop --only RBSInline/Lint
+```
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:

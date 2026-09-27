@@ -7,6 +7,8 @@ RuboCop::RSpec::ExpectOffense.prepend(Module.new do
   # skip ruby syntax check
   def parse_processed_source(source, file = nil)
     parse_source(source, file).tap do
+      next if cop.is_a?(RuboCop::RBSInline::CopBase)
+
       begin
         ::RBS::Parser.parse_signature(source)
       rescue ::RBS::ParsingError => e
