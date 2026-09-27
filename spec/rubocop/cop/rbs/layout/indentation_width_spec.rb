@@ -107,4 +107,38 @@ RSpec.describe RuboCop::Cop::RBS::Layout::IndentationWidth, :config do
       end
     RBS
   end
+
+  context 'when Width is 4' do
+    let(:cop_config) { { 'Width' => 4 } }
+
+    it 'registers an offense' do
+      expect_offense(<<~RBS)
+        module Foo
+          module Bar
+        ^^ Use 4 (not 2) spaces for indentation.
+              def foo: () -> void
+        ^^^^^^ Use 8 (not 6) spaces for indentation.
+          end
+        end
+      RBS
+
+      expect_correction(<<~RBS)
+        module Foo
+            module Bar
+                def foo: () -> void
+          end
+        end
+      RBS
+    end
+
+    it 'not registers an offense' do
+      expect_no_offenses(<<~RBS)
+        module Foo
+            module Bar
+                def foo: () -> void
+            end
+        end
+      RBS
+    end
+  end
 end

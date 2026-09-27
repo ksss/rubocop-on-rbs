@@ -403,6 +403,9 @@ Checks if the indentation width.
 [#examples-rbslayoutindentationwidth]
 === Examples
 
+[#width_-2-_default_-rbslayoutindentationwidth]
+==== Width: 2 (default)
+
 [source,rbs]
 ----
 # bad
@@ -413,6 +416,22 @@ end
 # good
 class Foo
   def foo: () -> void
+end
+----
+
+[#width_-4-rbslayoutindentationwidth]
+==== Width: 4
+
+[source,rbs]
+----
+# bad
+class Foo
+  def foo: () -> void
+end
+
+# good
+class Foo
+    def foo: () -> void
 end
 ----
 
