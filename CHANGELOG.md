@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+## [2.1.0] - 2026-09-27
+
+* Drop support for Ruby v3.2 by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/153
 * [RBS/Layout/IndentationWidth] Support `Width` option by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/157
 
 ## [2.0.0] - 2026-03-27
