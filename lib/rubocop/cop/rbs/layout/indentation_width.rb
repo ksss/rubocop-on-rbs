@@ -6,7 +6,7 @@ module RuboCop
       module Layout
         # Checks if the indentation width.
         #
-        # @example
+        # @example Width: 2 (default)
         #   # bad
         #   class Foo
         #   def foo: () -> void
@@ -15,6 +15,17 @@ module RuboCop
         #   # good
         #   class Foo
         #     def foo: () -> void
+        #   end
+        #
+        # @example Width: 4
+        #   # bad
+        #   class Foo
+        #     def foo: () -> void
+        #   end
+        #
+        #   # good
+        #   class Foo
+        #       def foo: () -> void
         #   end
         #
         class IndentationWidth < RuboCop::RBS::CopBase
@@ -33,7 +44,7 @@ module RuboCop
             if decl.respond_to?(:members)
               check(decl, expect: expect)
               decl.members.each do |member|
-                check_indentation(member, expect: expect + 2)
+                check_indentation(member, expect: expect + configured_indentation_width)
               end
             else
               check(decl, expect: expect)
@@ -50,6 +61,10 @@ module RuboCop
                 corrector.replace(range, ' ' * expect)
               end
             end
+          end
+
+          def configured_indentation_width
+            cop_config['Width'] || 2
           end
 
           def line_start_pos(decl)

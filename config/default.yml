@@ -77,6 +77,8 @@ RBS/Layout/ExtraSpacing:
 RBS/Layout/IndentationWidth:
   Description: 'Use 2 spaces for indentation'
   Enabled: true
+  # Number of spaces for each indentation level.
+  Width: 2
 
 RBS/Layout/OverloadIndentation:
   Description: 'Indent overload method'

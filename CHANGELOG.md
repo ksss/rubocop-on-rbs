@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+* [RBS/Layout/IndentationWidth] Support `Width` option by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/TBD
+
 ## [2.0.0] - 2026-03-27
 
 * Support rbs v4 by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/145
