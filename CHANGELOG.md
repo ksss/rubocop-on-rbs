@@ -1,9 +1,20 @@
 ## [Unreleased]
 
 * Add `RBSInline` department for RBS inline annotations in Ruby files by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/159
-* Add cop `RBSInline/Lint/Syntax` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/159
-* Add cop `RBSInline/Lint/UnusedAnnotation` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/159
+  * `RBSInline/Lint/Syntax`
+  * `RBSInline/Lint/UnusedAnnotation`
 * Replace crc32 cache with `ObjectSpace::WeakKeyMap` and drop `zlib` dependency by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/160
+* Add `RBSInline/Style` department by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/161
+  * `RBSInline/Style/BlockReturnBoolish`
+  * `RBSInline/Style/ClassWithSingleton`
+  * `RBSInline/Style/ClassicType`
+  * `RBSInline/Style/DuplicatedType`
+  * `RBSInline/Style/EmptyArgument`
+  * `RBSInline/Style/InitializeReturnType`
+  * `RBSInline/Style/InstanceWithInstance`
+  * `RBSInline/Style/OptionalNil`
+  * `RBSInline/Style/RedundantParentheses`
+  * `RBSInline/Style/TrueFalse`
 
 ## [2.1.0] - 2026-09-27
 

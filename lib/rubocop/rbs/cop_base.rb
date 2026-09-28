@@ -4,8 +4,7 @@ module RuboCop
   module RBS
     # Base class for cops that operate on RBS signatures.
     class CopBase < RuboCop::Cop::Base
-      include RuboCop::Cop::RangeHelp
-      include RuboCop::RBS::OnTypeHelper
+      include RuboCop::RBS::CopHelper
 
       attr_reader :processed_rbs_source #: RuboCop::RBS::ProcessedRBSSource
 
@@ -124,15 +123,6 @@ module RuboCop
           name: processed_source.buffer.name,
           content: processed_source.raw_source
         )
-      end
-
-      #: (::RBS::Location[untyped, untyped]) -> Parser::Source::Range
-      def location_to_range(location)
-        range_between(location.start_pos, location.end_pos)
-      end
-
-      def tokenize(source)
-        ::RBS::Parser.lex(source).value.reject { |t| t.type == :tTRIVIA }
       end
 
       private

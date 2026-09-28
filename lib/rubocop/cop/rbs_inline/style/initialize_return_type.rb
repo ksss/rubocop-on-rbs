@@ -2,29 +2,34 @@
 
 module RuboCop
   module Cop
-    module RBS
+    module RBSInline
       module Style
         # `#initialize` is a private method and is likely to be overridden.
         # The return type of `#initialize` should not be specific.
         #
         # @example
         #   # bad
-        #   def initialize: () -> nil
+        #   def initialize #: nil
+        #   end
         #
         #   # bad
-        #   def initialize: () -> false
+        #   # @rbs return: false
+        #   def initialize
+        #   end
         #
         #   # good
-        #   def initialize: () -> untyped
+        #   def initialize #: untyped
+        #   end
         #
         #   # good
-        #   def initialize: () -> void
+        #   def initialize #: void
+        #   end
         #
-        class InitializeReturnType < RuboCop::RBS::CopBase
+        class InitializeReturnType < RuboCop::RBSInline::CopBase
           include RuboCop::Cop::RBS::Mixin::InitializeReturnType
           extend AutoCorrector
 
-          alias on_rbs_def check_def
+          alias on_inline_def check_def
         end
       end
     end

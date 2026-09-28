@@ -2,22 +2,26 @@
 
 module RuboCop
   module Cop
-    module RBS
+    module RBSInline
       module Style
         # Checks that `class` in singleton context.
         #
-        # @example (default)
+        # @example
         #   # bad
-        #   def self.foo: (class) -> class
+        #   #: (class) -> class
+        #   def self.foo(x)
+        #   end
         #
         #   # good
-        #   def self.foo: (self) -> self
+        #   #: (self) -> self
+        #   def self.foo(x)
+        #   end
         #
-        class ClassWithSingleton < RuboCop::RBS::CopBase
+        class ClassWithSingleton < RuboCop::RBSInline::CopBase
           include RuboCop::Cop::RBS::Mixin::ClassWithSingleton
           extend AutoCorrector
 
-          alias on_rbs_def check_def
+          alias on_inline_def check_def
         end
       end
     end
