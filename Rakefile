@@ -86,7 +86,7 @@ task update_cops_documentation: :yard_for_generate_documentation do
     'RBSInline/Lint',
     'RBSInline/Style'
   ]
-  CopsDocumentationGeneratorOnRBS.new(departments: departments).call
+  CopsDocumentationGeneratorOnRBS.new(departments: departments, plugin_name: 'rubocop-on-rbs').call
 end
 
 desc 'Check config/default.yml'

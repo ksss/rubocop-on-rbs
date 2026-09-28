@@ -147,6 +147,25 @@ interface _B
 end
 ----
 
+[#configurable-attributes-rbslayoutemptylinebetweendeclarations]
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| Class
+| `true`
+| Boolean
+
+| Module
+| `true`
+| Boolean
+
+| Interface
+| `true`
+| Boolean
+|===
+
 [#rbslayoutemptylines]
 == RBS/Layout/EmptyLines
 
@@ -434,6 +453,17 @@ class Foo
     def foo: () -> void
 end
 ----
+
+[#configurable-attributes-rbslayoutindentationwidth]
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| Width
+| `2`
+| Integer
+|===
 
 [#rbslayoutoverloadindentation]
 == RBS/Layout/OverloadIndentation
