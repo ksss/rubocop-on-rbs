@@ -6,6 +6,173 @@
 
 = RBSInline/Lint
 
+[#rbsinlinelintambiguouskeywordargumentkey]
+== RBSInline/Lint/AmbiguousKeywordArgumentKey
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Checks keyword argument keys that are not local variable names.
+
+[#examples-rbsinlinelintambiguouskeywordargumentkey]
+=== Examples
+
+[#default-rbsinlinelintambiguouskeywordargumentkey]
+==== default
+
+[source,ruby]
+----
+# bad
+#: (option?: bool, option!: bool, Option: bool) -> void
+def foo(**)
+end
+
+# good
+#: (?option: bool) -> void
+def foo(option: false)
+end
+----
+
+[#rbsinlinelintduplicateoverload]
+== RBSInline/Lint/DuplicateOverload
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Checks that there are no repeated overload bodies.
+This cop ignores the difference of return type.
+
+[#examples-rbsinlinelintduplicateoverload]
+=== Examples
+
+[source,ruby]
+----
+# bad
+#: () -> void
+#: () -> top
+def foo
+end
+
+# bad
+# @rbs () -> void
+#    | () -> top
+def foo
+end
+----
+
+[#rbsinlinelintliteralintersection]
+== RBSInline/Lint/LiteralIntersection
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Checks that there are no literals in intersection types.
+
+[#examples-rbsinlinelintliteralintersection]
+=== Examples
+
+[#default-rbsinlinelintliteralintersection]
+==== default
+
+[source,ruby]
+----
+# bad
+#: (1 & 2) -> void
+def foo(x)
+end
+
+# bad
+# @rbs x: 1 & _Foo
+def foo(x)
+end
+----
+
+[#rbsinlinelintnewreturnsvoid]
+== RBSInline/Lint/NewReturnsVoid
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Checks that there are void types in the return type of `.new` method
+`self.new` is a special and fundamental method, and extra care should be taken regarding its return value.
+In most cases, assigning it `void` is an unintended mistake.
+
+[#examples-rbsinlinelintnewreturnsvoid]
+=== Examples
+
+[source,ruby]
+----
+# bad
+def self.new #: void
+end
+
+# good
+def self.new #: instance
+end
+----
+
+[#rbsinlinelintrestkeywordhash]
+== RBSInline/Lint/RestKeywordHash
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Specifying the `Hash` type for `**` is a very special case and,
+in most situations, it is a mistake in type specification.
+
+[#examples-rbsinlinelintrestkeywordhash]
+=== Examples
+
+[source,ruby]
+----
+# bad
+# @rbs **opts: Hash[Symbol, String]
+def foo(**opts)
+end
+# e.g.) foo(a: {x: "x"}, b: {y: "y"}, c: {z: "z"})
+
+# good
+# @rbs **opts: String
+def foo(**opts)
+end
+# e.g.) foo(a: "x", b: "y", c: "z")
+----
+
 [#rbsinlinelintsyntax]
 == RBSInline/Lint/Syntax
 
@@ -75,6 +242,37 @@ end
 
 # good
 # @rbs x: Integer
+def foo(x)
+end
+----
+
+[#rbsinlinelintunusedoverloadtypeparams]
+== RBSInline/Lint/UnusedOverloadTypeParams
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| -
+| -
+|===
+
+Notice unused overload type parameters.
+
+[#examples-rbsinlinelintunusedoverloadtypeparams]
+=== Examples
+
+[source,ruby]
+----
+# bad
+#: [T] () -> void
+def foo
+end
+
+# good
+#: [T] (T) -> T
 def foo(x)
 end
 ----

@@ -2,7 +2,7 @@
 
 module RuboCop
   module Cop
-    module RBS
+    module RBSInline
       module Lint
         # Checks that there are void types in the return type of `.new` method
         # `self.new` is a special and fundamental method, and extra care should be taken regarding its return value.
@@ -10,15 +10,17 @@ module RuboCop
         #
         # @example
         #   # bad
-        #   def self.new: () -> void
+        #   def self.new #: void
+        #   end
         #
         #   # good
-        #   def self.new: () -> instance
+        #   def self.new #: instance
+        #   end
         #
-        class NewReturnsVoid < RuboCop::RBS::CopBase
+        class NewReturnsVoid < RuboCop::RBSInline::CopBase
           include RuboCop::Cop::RBS::Mixin::NewReturnsVoid
 
-          alias on_rbs_def check_def
+          alias on_inline_def check_def
         end
       end
     end
