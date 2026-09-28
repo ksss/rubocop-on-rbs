@@ -235,39 +235,47 @@ RBSInline/Lint:
 
 RBSInline/Lint/AmbiguousKeywordArgumentKey:
   Description: 'Check ambiguous keyword argument key'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Lint/DuplicateOverload:
   Description: 'Checks that there are no repeated overload bodies'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Lint/LiteralIntersection:
   Description: 'Check literal intersection'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Lint/NewReturnsVoid:
   Description: 'sigleton `new` method should not returns `void` type'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Lint/RestKeywordHash:
   Description: 'Check rest keyword with `Hash` type'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Lint/Syntax:
   Severity: error
   Description: 'Check RBS inline annotation syntax'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
   AllowedPatterns:
     # Embedded RBS by rbs-inline gem. Not supported by RBS::InlineParser.
     - '\A# @rbs!'
 
 RBSInline/Lint/UnusedAnnotation:
   Description: 'Check unused RBS inline annotation'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Lint/UnusedOverloadTypeParams:
   Description: 'Check redundant overload type params'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 ## RBSInline/Style
 
@@ -276,40 +284,50 @@ RBSInline/Style:
 
 RBSInline/Style/BlockReturnBoolish:
   Description: 'Use `bool` for block return type'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/ClassWithSingleton:
   Description: 'Check `class` with singleton context'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/ClassicType:
   Description: 'Use simple type'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/DuplicatedType:
   Description: 'Check duplicated type'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/EmptyArgument:
   Description: 'Use `()` for empty argument'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/InitializeReturnType:
   Description: 'Use `void` for initialize method'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/InstanceWithInstance:
   Description: 'Check `instance` with instance context'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/OptionalNil:
   Description: 'Use nil instead of nil?'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/RedundantParentheses:
   Description: 'Remove redundant parentheses'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'
 
 RBSInline/Style/TrueFalse:
   Description: 'Use bool instead of true | false'
-  Enabled: true
+  Enabled: pending
+  VersionAdded: '2.2.0'

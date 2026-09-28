@@ -109,9 +109,19 @@ $ bundle exec rubocop --only RBS/Style
 Cops for RBS inline annotations (`#: String`, `# @rbs x: Integer`) written in Ruby files.
 They are separated from `RBS/*` cops and run only on Ruby files that contain annotations.
 
+All `RBSInline/*` cops are `pending` in v2.x and will be enabled by default in v3.0.0.
+To enable them now, set `NewCops: enable` in your `.rubocop.yml`:
+
+```yaml
+AllCops:
+  NewCops: enable
+```
+
+Or enable only the `RBSInline` department (requires RuboCop 1.89+):
+
 ```yaml
 RBSInline:
-  Enabled: true
+  NewCops: enable
 ```
 
 ### RBSInline/Lint
