@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [2.2.0] - 2026-09-28
+
 * Mark all `RBSInline/*` cops as `Enabled: pending` by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/164
   * They will be enabled by default in v3.0.0. Use `NewCops: enable` to enable them now.
 * Add `RBSInline` department for RBS inline annotations in Ruby files by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/159
