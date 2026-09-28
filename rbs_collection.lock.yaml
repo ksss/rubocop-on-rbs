@@ -41,14 +41,6 @@ gems:
     revision: 3fd6f8f6b3f8617e6929310cc8af3027028a4f09
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
-- name: csv
-  version: '3.3'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: 3fd6f8f6b3f8617e6929310cc8af3027028a4f09
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
 - name: date
   version: '0'
   source:
@@ -73,10 +65,6 @@ gems:
   version: '0'
   source:
     type: stdlib
-- name: forwardable
-  version: '0'
-  source:
-    type: stdlib
 - name: i18n
   version: '1.10'
   source:
@@ -95,14 +83,6 @@ gems:
     type: rubygems
 - name: lint_roller
   version: '1.1'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: 3fd6f8f6b3f8617e6929310cc8af3027028a4f09
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
-- name: listen
-  version: '3.9'
   source:
     type: git
     name: ruby/gem_rbs_collection
@@ -233,10 +213,6 @@ gems:
   version: '0'
   source:
     type: stdlib
-- name: strscan
-  version: '0'
-  source:
-    type: stdlib
 - name: time
   version: '0'
   source:
@@ -269,8 +245,4 @@ gems:
     revision: 3fd6f8f6b3f8617e6929310cc8af3027028a4f09
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
-- name: zlib
-  version: '0'
-  source:
-    type: stdlib
 gemfile_lock_path: Gemfile.lock
