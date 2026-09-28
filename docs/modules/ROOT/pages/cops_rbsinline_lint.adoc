@@ -206,6 +206,21 @@ def foo #: String
 end
 ----
 
+[#configurable-attributes-rbsinlinelintsyntax]
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| Severity
+| `error`
+| String
+
+| AllowedPatterns
+| `\A# @rbs!`
+| Array
+|===
+
 [#rbsinlinelintunusedannotation]
 == RBSInline/Lint/UnusedAnnotation
 

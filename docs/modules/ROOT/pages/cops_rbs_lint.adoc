@@ -259,6 +259,17 @@ def foo: (**String) -> void
 
 Just only for syntax error
 
+[#configurable-attributes-rbslintsyntax]
+=== Configurable attributes
+
+|===
+| Name | Default value | Configurable values
+
+| Severity
+| `fatal`
+| String
+|===
+
 [#rbslinttoplevelinterface]
 == RBS/Lint/TopLevelInterface
 
@@ -268,7 +279,7 @@ Just only for syntax error
 | Enabled
 | Yes
 | No
-| -
+| 1.2.0
 | -
 |===
 
@@ -301,7 +312,7 @@ end
 | Enabled
 | Yes
 | No
-| -
+| 1.2.0
 | -
 |===
 
@@ -383,7 +394,7 @@ type ary[T] = Array[T]
 
 | Enabled
 | Yes
-| Always
+| Command-line only
 | -
 | -
 |===
