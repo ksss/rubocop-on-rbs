@@ -116,6 +116,8 @@ RBSInline:
 
 ### RBSInline/Lint
 
+Same as `RBS/Lint`, but for inline annotations.
+
 ```yaml
 RBSInline/Lint:
   Enabled: true

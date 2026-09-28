@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
+require_relative 'rbs_inline/lint/ambiguous_keyword_argument_key'
+require_relative 'rbs_inline/lint/duplicate_overload'
+require_relative 'rbs_inline/lint/literal_intersection'
+require_relative 'rbs_inline/lint/new_returns_void'
+require_relative 'rbs_inline/lint/rest_keyword_hash'
 require_relative 'rbs_inline/lint/syntax'
 require_relative 'rbs_inline/lint/unused_annotation'
+require_relative 'rbs_inline/lint/unused_overload_type_params'
 
 require_relative 'rbs_inline/style/block_return_boolish'
 require_relative 'rbs_inline/style/class_with_singleton'

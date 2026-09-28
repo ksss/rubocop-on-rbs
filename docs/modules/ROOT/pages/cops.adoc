@@ -53,8 +53,14 @@
 
 === Department xref:cops_rbsinline_lint.adoc[RBSInline/Lint]
 
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintambiguouskeywordargumentkey[RBSInline/Lint/AmbiguousKeywordArgumentKey]
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintduplicateoverload[RBSInline/Lint/DuplicateOverload]
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintliteralintersection[RBSInline/Lint/LiteralIntersection]
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintnewreturnsvoid[RBSInline/Lint/NewReturnsVoid]
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintrestkeywordhash[RBSInline/Lint/RestKeywordHash]
 * xref:cops_rbsinline_lint.adoc#rbsinlinelintsyntax[RBSInline/Lint/Syntax]
 * xref:cops_rbsinline_lint.adoc#rbsinlinelintunusedannotation[RBSInline/Lint/UnusedAnnotation]
+* xref:cops_rbsinline_lint.adoc#rbsinlinelintunusedoverloadtypeparams[RBSInline/Lint/UnusedOverloadTypeParams]
 
 === Department xref:cops_rbsinline_style.adoc[RBSInline/Style]
 

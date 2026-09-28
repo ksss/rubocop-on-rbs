@@ -2,21 +2,25 @@
 
 module RuboCop
   module Cop
-    module RBS
+    module RBSInline
       module Lint
         # Notice unused overload type parameters.
         #
         # @example
         #   # bad
-        #   def foo: [T] () -> void
+        #   #: [T] () -> void
+        #   def foo
+        #   end
         #
         #   # good
-        #   def foo: [T] (T) -> T
+        #   #: [T] (T) -> T
+        #   def foo(x)
+        #   end
         #
-        class UnusedOverloadTypeParams < RuboCop::RBS::CopBase
+        class UnusedOverloadTypeParams < RuboCop::RBSInline::CopBase
           include RuboCop::Cop::RBS::Mixin::UnusedOverloadTypeParams
 
-          alias on_rbs_def check_def
+          alias on_inline_def check_def
         end
       end
     end

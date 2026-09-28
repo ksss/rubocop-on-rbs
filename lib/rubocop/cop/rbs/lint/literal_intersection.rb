@@ -14,45 +14,14 @@ module RuboCop
         #   1 & _Foo
         #
         class LiteralIntersection < RuboCop::RBS::CopBase
-          MSG = "Don't use literals with `&`."
+          include RuboCop::Cop::RBS::Mixin::LiteralIntersection
 
-          def on_rbs_def(decl)
-            decl.overloads.each do |overload|
-              overload.method_type.each_type do |type|
-                check_type(type)
-              end
-            end
-          end
-
-          def check_type(type)
-            on_type([::RBS::Types::Intersection], type) do |intersection|
-              check_intersection(intersection)
-            end
-          end
-
-          def on_rbs_constant(type)
-            check_type(type.type)
-          end
-          alias on_rbs_global on_rbs_constant
-          alias on_rbs_type_alias on_rbs_constant
-          alias on_rbs_attribute on_rbs_constant
-          alias on_rbs_var on_rbs_constant
-
-          def check_intersection(intersection)
-            intersection.types.each do |type|
-              check_intersection_child(type)
-            end
-          end
-
-          def check_intersection_child(type)
-            case type
-            when ::RBS::Types::Literal
-              range = location_to_range(type.location)
-              add_offense(range)
-            when ::RBS::Types::Intersection
-              check_intersection(type)
-            end
-          end
+          alias on_rbs_def check_def
+          alias on_rbs_constant check_member
+          alias on_rbs_global check_member
+          alias on_rbs_type_alias check_member
+          alias on_rbs_attribute check_member
+          alias on_rbs_var check_member
         end
       end
     end

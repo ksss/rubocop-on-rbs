@@ -16,6 +16,13 @@
   * `RBSInline/Style/RedundantParentheses`
   * `RBSInline/Style/TrueFalse`
 * Drop steep by @ksss in https://github.com/ksss/rubocop-on-rbs/pull/162
+* Add `RBSInline/Lint` cops sharing implementation with `RBS/Lint` by @ksss
+  * `RBSInline/Lint/AmbiguousKeywordArgumentKey`
+  * `RBSInline/Lint/DuplicateOverload`
+  * `RBSInline/Lint/LiteralIntersection`
+  * `RBSInline/Lint/NewReturnsVoid`
+  * `RBSInline/Lint/RestKeywordHash`
+  * `RBSInline/Lint/UnusedOverloadTypeParams`
 
 ## [2.1.0] - 2026-09-27
 

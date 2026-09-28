@@ -2,20 +2,28 @@
 
 module RuboCop
   module Cop
-    module RBS
+    module RBSInline
       module Lint
         # Checks that there are no repeated overload bodies.
         # This cop ignores the difference of return type.
         #
         # @example
         #   # bad
-        #   def foo: () -> void
-        #          | () -> top
+        #   #: () -> void
+        #   #: () -> top
+        #   def foo
+        #   end
         #
-        class DuplicateOverload < RuboCop::RBS::CopBase
+        #   # bad
+        #   # @rbs () -> void
+        #   #    | () -> top
+        #   def foo
+        #   end
+        #
+        class DuplicateOverload < RuboCop::RBSInline::CopBase
           include RuboCop::Cop::RBS::Mixin::DuplicateOverload
 
-          alias on_rbs_def check_def
+          alias on_inline_def check_def
         end
       end
     end
